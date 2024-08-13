@@ -134,7 +134,7 @@ class VertexBufferLayout : public NS::Copying<VertexBufferLayout>
 public:
     static class VertexBufferLayout*    alloc();
     
-    // initWithStride:stride
+    // initWithStride:stride:
     MDL::VertexBufferLayout*            init(const NS::UInteger stride);
     
     // Read&Write
@@ -150,10 +150,11 @@ public:
     static class VertexAttribute*   alloc();
     
     // initWithName:format:offset:bufferIndex
-    MDL::VertexAttribute*           init(const NS::String* name, VertexFormat format, NS::UInteger offset, NS::UInteger bufferIndex);
+    MDL::VertexAttribute*           init(const NS::String* name, const VertexFormat format, const NS::UInteger offset, const NS::UInteger bufferIndex);
     
     // copy                     // !!!: Uncertain
     NS::String*                     name() const;
+    void                            setName(const NS::String* name);
     
     // Read&Write
     VertexFormat                    format() const;
@@ -210,10 +211,181 @@ public:
 
 }
 
-// TODO: Private sector -
+// MARK: - Private Sector
 
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeAnisotropy);
 
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeBinormal);
 
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeBitangent);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeColor);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeEdgeCrease);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeJointIndices);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeJointWeights);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeNormal);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeOcclusionValue);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributePosition);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeShadingBasisU);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeShadingBasisV);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeSubdivisionStencil);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeTangent);
+
+_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeTextureCoordinate);
+
+//------------------------------------------------------------------------------
+
+// static method: alloc
+_MDL_INLINE MDL::VertexBufferLayout* MDL::VertexBufferLayout::alloc()
+{
+    return NS::Object::alloc<MDL::VertexBufferLayout>(_MDL_PRIVATE_CLS(MDLVertexBufferLayout));
+}
+
+// method: initWithStride:stride:
+_MDL_INLINE MDL::VertexBufferLayout* MDL::VertexBufferLayout::init(const NS::UInteger stride)
+{
+    return Object::sendMessage<MDL::VertexBufferLayout*>(this, _MDL_PRIVATE_SEL(initWithStride_stride_), stride);
+}
+
+// property: stride
+_MDL_INLINE NS::UInteger* MDL::VertexBufferLayout::stride() const
+{
+    return Object::sendMessage<NS::UInteger*>(this, _MDL_PRIVATE_SEL(stride));
+}
+// write method: setStrides:
+_MDL_INLINE void MDL::VertexBufferLayout::setStride(const NS::UInteger* stride)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setStride_), stride);
+}
+
+// static method: alloc
+_MDL_INLINE MDL::VertexAttribute* MDL::VertexAttribute::alloc()
+{
+    return NS::Object::alloc<MDL::VertexAttribute>(_MDL_PRIVATE_CLS(MDLVertexAttribute));
+}
+
+// initWithName:format:offset:bufferIndex:
+_MDL_INLINE MDL::VertexAttribute* MDL::VertexAttribute::init(const NS::String* name, const VertexFormat format, const NS::UInteger offset, const NS::UInteger bufferIndex)
+{
+    return Object::sendMessage<MDL::VertexAttribute*>(this, _MDL_PRIVATE_SEL(initWithName_format_offset_bufferIndex_), name, format, offset, bufferIndex);
+}
+
+// property: name
+_MDL_INLINE NS::String* MDL::VertexAttribute::name() const
+{
+    return Object::sendMessage<NS::String*>(this, _MDL_PRIVATE_SEL(name));
+}
+// write method: setName:
+_MDL_INLINE void MDL::VertexAttribute::setName(const NS::String* name)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setName_), name);
+}
+
+// property: format
+_MDL_INLINE MDL::VertexFormat MDL::VertexAttribute::format() const
+{
+    return Object::sendMessage<MDL::VertexFormat>(this, _MDL_PRIVATE_SEL(format));
+}
+// write method: setFormat:
+_MDL_INLINE void MDL::VertexAttribute::setFormat(const MDL::VertexFormat format)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFormat_), format);
+}
+
+// property: offset
+_MDL_INLINE NS::UInteger MDL::VertexAttribute::offset() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(offset));
+}
+// write method: setOffset:
+_MDL_INLINE void MDL::VertexAttribute::setOffset(const NS::UInteger offset)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setOffset_), offset);
+}
+
+// property: time
+_MDL_INLINE NS::TimeInterval MDL::VertexAttribute::time() const
+{
+    return Object::sendMessage<NS::TimeInterval>(this, _MDL_PRIVATE_SEL(time));
+}
+// write method: setTime:
+_MDL_INLINE void MDL::VertexAttribute::setTime(const NS::TimeInterval time)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setTime_), time);
+}
+
+// property: initializationValue
+_MDL_INLINE vector_float4 MDL::VertexAttribute::initializationValue() const
+{
+    return Object::sendMessage<vector_float4>(this, _MDL_PRIVATE_SEL(initializationValue));
+}
+// write method: setInitializationValue:
+_MDL_INLINE void MDL::VertexAttribute::setInitializationValue(const vector_float4 initializationValue)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setInitializationValue_), initializationValue);
+}
+
+// static method: alloc
+_MDL_INLINE MDL::VertexDescriptor* MDL::VertexDescriptor::alloc()
+{
+    return NS::Object::alloc<MDL::VertexDescriptor>(_MDL_PRIVATE_CLS(MDLVertexDescriptor));
+}
+
+// initVertexDescriptor:
+_MDL_INLINE MDL::VertexDescriptor* MDL::VertexDescriptor::init(const MDL::VertexDescriptor* vertexDescriptor)
+{
+    return Object::sendMessage<MDL::VertexDescriptor*>(this, _MDL_PRIVATE_SEL(initVertexDescriptor_), vertexDescriptor);
+}
+
+// method: attributeNamed:
+_MDL_INLINE MDL::VertexAttribute* MDL::VertexDescriptor::attributeNamed(const NS::String* name)
+{
+    return Object::sendMessage<MDL::VertexAttribute*>(this, _MDL_PRIVATE_SEL(attributeNamed_), name);
+}
+
+// method: addOrReplaceAttribute:
+_MDL_INLINE void MDL::VertexDescriptor::addOrReplaceAttribute(const MDL::VertexAttribute* attribute)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(addOrReplaceAttribute_), attribute);
+}
+
+// method: removeAttributeNamed:
+_MDL_INLINE void MDL::VertexDescriptor::removeAttributeNamed(const NS::String* name)
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(removeAttributeNamed_), name);
+}
+
+// TODO: attributes
+
+// TODO: layouts
+
+// method: reset:
+_MDL_INLINE void MDL::VertexDescriptor::reset()
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(reset_));
+}
+
+// method: setPackedStrides:
+_MDL_INLINE void MDL::VertexDescriptor::setPackedStrides()
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setPackedStrides_));
+}
+
+// method: setPackedOffsets:
+_MDL_INLINE void MDL::VertexDescriptor::setPackedOffsets()
+{
+    Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setPackedOffsets_));
+}
 
 
 // MARK: - Original Header

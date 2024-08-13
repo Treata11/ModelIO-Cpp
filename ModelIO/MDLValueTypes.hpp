@@ -48,7 +48,7 @@ public:
 // static method: alloc
 _MDL_INLINE MDL::Matrix4x4Array* MDL::Matrix4x4Array::alloc()
 {
-    return NS::Object::alloc<MDL::Matrix4x4Array>(_MDL_PRIVATE_CLS(Matrix4x4Array));
+    return NS::Object::alloc<MDL::Matrix4x4Array>(_MDL_PRIVATE_CLS(MTLMatrix4x4Array));
 }
 
 // method: init
