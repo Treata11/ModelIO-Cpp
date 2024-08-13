@@ -81,6 +81,17 @@ namespace Private
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//namespace MDL
+//{
+//namespace Private
+//{
+//    namespace Class
+//    {
+//
+//    } // Class
+//} // Private
+//} // MDL
+
 namespace MDL::Private::Class
 {
 // MDLValueTypes.hpp
@@ -91,26 +102,58 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLVertexAttribute );
     _MDL_PRIVATE_DEF_CLS( MDLVertexDescriptor );
 
-
+// MDLObject.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLObject );
 } // Class
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-namespace MDL
-{
-namespace Private
-{
-    namespace Protocol
-    {
+//namespace MDL
+//{
+//namespace Private
+//{
+//    namespace Protocol
+//    {
+//
+//    } // Protocol
+//} // Private
+//} // MDL
 
-    } // Protocol
-} // Private
-} // MDL
+// TODO: Add the remaining Protocols 
+namespace MDL::Private::Protocol
+{
+// MDLTypes.hpp
+    _MDL_PRIVATE_DEF_PRO(MDLNamed);
+    _MDL_PRIVATE_DEF_PRO(MDLComponent);
+    _MDL_PRIVATE_DEF_PRO(MDLObjectContainerComponent);
+
+
+}
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//namespace MDL
+//{
+//namespace Private
+//{
+//    namespace Selector
+//    {
+//
+//    } // Selector
+//} // Private
+//} // MDL
+
 namespace MDL::Private::Selector
 {
+// MDLTypes.hpp
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
+    _MDL_PRIVATE_DEF_SEL( addObject_, "addObject_" );
+    _MDL_PRIVATE_DEF_SEL( removeObject_, "removeObject_" );
+    _MDL_PRIVATE_DEF_SEL( objectAtIndexedSubscript_, "objectAtIndexedSubscript_" );
+    _MDL_PRIVATE_DEF_SEL( count, "count" );
+    _MDL_PRIVATE_DEF_SEL( objects, "objects" );
+
 // MDLValueTypes.hpp
     _MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount_" );
     _MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
