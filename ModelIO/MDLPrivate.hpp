@@ -72,10 +72,8 @@ namespace Private
 
 #else
 
-// FIXME: No member named 's_k##symbol' in namespace 'MDL::Private::Selector'
 #define _MDL_PRIVATE_DEF_CLS(symbol) extern void* s_k##symbol;
 #define _MDL_PRIVATE_DEF_PRO(symbol)
-// FIXME: No member named 's_k##accessor' in namespace 'MDL::Private::Selector'
 #define _MDL_PRIVATE_DEF_SEL(accessor, symbol) extern SEL s_k##accessor;
 #define _MDL_PRIVATE_DEF_STR(type, symbol)
 
@@ -83,16 +81,11 @@ namespace Private
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-namespace MDL
+namespace MDL::Private::Class
 {
-namespace Private
-{
-    namespace Class
-    {
-
-    } // Class
-} // Private
-} // MDL
+    _MDL_PRIVATE_DEF_CLS(  Matrix4x4Array );
+    _MDL_PRIVATE_DEF_CLS( MLModel );
+} // Class
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -109,20 +102,18 @@ namespace Private
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-namespace MDL
+namespace MDL::Private::Selector
 {
-namespace Private
-{
-    namespace Selector
-    {
-
-        _MDL_PRIVATE_DEF_SEL(beginScope,
-            "beginScope");
-        _MDL_PRIVATE_DEF_SEL(endScope,
-            "endScope");
-    } // Class
-} // Private
-} // MDL
+// MDLValueTypes.hpp
+    _MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount_" );
+    _MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
+    _MDL_PRIVATE_DEF_SEL( precision, "precision" );
+    _MDL_PRIVATE_DEF_SEL( clear, "clear" );
+    _MDL_PRIVATE_DEF_SEL( setFloat4x4Array_count_, "setFloat4x4Array_count_" );
+    _MDL_PRIVATE_DEF_SEL( setDouble4x4Array_count_, "setDouble4x4Array_count_" );
+    _MDL_PRIVATE_DEF_SEL( getFloat4x4Array_maxCount_, "getFloat4x4Array_maxCount_" );
+    _MDL_PRIVATE_DEF_SEL( getDouble4x4Array_maxCount_, "getDouble4x4Array_maxCount_" );
+}
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 

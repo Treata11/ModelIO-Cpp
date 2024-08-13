@@ -2,12 +2,11 @@
  @header MDLObject.hpp
  @framework ModelIO
  @abstract Base structures for representing components of 3d assets
- @copyright Copyright © 2015 Apple, Inc. All rights reserved.
- Created by Treata Norouzi on 8/12/24.
+ @copyright Created by Treata Norouzi on 8/12/24.
  */
 
 #import "MDLTypes.hpp"
-//#import "MDLTransform.hpp"
+#import "MDLTransform.hpp"
 
 
 

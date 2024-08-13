@@ -5,18 +5,15 @@
  @copyright Copyright © 2015 Apple, Inc. All rights reserved.
  */
 
-#define MDL_INLINE __attribute__((__always_inline__))
-#define MDL_CONST_INLINE __attribute__((__always_inline__,__const__))
+//#define MDL_INLINE __attribute__((__always_inline__))
+//#define MDL_CONST_INLINE __attribute__((__always_inline__,__const__))
 
 #import "ModelIOExports.hpp"
+#include "MDLDefines.hpp"
 
 #import <Foundation/Foundation.hpp>
 #include <simd/simd.h>
 #include <math.h>
-
-// TODO: - New File: -
-#define _MDL_ENUM(type, name) _NS_ENUM(type, name)
-// --------------------------------------------------------
 
 namespace MDL
 {

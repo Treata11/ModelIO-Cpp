@@ -1,9 +1,10 @@
-//
-//  MDLDefines.hpp
-//  ModelIO-Cpp
-//
-//  Created by Treata Norouzi on 8/12/24.
-//
+/*
+ MDLDefines.hpp
+
+ Created by Treata Norouzi on 8/12/24.
+ 
+ Based on: MTLDefines.hpp
+*/
 
 #pragma once
 

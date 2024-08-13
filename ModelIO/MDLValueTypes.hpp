@@ -75,6 +75,12 @@ _MDL_INLINE MDL::DataPrecision MDL::Matrix4x4Array::precision() const
     return Object::sendMessage<MDL::DataPrecision>(this, _MDL_PRIVATE_SEL(precision));
 }
 
+// method: clear
+_MDL_INLINE void MDL::Matrix4x4Array::clear()
+{
+    return Object::sendMessage<void>( this, _MDL_PRIVATE_SEL(clear) );
+}
+
 // method: setFloat4x4Array:count:
 _MDL_INLINE void MDL::Matrix4x4Array::setFloat4x4Array(const matrix_float4x4* valuesArray, NS::UInteger count)
 {
