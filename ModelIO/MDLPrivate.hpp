@@ -148,46 +148,46 @@ namespace MDL::Private::Selector
 // MDLTypes.hpp
     //_MDL_PRIVATE_DEF_SEL( name, "name" );
     //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
-    _MDL_PRIVATE_DEF_SEL( addObject_, "addObject_" );
-    _MDL_PRIVATE_DEF_SEL( removeObject_, "removeObject_" );
-    _MDL_PRIVATE_DEF_SEL( objectAtIndexedSubscript_, "objectAtIndexedSubscript_" );
+    _MDL_PRIVATE_DEF_SEL( addObject_, "addObject:" );
+    _MDL_PRIVATE_DEF_SEL( removeObject_, "removeObject:" );
+    _MDL_PRIVATE_DEF_SEL( objectAtIndexedSubscript_, "objectAtIndexedSubscript:" );
     _MDL_PRIVATE_DEF_SEL( count, "count" );
     _MDL_PRIVATE_DEF_SEL( objects, "objects" );
 
 // MDLValueTypes.hpp
-    _MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount_" );
+    _MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount:" );
     _MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
     _MDL_PRIVATE_DEF_SEL( precision, "precision" );
     _MDL_PRIVATE_DEF_SEL( clear, "clear" );
-    _MDL_PRIVATE_DEF_SEL( setFloat4x4Array_count_, "setFloat4x4Array_count_" );
-    _MDL_PRIVATE_DEF_SEL( setDouble4x4Array_count_, "setDouble4x4Array_count_" );
-    _MDL_PRIVATE_DEF_SEL( getFloat4x4Array_maxCount_, "getFloat4x4Array_maxCount_" );
-    _MDL_PRIVATE_DEF_SEL( getDouble4x4Array_maxCount_, "getDouble4x4Array_maxCount_" );
+    _MDL_PRIVATE_DEF_SEL( setFloat4x4Array_count_, "setFloat4x4Array:count:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble4x4Array_count_, "setDouble4x4Array:count:" );
+    _MDL_PRIVATE_DEF_SEL( getFloat4x4Array_maxCount_, "getFloat4x4Array:maxCount:" );
+    _MDL_PRIVATE_DEF_SEL( getDouble4x4Array_maxCount_, "getDouble4x4Array:maxCount:" );
 
 // MDLVertexDescriptor.hpp
-    _MDL_PRIVATE_DEF_SEL( initWithStride_stride_, "initWithStride_stride_" );
+    _MDL_PRIVATE_DEF_SEL( initWithStride_stride_, "initWithStride:stride:" );
     _MDL_PRIVATE_DEF_SEL( stride, "stride" );
-    _MDL_PRIVATE_DEF_SEL( setStride_, "setStride_" );
+    _MDL_PRIVATE_DEF_SEL( setStride_, "setStride:" );
 
-    _MDL_PRIVATE_DEF_SEL( initWithName_format_offset_bufferIndex_, "initWithName_format_offset_bufferIndex_" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_format_offset_bufferIndex_, "initWithName:format:offset:bufferIndex:" );
     _MDL_PRIVATE_DEF_SEL( name, "name" );
-    _MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
+    _MDL_PRIVATE_DEF_SEL( setName_, "setName:" );
     _MDL_PRIVATE_DEF_SEL( format, "format" );
-    _MDL_PRIVATE_DEF_SEL( setFormat_, "setFormat_" );
+    _MDL_PRIVATE_DEF_SEL( setFormat_, "setFormat:" );
     _MDL_PRIVATE_DEF_SEL( offset, "offset" );
-    _MDL_PRIVATE_DEF_SEL( setOffset_, "setOffset_" );
+    _MDL_PRIVATE_DEF_SEL( setOffset_, "setOffset:" );
     _MDL_PRIVATE_DEF_SEL( time, "time" );
-    _MDL_PRIVATE_DEF_SEL( setTime_, "setTime_" );
+    _MDL_PRIVATE_DEF_SEL( setTime_, "setTime:" );
     _MDL_PRIVATE_DEF_SEL( initializationValue, "initializationValue" );
-    _MDL_PRIVATE_DEF_SEL( setInitializationValue_, "setInitializationValue_" );
+    _MDL_PRIVATE_DEF_SEL( setInitializationValue_, "setInitializationValue:" );
 
-    _MDL_PRIVATE_DEF_SEL( initVertexDescriptor_, "initVertexDescriptor_" );
-    _MDL_PRIVATE_DEF_SEL( attributeNamed_, "attributeNamed_" );
-    _MDL_PRIVATE_DEF_SEL( addOrReplaceAttribute_, "addOrReplaceAttribute_" );
-    _MDL_PRIVATE_DEF_SEL( removeAttributeNamed_, "removeAttributeNamed_" );
-    _MDL_PRIVATE_DEF_SEL( reset_, "reset_" );
-    _MDL_PRIVATE_DEF_SEL( setPackedStrides_, "setPackedStrides_" );
-    _MDL_PRIVATE_DEF_SEL( setPackedOffsets_, "setPackedOffsets_" );
+    _MDL_PRIVATE_DEF_SEL( initVertexDescriptor_, "initVertexDescriptor:" );
+    _MDL_PRIVATE_DEF_SEL( attributeNamed_, "attributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( addOrReplaceAttribute_, "addOrReplaceAttribute:" );
+    _MDL_PRIVATE_DEF_SEL( removeAttributeNamed_, "removeAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( reset_, "reset:" );
+    _MDL_PRIVATE_DEF_SEL( setPackedStrides_, "setPackedStrides:" );
+    _MDL_PRIVATE_DEF_SEL( setPackedOffsets_, "setPackedOffsets:" );
 
 } // Selector
 
