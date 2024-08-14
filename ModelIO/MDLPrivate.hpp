@@ -192,6 +192,26 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( setPackedStrides_, "setPackedStrides:" );
     _MDL_PRIVATE_DEF_SEL( setPackedOffsets_, "setPackedOffsets:" );
 
+// MDLObject.hpp
+    _MDL_PRIVATE_DEF_SEL( components, "components" );
+    _MDL_PRIVATE_DEF_SEL( setComponent_forProtocol_, "setComponent:forProtocol:" );
+    _MDL_PRIVATE_DEF_SEL( componentConformingToProtocol_, "componentConformingToProtocol:" );
+    _MDL_PRIVATE_DEF_SEL( objectForKeyedSubscript_, "objectForKeyedSubscript:" );
+    _MDL_PRIVATE_DEF_SEL( setObject_forKeyedSubscript_, "setObject:forKeyedSubscript:" );
+    _MDL_PRIVATE_DEF_SEL( parent, "parent" );
+    _MDL_PRIVATE_DEF_SEL( instance, "instance" );
+    _MDL_PRIVATE_DEF_SEL( path, "path" );
+    _MDL_PRIVATE_DEF_SEL( objectAtPath_, "objectAtPath:" );
+    _MDL_PRIVATE_DEF_SEL( enumerateChildObjectsOfClass_root_usingBlock_stopPointer_, "enumerateChildObjectsOfClass:root:usingBlock:stopPointer:" );
+    _MDL_PRIVATE_DEF_SEL( transform, "transform" );
+    _MDL_PRIVATE_DEF_SEL( setTransform_, "setTransform:" );
+    _MDL_PRIVATE_DEF_SEL( children, "children" );
+    _MDL_PRIVATE_DEF_SEL( setChildren_, "setChildren:" );
+    _MDL_PRIVATE_DEF_SEL( hidden, "hidden" );
+    _MDL_PRIVATE_DEF_SEL( setHidden_, "setHidden:" );
+    _MDL_PRIVATE_DEF_SEL( addChild_, "addChild:" );
+    _MDL_PRIVATE_DEF_SEL( boundingBoxAtTime_, "boundingBoxAtTime:" );
+
 } // Selector
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------

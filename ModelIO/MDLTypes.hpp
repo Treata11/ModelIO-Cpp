@@ -151,18 +151,6 @@ struct MDL_CLASS_EXPORT AxisAlignedBoundingBox
 
 // MARK: - Private Sector
 
-//// static method: alloc
-//_MDL_INLINE MDL::Named* MDL::Named::alloc()
-//{
-//    return NS::Object::alloc<MDL::Named>(_MDL_PRIVATE_PRO(MDLNamed));
-//}
-//
-//// method: init
-//_MDL_INLINE MDL::Named* MDL::Named::init()
-//{
-//    return NS::Object::init<MDL::Named>();
-//}
-
 // property: name
 _MDL_INLINE NS::String* MDL::Named::name() const
 {
@@ -175,7 +163,9 @@ _MDL_INLINE void MDL::Named::setName(const NS::String* name)
     return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setName_), name);
 }
 
-// TODO: `MDLObject` class calls
+/*
+ Bridging methods of `Object` class could be found at `MDLObject.hpp`
+ */
 
 // method: addObject:
 _MDL_INLINE void MDL::ObjectContainerComponent::addObject(const MDL::Object* object)
@@ -201,7 +191,7 @@ _MDL_INLINE NS::UInteger MDL::ObjectContainerComponent::count() const
     return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(count));
 }
 
-// property: count
+// property: objects
 _MDL_INLINE NS::Array* MDL::ObjectContainerComponent::objects() const
 {
     return Object::sendMessage<NS::Array*>(this, _MDL_PRIVATE_SEL(objects));
