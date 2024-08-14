@@ -104,6 +104,9 @@ namespace MDL::Private::Class
 
 // MDLObject.hpp
     _MDL_PRIVATE_DEF_CLS( MDLObject );
+    _MDL_PRIVATE_DEF_CLS( MDLObjectContainer );
+
+
 } // Class
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------

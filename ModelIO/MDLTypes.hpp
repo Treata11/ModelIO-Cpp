@@ -5,8 +5,6 @@
  @copyright Copyright © 2015 Apple, Inc. All rights reserved.
  */
 
-//#define MDL_INLINE __attribute__((__always_inline__))
-//#define MDL_CONST_INLINE __attribute__((__always_inline__,__const__))
 
 #import "ModelIOExports.hpp"
 #include "MDLDefines.hpp"
@@ -54,6 +52,10 @@ _MDL_ENUM(NS::UInteger, DataPrecision) {
 class Named : public NS::Copying<Named>
 {
 public:
+    static class Named*    alloc();
+
+    class Named*           init();
+    
     // copy
     NS::String*             name() const;
     void                    setName(const NS::String* name);
@@ -63,14 +65,62 @@ class Component : public NS::Referencing<Component>
 {
 };
 
-// TODO: Delete after completion of `MDLObject.hpp`
-class Object : public NS::Referencing<MDL::Named>
+// NOTICE: Original class is found in `MDLObject.h`; move this implementation to
+// `MDLObject.hpp if possible.
+class Object : public NS::Copying<MDL::Named>
 {
 public:
     static class Object*    alloc();
 
     class Object*           init();
+    
+    NS::Array*              components() const;
+    
+    // setComponent:forProtocol:
+    void                    setComponent(const MDL::Component* component, const Protocol* protocol);
+    
+    // componentConformingToProtocol:
+    class Component*        componentConformingToProtocol(const Protocol* protocol);
+    
+    // objectForKeyedSubscript:
+    class Component*        objectForKeyedSubscript(const Protocol* key);
+    
+    // setObject:forKeyedSubscript:
+    class Component*        setObject(const MDL::Component* obj, const Protocol* key);
+    
+    // weak
+    class Object*           parent() const;
+    
+    class Object*           instance() const;
+    
+    NS::String*             path() const;
+    
+    // objectAtPath:
+    class Object*           objectAtPath(const NS::String* path);
+    
+    // enumerateChildObjectsOfClass:root:usingBlock:stopPointer:
+    void                    enumerateChildObjectsOfClass(const Class objectClass,
+                                                         const MDL::Object* root,
+                                                         // !!!: Uncertain
+                                                         const void (^block)(const MDL::Object* object, const BOOL* stop),
+                                                         const BOOL* stopPointer);
+    
+    class TransformComponent*       transform() const;
+    void                            setTransform(const MDL::TransformComponent* transform);
+    
+    class ObjectContainerComponent* children() const;
+    void                            setChildren(const MDL::ObjectContainerComponent* children);
+    
+    BOOL                            hidden() const;
+    void                            setHidden(const BOOL hidden);
+    
+    // addChild:
+    void                            addChild(const MDL::Object* child);
+    
+    // boundingBoxAtTime:
+    class AxisAlignedBoundingBox    boundingBoxAtTime(const NS::TimeInterval time);
 };
+
 
 // !!!: Uncertain about Referencing
 class ObjectContainerComponent : public NS::Referencing<MDL::Component, NS::FastEnumeration>
@@ -124,6 +174,8 @@ _MDL_INLINE void MDL::Named::setName(const NS::String* name)
 {
     return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setName_), name);
 }
+
+// TODO: `MDLObject` class calls
 
 // method: addObject:
 _MDL_INLINE void MDL::ObjectContainerComponent::addObject(const MDL::Object* object)
