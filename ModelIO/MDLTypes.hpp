@@ -2,14 +2,13 @@
  @header MDLTypes.h
  @framework ModelIO
  @abstract A variety of types used in representing 3d assets
- @copyright Copyright © 2015 Apple, Inc. All rights reserved.
+ @copyright Created by Treata Norouzi on 8/12/24.
  */
 
 
 #import "ModelIOExports.hpp"
 #include "MDLDefines.hpp"
-#include "MDLPrivate.hpp"
-//#include "MDLObject.hpp"
+#include "MDLHeaderBridge.hpp"
 
 #import <Foundation/Foundation.hpp>
 #include <simd/simd.h>
