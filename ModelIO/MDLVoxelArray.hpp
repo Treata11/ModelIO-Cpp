@@ -12,6 +12,8 @@
 #include "MDLAssetResolver.hpp"
 #include <simd/simd.h>
 
+namespace MDL
+{
 // !!!: Uncertain
 using VoxelIndex = vector_int4;
 
@@ -21,8 +23,6 @@ struct VoxelIndexExtent
     VoxelIndex maximumExtent;
 };
 
-namespace MDL
-{
 // TODO: Implement
 class Mesh : public NS::Referencing<Mesh> {
     static class Mesh*        alloc();
@@ -114,6 +114,7 @@ class VoxelArray : public NS::Referencing<Object>
     float                           shellFieldExteriorThickness() const;
     void                            setShellFieldExteriorThickness(const float shellFieldExteriorThickness);
     
+    // !!!: Uncertain about the next 3
     // coarseMesh:
     class Mesh*                     coarseMesh();
     
