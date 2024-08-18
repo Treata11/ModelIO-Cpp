@@ -23,11 +23,7 @@ struct VoxelIndexExtent
     VoxelIndex maximumExtent;
 };
 
-// TODO: Implement
-class Mesh : public NS::Referencing<Mesh> {
-    static class Mesh*        alloc();
-    
-};
+class Mesh; // Forward-declaration
 
 class VoxelArray : public NS::Referencing<Object>
 {
