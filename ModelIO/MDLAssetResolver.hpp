@@ -23,18 +23,7 @@ public:
     NS::URL*                        resolveAssetNamed(NS::String* name);
 };
 
-// MARK: - Asset
-
-/// Incomplete currently
-class Asset : public NS::Referencing<Asset>
-{
-    // TODO: MDL::Asset class
-public:
-    static class Asset*     alloc();
-    
-    class Asset*            init();
-    
-};
+class Asset;
 
 // MARK: - RelativeAssetResolver
 
