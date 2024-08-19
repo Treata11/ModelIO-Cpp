@@ -143,23 +143,17 @@ public:
     NS::UInteger                sphericalHarmonicsLevel() const;
     
     NS::Data*                   sphericalHarmonicsCoefficients() const;
+    
+    // MARK: - LightBaking
+    
+    // lightProbeWithTextureSize:forLocation:lightsToConsider:objectsToConsider:reflectiveCubemap:irradianceCubemap:
+    static class LightProbe*    lightProbeWithTextureSize(NS::Integer textureSize,
+                                                          const Transform* transform,
+                                                          const NS::Array* lightsToConsider,
+                                                          const NS::Array* objectsToConsider,
+                                                          const Texture* reflectiveCubemap,
+                                                          const Texture* irradianceCubemap);
 };
-
-// MARK: Incomplete
-// FIXME: No member named 'LightBaking' in namespace 'MDL'
-//class LightProbe : public NS::Referencing<MDL::LightBaking>
-//{
-//public:
-//    static class LightProbe*    alloc();
-//    
-//    // lightProbeWithTextureSize:forLocation:lightsToConsider:objectsToConsider:reflectiveCubemap:irradianceCubemap:
-//    static class LightProbe*    lightProbeWithTextureSize(NS::Integer textureSize,
-//                                                          const Transform* transform,
-//                                                          const NS::Array* lightsToConsider,
-//                                                          const NS::Array* objectsToConsider,
-//                                                          const Texture* reflectiveCubemap,
-//                                                          const Texture* irradianceCubemap);
-//};
 
 }
 

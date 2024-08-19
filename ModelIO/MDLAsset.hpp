@@ -125,19 +125,13 @@ public:
     
     // sphericalHarmonicsCoefficientsAtPosition:
     NS::Data*                   sphericalHarmonicsCoefficientsAtPosition(vector_float3 position);
+    
+    // MARK: - LightBaking
+    
+    // placeLightProbesWithDensity:usingIrradianceDataSource:
+    static class NS::Array* placeLightProbesWithDensity(float value,
+                                                        class LightProbeIrradianceDataSource dataSource);
 };
-
-// MARK: Incomplete
-// FIXME: No member named 'LightBaking' in namespace 'MDL'
-//class Asset : public NS::Copying<MDL::LightBaking>
-//{
-//public:
-//    static class Asset*     alloc();
-//    
-//    // placeLightProbesWithDensity:usingIrradianceDataSource:
-//    static class NS::Array* placeLightProbesWithDensity(float value,
-//                                                        class LightProbeIrradianceDataSource dataSource);
-//};
 
 }
 
