@@ -30,54 +30,55 @@ class VoxelArray : public NS::Referencing<Object>
     static class VoxelArray*        alloc();
     
     // initWithAsset:divisions:patchRadius:
-    class VoxelArray*               initWithAsset(const MDL::Asset* asset, const int divisions, const float patchRadius);
+    class VoxelArray*               init(const MDL::Asset* asset, int divisions, float patchRadius);
     
     // initWithData:boundingBox:voxelExtent:
-    class VoxelArray*               initWithData(const NS::Data* voxelData,
-                                                 const MDL::AxisAlignedBoundingBox boundingBox,
-                                                 const float voxelExtent);
+    class VoxelArray*               init(const NS::Data* voxelData,
+                                         MDL::AxisAlignedBoundingBox boundingBox,
+                                         float voxelExtent);
     
     // initWithAsset:divisions:interiorShells:exteriorShells:patchRadius:
-    class VoxelArray*               initWithAsset(const MDL::Asset* asset,
-                                                  const int divisions,
-                                                  const int interiorShells,
-                                                  const int exteriorShells,
-                                                  const float patchRadius);
+    class VoxelArray*               init(const MDL::Asset* asset,
+                                         int divisions,
+                                         int interiorShells,
+                                         int exteriorShells,
+                                         float patchRadius);
     
+    // - Readonly
     NS::UInteger                    count() const;
     
     VoxelIndexExtent                voxelIndexExtent() const;
     
     // voxelExistsAtIndex:allowAnyX:allowAnyY:allowAnyZ:allowAnyShell:
-    BOOL                            voxelExistsAtIndex(const VoxelIndex index,
-                                                       const BOOL allowAnyX, const BOOL allowAnyY, const BOOL allowAnyZ,
-                                                       const BOOL allowAnyShell);
+    BOOL                            voxelExistsAtIndex(VoxelIndex index,
+                                                       BOOL allowAnyX, BOOL allowAnyY, BOOL allowAnyZ,
+                                                       BOOL allowAnyShell);
     
     
     // voxelsWithinExtent:
-    NS::Data*                       voxelsWithinExtent(const VoxelIndexExtent extent);
+    NS::Data*                       voxelsWithinExtent(VoxelIndexExtent extent);
     
     NS::Data*                       voxelIndices();
     
     // setVoxelAtIndex:
-    void                            setVoxelAtIndex(const VoxelIndex index);
+    void                            setVoxelAtIndex(VoxelIndex index);
     
     // setVoxelsForMesh:divisions:patchRadius:
-    void                            setVoxelsForMesh(const Mesh* mesh, const int divisions, const float patchRadius);
+    void                            setVoxelsForMesh(const Mesh* mesh, int divisions, float patchRadius);
     
     // setVoxelsForMesh:divisions:interiorShells:exteriorShells:patchRadius:
     void                            setVoxelsForMesh(const Mesh* mesh, 
-                                                     const int divisions,
-                                                     const int interiorShells,
-                                                     const int exteriorShells,
-                                                     const float patchRadius);
+                                                     int divisions,
+                                                     int interiorShells,
+                                                     int exteriorShells,
+                                                     float patchRadius);
     
     // setVoxelsForMesh:divisions:interiorNBWidth:exteriorNBWidth:patchRadius:
     void                            setVoxelsForMesh(const Mesh* mesh,
-                                                     const int divisions,
-                                                     const float interiorNBWidth,
-                                                     const float exteriorNBWidth,
-                                                     const float patchRadius);
+                                                     int divisions,
+                                                     float interiorNBWidth,
+                                                     float exteriorNBWidth,
+                                                     float patchRadius);
     
     // unionWithVoxels:
     void                            unionWithVoxels(const VoxelArray* voxels);
@@ -91,24 +92,24 @@ class VoxelArray : public NS::Referencing<Object>
     AxisAlignedBoundingBox          boundingBox() const;
     
     // indexOfSpatialLocation:
-    VoxelIndex                      indexOfSpatialLocation(const vector_float3 location);
+    VoxelIndex                      indexOfSpatialLocation(vector_float3 location);
     
     // spatialLocationOfIndex:
-    vector_float3                   spatialLocationOfIndex(const VoxelIndex index);
+    vector_float3                   spatialLocationOfIndex(VoxelIndex index);
     
     // voxelBoundingBoxAtIndex:
-    AxisAlignedBoundingBox          voxelBoundingBoxAtIndex(const VoxelIndex index);
+    AxisAlignedBoundingBox          voxelBoundingBoxAtIndex(VoxelIndex index);
     
-    // convertToSignedShellField:
+    // convertToSignedShellField
     void                            convertToSignedShellField();
     
     BOOL                            isValidSignedShellField() const;
     
     float                           shellFieldInteriorThickness() const;
-    void                            setShellFieldInteriorThickness(const float shellFieldInteriorThickness);
+    void                            setShellFieldInteriorThickness(float shellFieldInteriorThickness);
     
     float                           shellFieldExteriorThickness() const;
-    void                            setShellFieldExteriorThickness(const float shellFieldExteriorThickness);
+    void                            setShellFieldExteriorThickness(float shellFieldExteriorThickness);
     
     // !!!: Uncertain about the next 3
     // coarseMesh:
@@ -124,7 +125,206 @@ class VoxelArray : public NS::Referencing<Object>
 
 }
 
-// TODO: Private Sector
+// MARK: - Private Sector
+
+// static method: alloc
+_MDL_INLINE MDL::VoxelArray* MDL::VoxelArray::alloc()
+{
+    return NS::Object::alloc<MDL::VoxelArray>(_MDL_PRIVATE_CLS(MDLVoxelArray));
+}
+
+// method: initWithAsset:divisions:patchRadius:
+_MDL_INLINE MDL::VoxelArray* MDL::VoxelArray::init(const MDL::Asset* asset, int divisions, float patchRadius)
+{
+    return Object::sendMessage<MDL::VoxelArray*>(this, _MDL_PRIVATE_SEL(initWithAsset_divisions_patchRadius_), asset, divisions, patchRadius);
+}
+
+// method: initWithData:boundingBox:voxelExtent:
+_MDL_INLINE MDL::VoxelArray* MDL::VoxelArray::init(const NS::Data* voxelData, MDL::AxisAlignedBoundingBox boundingBox, float voxelExtent)
+{
+    return Object::sendMessage<MDL::VoxelArray*>(this, _MDL_PRIVATE_SEL(initWithData_boundingBox_voxelExtent_), voxelData, boundingBox, voxelExtent);
+}
+
+// initWithAsset:divisions:interiorShells:exteriorShells:patchRadius:
+_MDL_INLINE MDL::VoxelArray* MDL::VoxelArray::init(const MDL::Asset* asset,
+                                                   int divisions,
+                                                   int interiorShells,
+                                                   int exteriorShells,
+                                                   float patchRadius)
+{
+    return Object::sendMessage<MDL::VoxelArray*>(this,
+                                                 _MDL_PRIVATE_SEL(initWithAsset_divisions_interiorShells_exteriorShells_patchRadius_),
+                                                 asset, divisions, interiorShells, exteriorShells, patchRadius);
+}
+
+// property: count
+_MDL_INLINE NS::UInteger MDL::VoxelArray::count() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(count));
+}
+
+// property: voxelIndexExtent
+_MDL_INLINE MDL::VoxelIndexExtent MDL::VoxelArray::voxelIndexExtent() const
+{
+    return Object::sendMessage<VoxelIndexExtent>(this, _MDL_PRIVATE_SEL(voxelIndexExtent));
+}
+
+// method: voxelExistsAtIndex:allowAnyX:allowAnyY:allowAnyZ:allowAnyShell:
+_MDL_INLINE BOOL MDL::VoxelArray::voxelExistsAtIndex(VoxelIndex index,
+                                                     BOOL allowAnyX, BOOL allowAnyY, BOOL allowAnyZ,
+                                                     BOOL allowAnyShell)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(voxelExistsAtIndex_allowAnyX_allowAnyY_allowAnyZ_allowAnyShell_),
+                                     index,
+                                     allowAnyX, allowAnyY, allowAnyZ,
+                                     allowAnyShell);
+}
+
+// method: voxelsWithinExtent:
+_MDL_INLINE NS::Data* MDL::VoxelArray::voxelsWithinExtent(VoxelIndexExtent extent)
+{
+    return Object::sendMessage<NS::Data*>(this, _MDL_PRIVATE_SEL(voxelsWithinExtent_), extent);
+}
+
+// method: voxelIndices
+_MDL_INLINE NS::Data* MDL::VoxelArray::voxelIndices()
+{
+    return Object::sendMessage<NS::Data*>(this, _MDL_PRIVATE_SEL(voxelIndices));
+}
+
+// method: setVoxelAtIndex
+_MDL_INLINE void MDL::VoxelArray::setVoxelAtIndex(VoxelIndex index)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVoxelAtIndex_), index);
+}
+
+// method: setVoxelsForMesh:divisions:patchRadius:
+_MDL_INLINE void MDL::VoxelArray::setVoxelsForMesh(const Mesh* mesh, int divisions, float patchRadius)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVoxelsForMesh_divisions_patchRadius_), index);
+}
+
+// method: setVoxelsForMesh:divisions:interiorShells:exteriorShells:patchRadius:
+_MDL_INLINE void MDL::VoxelArray::setVoxelsForMesh(const Mesh* mesh,
+                                                   int divisions,
+                                                   int interiorShells,
+                                                   int exteriorShells,
+                                                   float patchRadius)
+{
+    return Object::sendMessage<void>(this,
+                                     _MDL_PRIVATE_SEL(setVoxelsForMesh_divisions_interiorShells_exteriorShells_patchRadius_),
+                                     mesh, divisions, interiorShells, exteriorShells, patchRadius);
+}
+
+// method: setVoxelsForMesh:divisions:interiorNBWidth:exteriorNBWidth:patchRadius:
+_MDL_INLINE void MDL::VoxelArray::setVoxelsForMesh(const Mesh* mesh,
+                                                   int divisions,
+                                                   float interiorNBWidth,
+                                                   float exteriorNBWidth,
+                                                   float patchRadius)
+{
+    return Object::sendMessage<void>(this,
+                                     _MDL_PRIVATE_SEL(setVoxelsForMesh_divisions_interiorNBWidth_exteriorNBWidth_patchRadius_),
+                                     mesh, divisions, interiorNBWidth, exteriorNBWidth, patchRadius);
+}
+
+// method: unionWithVoxels:
+_MDL_INLINE void MDL::VoxelArray::unionWithVoxels(const VoxelArray* voxels)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(unionWithVoxels_), voxels);
+}
+
+// method: intersectWithVoxels:
+_MDL_INLINE void MDL::VoxelArray::intersectWithVoxels(const VoxelArray* voxels)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(intersectWithVoxels_), voxels);
+}
+
+// method: differenceWithVoxels:
+_MDL_INLINE void MDL::VoxelArray::differenceWithVoxels(const VoxelArray* voxels)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(differenceWithVoxels_), voxels);
+}
+
+// property: boundingBox
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::VoxelArray::boundingBox() const
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(boundingBox));
+}
+
+// method: indexOfSpatialLocation:
+_MDL_INLINE MDL::VoxelIndex MDL::VoxelArray::indexOfSpatialLocation(vector_float3 location)
+{
+    return Object::sendMessage<VoxelIndex>(this, _MDL_PRIVATE_SEL(indexOfSpatialLocation_), location);
+}
+
+// method: spatialLocationOfIndex:
+_MDL_INLINE vector_float3 MDL::VoxelArray::spatialLocationOfIndex(VoxelIndex index)
+{
+    return Object::sendMessage<vector_float3>(this, _MDL_PRIVATE_SEL(spatialLocationOfIndex_), index);
+}
+
+// method: voxelBoundingBoxAtIndex:
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::VoxelArray::voxelBoundingBoxAtIndex(VoxelIndex index)
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(voxelBoundingBoxAtIndex_), index);
+}
+
+// method: convertToSignedShellField:
+_MDL_INLINE void MDL::VoxelArray::convertToSignedShellField()
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(convertToSignedShellField_));
+}
+
+// property: isValidSignedShellField
+_MDL_INLINE BOOL MDL::VoxelArray::isValidSignedShellField() const
+{
+    return Object::sendMessage<BOOL>(this, _MDL_PRIVATE_SEL(isValidSignedShellField));
+}
+
+// property: shellFieldInteriorThickness
+_MDL_INLINE float MDL::VoxelArray::shellFieldInteriorThickness() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(shellFieldInteriorThickness));
+}
+// write method: setShellFieldInteriorThickness:
+_MDL_INLINE void MDL::VoxelArray::setShellFieldInteriorThickness(float shellFieldInteriorThickness)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setShellFieldInteriorThickness_), shellFieldInteriorThickness);
+}
+
+// property: shellFieldExteriorThickness
+_MDL_INLINE float MDL::VoxelArray::shellFieldExteriorThickness() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(shellFieldExteriorThickness));
+}
+// write method: setShellFieldExteriorThickness:
+_MDL_INLINE void MDL::VoxelArray::setShellFieldExteriorThickness(float shellFieldExteriorThickness)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setShellFieldExteriorThickness_), shellFieldExteriorThickness);
+}
+
+// method: coarseMesh
+_MDL_INLINE MDL::Mesh* MDL::VoxelArray::coarseMesh()
+{
+    return Object::sendMessage<MDL::Mesh*>(this, _MDL_PRIVATE_SEL(coarseMesh));
+}
+
+// method: coarseMeshUsingAllocator:
+_MDL_INLINE MDL::Mesh* MDL::VoxelArray::coarseMeshUsingAllocator(const class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<MDL::Mesh*>(this, _MDL_PRIVATE_SEL(coarseMeshUsingAllocator_), allocator);
+}
+
+// method: meshUsingAllocator:
+_MDL_INLINE MDL::Mesh* MDL::VoxelArray::meshUsingAllocator(const class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<MDL::Mesh*>(this, _MDL_PRIVATE_SEL(meshUsingAllocator_), allocator);
+}
+
+
+
 
 
 

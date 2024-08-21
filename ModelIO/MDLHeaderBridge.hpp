@@ -37,6 +37,9 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLPathAssetResolver );
     _MDL_PRIVATE_DEF_CLS( MDLBundleAssetResolver );
 
+// MDLVoxelArray.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLVoxelArray );
+
 
 } // Class
 
@@ -193,5 +196,39 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( initWithBundle_, "initWithBundle:" );
     //_MDL_PRIVATE_DEF_SEL( initWithPath_, "initWithPath:" );
     //_MDL_PRIVATE_DEF_SEL( setPath_, "setPath:" );
+
+// MDLVoxelArray.hpp
+    _MDL_PRIVATE_DEF_SEL( initWithAsset_divisions_patchRadius_, "initWithAsset:divisions:patchRadius:" );
+    _MDL_PRIVATE_DEF_SEL( initWithData_boundingBox_voxelExtent_, "initWithData:boundingBox:voxelExtent:" );
+    _MDL_PRIVATE_DEF_SEL( initWithAsset_divisions_interiorShells_exteriorShells_patchRadius_, 
+                         "initWithAsset:divisions_interiorShells:exteriorShells:patchRadius:" );
+    //_MDL_PRIVATE_DEF_SEL( count, "count" );
+    _MDL_PRIVATE_DEF_SEL( voxelIndexExtent, "voxelIndexExtent" );
+    _MDL_PRIVATE_DEF_SEL( voxelExistsAtIndex_allowAnyX_allowAnyY_allowAnyZ_allowAnyShell_,
+                         "voxelExistsAtIndex:allowAnyX:allowAnyY:allowAnyZ:allowAnyShell:" );
+    _MDL_PRIVATE_DEF_SEL( voxelsWithinExtent_, "voxelsWithinExtent:" );
+    _MDL_PRIVATE_DEF_SEL( voxelIndices, "voxelIndices" );
+    _MDL_PRIVATE_DEF_SEL( setVoxelAtIndex_, "setVoxelAtIndex:" );
+    _MDL_PRIVATE_DEF_SEL( setVoxelsForMesh_divisions_patchRadius_, "setVoxelsForMesh:divisions:patchRadius:" );
+    _MDL_PRIVATE_DEF_SEL( setVoxelsForMesh_divisions_interiorShells_exteriorShells_patchRadius_,
+                         "setVoxelsForMesh:divisions:interiorShells:exteriorShells:patchRadius:" );
+    _MDL_PRIVATE_DEF_SEL( setVoxelsForMesh_divisions_interiorNBWidth_exteriorNBWidth_patchRadius_,
+                         "setVoxelsForMesh:divisions:interiorNBWidth:exteriorNBWidth:patchRadius:" );
+    _MDL_PRIVATE_DEF_SEL( unionWithVoxels_, "unionWithVoxels:" );
+    _MDL_PRIVATE_DEF_SEL( intersectWithVoxels_, "intersectWithVoxels:" );
+    _MDL_PRIVATE_DEF_SEL( differenceWithVoxels_, "differenceWithVoxels:" );
+    _MDL_PRIVATE_DEF_SEL( boundingBox, "boundingBox" );
+    _MDL_PRIVATE_DEF_SEL( indexOfSpatialLocation_, "indexOfSpatialLocation:" );
+    _MDL_PRIVATE_DEF_SEL( spatialLocationOfIndex_, "spatialLocationOfIndex:" );
+    _MDL_PRIVATE_DEF_SEL( voxelBoundingBoxAtIndex_, "voxelBoundingBoxAtIndex:" );
+    _MDL_PRIVATE_DEF_SEL( convertToSignedShellField_, "convertToSignedShellField:" );
+    _MDL_PRIVATE_DEF_SEL( isValidSignedShellField, "isValidSignedShellField" );
+    _MDL_PRIVATE_DEF_SEL( shellFieldInteriorThickness, "shellFieldInteriorThickness" );
+    _MDL_PRIVATE_DEF_SEL( setShellFieldInteriorThickness_, "setShellFieldInteriorThickness:" );
+    _MDL_PRIVATE_DEF_SEL( shellFieldExteriorThickness, "shellFieldExteriorThickness" );
+    _MDL_PRIVATE_DEF_SEL( setShellFieldExteriorThickness_, "setShellFieldExteriorThickness:" );
+    _MDL_PRIVATE_DEF_SEL( coarseMesh, "coarseMesh" );
+    _MDL_PRIVATE_DEF_SEL( coarseMeshUsingAllocator_, "coarseMeshUsingAllocator:" );
+    _MDL_PRIVATE_DEF_SEL( meshUsingAllocator_, "meshUsingAllocator:" );
 
 } // Selector
