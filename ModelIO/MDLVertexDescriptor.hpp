@@ -14,35 +14,35 @@
 namespace MDL
 {
 
-_NS_CONST(NS::String*, MDLVertexAttributeAnisotropy);
+_NS_CONST(NS::String*, VertexAttributeAnisotropy);
 
-_NS_CONST(NS::String*, MDLVertexAttributeBinormal);
+_NS_CONST(NS::String*, VertexAttributeBinormal);
 
-_NS_CONST(NS::String*, MDLVertexAttributeBitangent);
+_NS_CONST(NS::String*, VertexAttributeBitangent);
 
-_NS_CONST(NS::String*, MDLVertexAttributeColor);
+_NS_CONST(NS::String*, VertexAttributeColor);
 
-_NS_CONST(NS::String*, MDLVertexAttributeEdgeCrease);
+_NS_CONST(NS::String*, VertexAttributeEdgeCrease);
 
-_NS_CONST(NS::String*, MDLVertexAttributeJointIndices);
+_NS_CONST(NS::String*, VertexAttributeJointIndices);
 
-_NS_CONST(NS::String*, MDLVertexAttributeJointWeights);
+_NS_CONST(NS::String*, VertexAttributeJointWeights);
 
-_NS_CONST(NS::String*, MDLVertexAttributeNormal);
+_NS_CONST(NS::String*, VertexAttributeNormal);
 
-_NS_CONST(NS::String*, MDLVertexAttributeOcclusionValue);
+_NS_CONST(NS::String*, VertexAttributeOcclusionValue);
 
-_NS_CONST(NS::String*, MDLVertexAttributePosition);
+_NS_CONST(NS::String*, VertexAttributePosition);
 
-_NS_CONST(NS::String*, MDLVertexAttributeShadingBasisU);
+_NS_CONST(NS::String*, VertexAttributeShadingBasisU);
 
-_NS_CONST(NS::String*, MDLVertexAttributeShadingBasisV);
+_NS_CONST(NS::String*, VertexAttributeShadingBasisV);
 
-_NS_CONST(NS::String*, MDLVertexAttributeSubdivisionStencil);
+_NS_CONST(NS::String*, VertexAttributeSubdivisionStencil);
 
-_NS_CONST(NS::String*, MDLVertexAttributeTangent);
+_NS_CONST(NS::String*, VertexAttributeTangent);
 
-_NS_CONST(NS::String*, MDLVertexAttributeTextureCoordinate);
+_NS_CONST(NS::String*, VertexAttributeTextureCoordinate);
 
 
 _MDL_ENUM(NS::UInteger, VertexFormat) {
@@ -213,35 +213,35 @@ public:
 
 // MARK: - Private Sector
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeAnisotropy);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeAnisotropy);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeBinormal);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeBinormal);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeBitangent);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeBitangent);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeColor);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeColor);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeEdgeCrease);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeEdgeCrease);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeJointIndices);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeJointIndices);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeJointWeights);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeJointWeights);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeNormal);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeNormal);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeOcclusionValue);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeOcclusionValue);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributePosition);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributePosition);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeShadingBasisU);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeShadingBasisU);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeShadingBasisV);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeShadingBasisV);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeSubdivisionStencil);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeSubdivisionStencil);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeTangent);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeTangent);
 
-_NS_PRIVATE_DEF_CONST(NS::String*, MDLVertexAttributeTextureCoordinate);
+_NS_PRIVATE_DEF_CONST(NS::String*, VertexAttributeTextureCoordinate);
 
 //------------------------------------------------------------------------------
 
