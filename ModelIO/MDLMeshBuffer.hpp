@@ -32,16 +32,13 @@ public:
     void*                           bytes() const;
 };
 
-// MARK: - MeshBuffer
+// MARK: MeshBuffer
 
-// FIXME: Double conformance
+                        // !!!: Uncertain
+// Protocol
 class MeshBuffer : public NS::Copying<MeshBuffer> /*, NS::Referencing<MeshBuffer>*/
 {
 public:
-    static class MeshBuffer*        alloc();
-    
-    class MeshBuffer*               init();
-    
     // fillData:offset:
     void                            fillData(const NS::Data* data, NS::UInteger offset);
     
@@ -61,31 +58,27 @@ public:
     MeshBufferType                  type() const;
 };
 
-// MARK: - MeshBufferData
+// MARK: MeshBufferData
 
+// class
 class MeshBufferData : public NS::Referencing<MeshBufferData>
 {
 public:
     static class MeshBufferData*        alloc();
-    
-//    class MeshBufferData*               init();
-    
+
     // initWithType:length
-    MDL::MeshBufferData*                init(const MDL::MeshBufferType type, const NS::UInteger length);
+    MDL::MeshBufferData*                init(const MDL::MeshBufferType type, NS::UInteger length);
     
     // - ReadOnly
     NS::Data*                           data() const;
 };
 
-// MARK: - MeshBufferZone
+// MARK: MeshBufferZone
 
+// Protocol
 class MeshBufferZone : public NS::Referencing<MeshBufferZone>
 {
 public:
-    static class MeshBufferZone*        alloc();
-    
-    class MeshBufferZone*               init();
-    
     // - ReadOnly
     NS::UInteger                        capacity() const;
     
@@ -93,35 +86,32 @@ public:
     class MeshBufferAllocator*          allocator() const;
 };
 
-// MARK: - MeshBufferAllocator
+// MARK: MeshBufferAllocator
 
+// protocol
 class MeshBufferAllocator : public NS::Referencing<MeshBufferAllocator>
 {
 public:
-    static class MeshBufferAllocator*       alloc();
-    
-    class MeshBufferAllocator*              init();
-    
     // newZone:
-    class MeshBufferZone*                   newZone(const NS::UInteger capacity);
+    class MeshBufferZone*                   newZone(NS::UInteger capacity);
     
     // newZoneForBuffersWithSize:andType:
     class MeshBufferZone*                   newZoneForBuffersWithSize(const NS::Array* sizes, const NS::Array* types);
     
     // newBuffer:type:
-    class MeshBuffer*                       newBuffer(const NS::UInteger length, const MDL::MeshBufferType type);
+    class MeshBuffer*                       newBuffer(NS::UInteger length, MDL::MeshBufferType type);
     
     // newBufferWithData:type:
-    class MeshBuffer*                       newBufferWithData(const NS::Data data, MDL::MeshBufferType type);
+    class MeshBuffer*                       newBufferWithData(const NS::Data* data, MDL::MeshBufferType type);
     
     // newBufferFromZone:length:type:
-    class MeshBuffer*                       newBufferFromZone(const MDL::MeshBufferZone* zone, const NS::UInteger length, MDL::MeshBufferType type);
+    class MeshBuffer*                       newBufferFromZone(const MDL::MeshBufferZone* zone, NS::UInteger length, MDL::MeshBufferType type);
     
     // newBufferFromZone:data:type:
-    class MeshBuffer*                       newBufferFromZone(const MDL::MeshBufferZone* zone, const NS::Data data, MDL::MeshBufferType type);
+    class MeshBuffer*                       newBufferFromZone(const MDL::MeshBufferZone* zone, const NS::Data* data, MDL::MeshBufferType type);
 };
 
-// MARK: - MeshBufferDataAllocator
+// MARK: MeshBufferDataAllocator
 
 class MeshBufferDataAllocator : public NS::Referencing<MeshBufferAllocator>
 {
@@ -131,7 +121,7 @@ public:
     class MeshBufferDataAllocator*              init();
 };
 
-// MARK: - MeshBufferZoneDefault
+// MARK: MeshBufferZoneDefault
 
 class MeshBufferZoneDefault : public NS::Referencing<MeshBufferZone>
 {
@@ -144,15 +134,174 @@ public:
     NS::UInteger                            capacity() const;
     
     // - ReadOnly
-    class MeshBufferAllocator               allocator() const;
+    class MeshBufferAllocator*              allocator() const;
 };
 
 }
 
-// TODO: Private-sector Implementations -
+// MARK: - Private Sector
 
+// static method: alloc
+_MDL_INLINE MDL::MeshBufferMap* MDL::MeshBufferMap::alloc()
+{
+    return NS::Object::alloc<MDL::MeshBufferMap>(_MDL_PRIVATE_CLS(MDLMeshBufferMap));
+}
 
+// method: initWithBytes:deallocator:
+_MDL_INLINE MDL::MeshBufferMap* MDL::MeshBufferMap::init(const void* bytes, const void (^deallocator)(void))
+{
+    return Object::sendMessage<MDL::MeshBufferMap*>(this, _MDL_PRIVATE_SEL(initWithBytes_deallocator_), bytes, deallocator);
+}
 
+// property: bytes
+_MDL_INLINE void* MDL::MeshBufferMap::bytes() const
+{
+    return Object::sendMessage<void*>(this, _MDL_PRIVATE_SEL(bytes));
+}
+
+// MARK: Protocol MeshBuffer
+
+// method: fillData:offset:
+_MDL_INLINE void MDL::MeshBuffer::fillData(const NS::Data* data, NS::UInteger offset)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(fillData_offset_), data, offset);
+}
+
+// property: length
+_MDL_INLINE NS::UInteger MDL::MeshBuffer::length() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(length));
+}
+
+// property: allocator
+_MDL_INLINE MDL::MeshBufferAllocator* MDL::MeshBuffer::allocator() const
+{
+    return Object::sendMessage<MDL::MeshBufferAllocator*>(this, _MDL_PRIVATE_SEL(allocator));
+}
+
+// property: zone
+_MDL_INLINE MDL::MeshBufferZone* MDL::MeshBuffer::zone() const
+{
+    return Object::sendMessage<MDL::MeshBufferZone*>(this, _MDL_PRIVATE_SEL(zone));
+}
+
+// property: type
+_MDL_INLINE MDL::MeshBufferType MDL::MeshBuffer::type() const
+{
+    return Object::sendMessage<MDL::MeshBufferType>(this, _MDL_PRIVATE_SEL(type));
+}
+
+// MARK: MeshBufferData
+
+// static method: alloc
+_MDL_INLINE MDL::MeshBufferData* MDL::MeshBufferData::alloc()
+{
+    return NS::Object::alloc<MDL::MeshBufferData>(_MDL_PRIVATE_CLS(MDLMeshBufferData));
+}
+
+// method: initWithType:length
+_MDL_INLINE MDL::MeshBufferData* MDL::MeshBufferData::init(const MDL::MeshBufferType type, NS::UInteger length)
+{
+    return Object::sendMessage<MDL::MeshBufferData*>(this, _MDL_PRIVATE_SEL(initWithBytes_deallocator_), type, length);
+}
+
+// property: data
+_MDL_INLINE NS::Data* MDL::MeshBufferData::data() const
+{
+    return Object::sendMessage<NS::Data*>(this, _MDL_PRIVATE_SEL(data));
+}
+
+// MARK: MeshBufferZone
+
+// property: capacity
+_MDL_INLINE NS::UInteger MDL::MeshBufferZone::capacity() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(capacity));
+}
+
+// property: allocator
+_MDL_INLINE MDL::MeshBufferAllocator* MDL::MeshBufferZone::allocator() const
+{
+    return Object::sendMessage<MDL::MeshBufferAllocator*>(this, _MDL_PRIVATE_SEL(allocator));
+}
+
+// MARK: MeshBufferAllocator
+
+// method: newZone:
+_MDL_INLINE MDL::MeshBufferZone* MDL::MeshBufferAllocator::newZone(NS::UInteger capacity)
+{
+    return Object::sendMessage<MDL::MeshBufferZone*>(this, _MDL_PRIVATE_SEL(newZone_), capacity);
+}
+
+// method: newZoneForBuffersWithSize:andType:
+_MDL_INLINE MDL::MeshBufferZone* MDL::MeshBufferAllocator::newZoneForBuffersWithSize(const NS::Array* sizes, const NS::Array* types)
+{
+    return Object::sendMessage<MDL::MeshBufferZone*>(this, _MDL_PRIVATE_SEL(newZoneForBuffersWithSize_andType_), sizes, types);
+}
+
+// method: newBuffer:type:
+_MDL_INLINE MDL::MeshBuffer* MDL::MeshBufferAllocator::newBuffer(NS::UInteger length, MDL::MeshBufferType type)
+{
+    return Object::sendMessage<MDL::MeshBuffer*>(this, _MDL_PRIVATE_SEL(newBuffer_type_), length, type);
+}
+
+// method: newBufferWithData:type:
+_MDL_INLINE MDL::MeshBuffer* MDL::MeshBufferAllocator::newBufferWithData(const NS::Data* data, MDL::MeshBufferType type)
+{
+    return Object::sendMessage<MDL::MeshBuffer*>(this, _MDL_PRIVATE_SEL(newBufferWithData_type_), data, type);
+}
+
+// method: newBufferFromZone:length:type:
+_MDL_INLINE MDL::MeshBuffer* MDL::MeshBufferAllocator::newBufferFromZone(const MDL::MeshBufferZone* zone, NS::UInteger length, MDL::MeshBufferType type)
+{
+    return Object::sendMessage<MDL::MeshBuffer*>(this, _MDL_PRIVATE_SEL(newBufferFromZone_length_type_), zone, length, type);
+}
+
+// method: newBufferFromZone:data:type:
+_MDL_INLINE MDL::MeshBuffer* MDL::MeshBufferAllocator::newBufferFromZone(const MDL::MeshBufferZone* zone, const NS::Data* data, MDL::MeshBufferType type)
+{
+    return Object::sendMessage<MDL::MeshBuffer*>(this, _MDL_PRIVATE_SEL(newBufferFromZone_length_type_), zone, data, type);
+}
+
+// MARK: MeshBufferDataAllocator
+
+// static method: alloc
+_MDL_INLINE MDL::MeshBufferDataAllocator* MDL::MeshBufferDataAllocator::alloc()
+{
+    return NS::Object::alloc<MDL::MeshBufferDataAllocator>(_MDL_PRIVATE_CLS(MDLMeshBufferDataAllocator));
+}
+
+// method: init
+_MDL_INLINE MDL::MeshBufferDataAllocator* MDL::MeshBufferDataAllocator::init()
+{
+    return NS::Object::init<MDL::MeshBufferDataAllocator>();
+}
+
+// MARK: MeshBufferZoneDefault
+
+// static method: alloc
+_MDL_INLINE MDL::MeshBufferZoneDefault* MDL::MeshBufferZoneDefault::alloc()
+{
+    return NS::Object::alloc<MDL::MeshBufferZoneDefault>(_MDL_PRIVATE_CLS(MDLMeshBufferZoneDefault));
+}
+
+// method: init
+_MDL_INLINE MDL::MeshBufferZoneDefault* MDL::MeshBufferZoneDefault::init()
+{
+    return NS::Object::init<MDL::MeshBufferZoneDefault>();
+}
+
+// property: capacity
+_MDL_INLINE NS::UInteger MDL::MeshBufferZoneDefault::capacity() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(capacity));
+}
+
+// property: allocator
+_MDL_INLINE MDL::MeshBufferAllocator* MDL::MeshBufferZoneDefault::allocator() const
+{
+    return Object::sendMessage<MeshBufferAllocator*>(this, _MDL_PRIVATE_SEL(allocator));
+}
 
 
 
@@ -174,7 +323,6 @@ public:
 //    MDLMeshBufferTypeCustom = 3,
 //};
 
-// TODO: Import MDLMeshBuffer.hpp, MDLMeshBufferAllocator.hpp & MDLMeshBufferZone.hpp which contains the corresponding classes
 //@protocol MDLMeshBuffer;
 //@protocol MDLMeshBufferAllocator;
 //@protocol MDLMeshBufferZone;

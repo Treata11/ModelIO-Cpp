@@ -24,8 +24,13 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLObjectContainer );
 
 // MDLTransform.hpp
-_MDL_PRIVATE_DEF_CLS( MDLTransform );
+    _MDL_PRIVATE_DEF_CLS( MDLTransform );
 
+// MDLMeshBuffer.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLMeshBufferMap );
+    _MDL_PRIVATE_DEF_CLS( MDLMeshBufferData );
+    _MDL_PRIVATE_DEF_CLS( MDLMeshBufferDataAllocator );
+    _MDL_PRIVATE_DEF_CLS( MDLMeshBufferZoneDefault );
 
 } // Class
 
@@ -145,5 +150,27 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( setShear_, "setShear:" );
     _MDL_PRIVATE_DEF_SEL( scale, "scale" );
     _MDL_PRIVATE_DEF_SEL( setScale_, "setScale:" );
+
+// MDLMeshBuffer.hpp
+    _MDL_PRIVATE_DEF_SEL( initWithBytes_deallocator_, "initWithBytes:deallocator:" );
+    _MDL_PRIVATE_DEF_SEL( bytes, "bytes" );
+    _MDL_PRIVATE_DEF_SEL( fillData_offset_, "fillData:offset:" );
+    _MDL_PRIVATE_DEF_SEL( length, "length" );
+    _MDL_PRIVATE_DEF_SEL( allocator, "allocator" );
+    _MDL_PRIVATE_DEF_SEL( zone, "zone" );
+    _MDL_PRIVATE_DEF_SEL( type, "type" );
+
+    _MDL_PRIVATE_DEF_SEL( data, "data" );
+
+    _MDL_PRIVATE_DEF_SEL( capacity, "capacity" );
+    //_MDL_PRIVATE_DEF_SEL( allocator, "allocator" );
+
+    _MDL_PRIVATE_DEF_SEL( newZone_, "newZone:" );
+    _MDL_PRIVATE_DEF_SEL( newZoneForBuffersWithSize_andType_, "newZoneForBuffersWithSize:andType:" );
+    _MDL_PRIVATE_DEF_SEL( newBuffer_type_, "newBuffer:type:" );
+    _MDL_PRIVATE_DEF_SEL( newBufferWithData_type_, "newBufferWithData:type:" );
+    _MDL_PRIVATE_DEF_SEL( newBufferFromZone_length_type_, "newBufferFromZone:length_type:" );
+    //_MDL_PRIVATE_DEF_SEL( newBufferFromZone_length_type_, "newBufferFromZone:length_type:" );
+
 
 } // Selector
