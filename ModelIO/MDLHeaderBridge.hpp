@@ -23,6 +23,9 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLObject );
     _MDL_PRIVATE_DEF_CLS( MDLObjectContainer );
 
+// MDLTransform.hpp
+_MDL_PRIVATE_DEF_CLS( MDLTransform );
+
 
 } // Class
 
@@ -106,5 +109,41 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( setHidden_, "setHidden:" );
     _MDL_PRIVATE_DEF_SEL( addChild_, "addChild:" );
     _MDL_PRIVATE_DEF_SEL( boundingBoxAtTime_, "boundingBoxAtTime:" );
+
+// MDLTransform.hpp
+    _MDL_PRIVATE_DEF_SEL( matrix, "matrix" );
+    _MDL_PRIVATE_DEF_SEL( setMatrix_, "setMatrix:" );
+    _MDL_PRIVATE_DEF_SEL( resetsTransform, "resetsTransform" );
+    _MDL_PRIVATE_DEF_SEL( setResetsTransform_, "setResetsTransform:" );
+    _MDL_PRIVATE_DEF_SEL( minimumTime, "minimumTime" );
+    _MDL_PRIVATE_DEF_SEL( maximumTime, "maximumTime" );
+    _MDL_PRIVATE_DEF_SEL( keyTimes, "keyTimes" );
+    _MDL_PRIVATE_DEF_SEL( setLocalTransform_forTime_, "setLocalTransform:forTime:" );
+    _MDL_PRIVATE_DEF_SEL( setLocalTransform_, "setLocalTransform:" );
+    _MDL_PRIVATE_DEF_SEL( localTransformAtTime_, "localTransformAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( globalTransformWithObject_atTime_, "globalTransformWithObject:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( initWithTransformComponent_, "initWithTransformComponent:" );
+    _MDL_PRIVATE_DEF_SEL( initWithTransformComponent_resetsTransform_, "initWithTransformComponent:resetsTransform:" );
+    _MDL_PRIVATE_DEF_SEL( initWithMatrix_, "initWithMatrix:" );
+    _MDL_PRIVATE_DEF_SEL( initWithMatrix_resetsTransform_, "initWithMatrix:resetsTransform:" );
+    _MDL_PRIVATE_DEF_SEL( setIdentity, "setIdentity" );
+    _MDL_PRIVATE_DEF_SEL( translationAtTime_, "translationAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( rotationAtTime_, "rotationAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( shearAtTime_, "shearAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( scaleAtTime_, "scaleAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( setMatrix_forTime_, "setMatrix_forTime:" );
+    _MDL_PRIVATE_DEF_SEL( setTranslation_forTime_, "setTranslation:forTime:" );
+    _MDL_PRIVATE_DEF_SEL( setRotation_forTime_, "setRotation:forTime:" );
+    _MDL_PRIVATE_DEF_SEL( setShear_forTime_, "setShear:forTime:" );
+    _MDL_PRIVATE_DEF_SEL( setScale_forTime_, "setScale:forTime:" );
+    _MDL_PRIVATE_DEF_SEL( rotationMatrixAtTime_, "rotationMatrixAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( translation, "translation" );
+    _MDL_PRIVATE_DEF_SEL( setTranslation_, "setTranslation:" );
+    _MDL_PRIVATE_DEF_SEL( rotation, "rotation" );
+    _MDL_PRIVATE_DEF_SEL( setRotation_, "setRotation:" );
+    _MDL_PRIVATE_DEF_SEL( shear, "shear" );
+    _MDL_PRIVATE_DEF_SEL( setShear_, "setShear:" );
+    _MDL_PRIVATE_DEF_SEL( scale, "scale" );
+    _MDL_PRIVATE_DEF_SEL( setScale_, "setScale:" );
 
 } // Selector

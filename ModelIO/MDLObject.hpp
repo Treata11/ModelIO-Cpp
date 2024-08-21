@@ -15,6 +15,7 @@ namespace MDL
 
 class ObjectContainer : public NS::Referencing<MDL::ObjectContainerComponent>
 {
+public:
     static class ObjectContainer*   alloc();
     
     class ObjectContainer*          init();
