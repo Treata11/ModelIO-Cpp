@@ -32,6 +32,12 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLMeshBufferDataAllocator );
     _MDL_PRIVATE_DEF_CLS( MDLMeshBufferZoneDefault );
 
+// MDLAssetResolver.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLRelativeAssetResolver );
+    _MDL_PRIVATE_DEF_CLS( MDLPathAssetResolver );
+    _MDL_PRIVATE_DEF_CLS( MDLBundleAssetResolver );
+
+
 } // Class
 
 // MARK: - Protocol
@@ -127,6 +133,7 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( setLocalTransform_, "setLocalTransform:" );
     _MDL_PRIVATE_DEF_SEL( localTransformAtTime_, "localTransformAtTime:" );
     _MDL_PRIVATE_DEF_SEL( globalTransformWithObject_atTime_, "globalTransformWithObject:atTime:" );
+
     _MDL_PRIVATE_DEF_SEL( initWithTransformComponent_, "initWithTransformComponent:" );
     _MDL_PRIVATE_DEF_SEL( initWithTransformComponent_resetsTransform_, "initWithTransformComponent:resetsTransform:" );
     _MDL_PRIVATE_DEF_SEL( initWithMatrix_, "initWithMatrix:" );
@@ -172,5 +179,19 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( newBufferFromZone_length_type_, "newBufferFromZone:length_type:" );
     //_MDL_PRIVATE_DEF_SEL( newBufferFromZone_length_type_, "newBufferFromZone:length_type:" );
 
+// MDLAssetResolver.hpp
+    _MDL_PRIVATE_DEF_SEL( canResolveAssetNamed_, "canResolveAssetNamed:" );
+    _MDL_PRIVATE_DEF_SEL( resolveAssetNamed_, "resolveAssetNamed:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithAsset_, "initWithAsset:" );
+    _MDL_PRIVATE_DEF_SEL( asset, "asset" );
+    _MDL_PRIVATE_DEF_SEL( setAsset_, "setAsset:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithPath_, "initWithPath:" );
+    _MDL_PRIVATE_DEF_SEL( setPath_, "setPath:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithBundle_, "initWithBundle:" );
+    //_MDL_PRIVATE_DEF_SEL( initWithPath_, "initWithPath:" );
+    //_MDL_PRIVATE_DEF_SEL( setPath_, "setPath:" );
 
 } // Selector
