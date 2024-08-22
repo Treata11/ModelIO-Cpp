@@ -40,6 +40,17 @@ namespace MDL::Private::Class
 // MDLVoxelArray.hpp
     _MDL_PRIVATE_DEF_CLS( MDLVoxelArray );
 
+// MDLAnimatedValueTypes.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedValue );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedScalarArray );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedVector3Array );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedQuaternionArray );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedScalar );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedVector2 );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedVector3 );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedVector4 );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedQuaternion );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimatedMatrix4x4 );
 
 } // Class
 
@@ -230,5 +241,92 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( coarseMesh, "coarseMesh" );
     _MDL_PRIVATE_DEF_SEL( coarseMeshUsingAllocator_, "coarseMeshUsingAllocator:" );
     _MDL_PRIVATE_DEF_SEL( meshUsingAllocator_, "meshUsingAllocator:" );
+
+// MDLAnimatedValueTypes.hpp
+    _MDL_PRIVATE_DEF_SEL( isAnimated, "isAnimated" );
+    //_MDL_PRIVATE_DEF_SEL( precision, "precision" );
+    _MDL_PRIVATE_DEF_SEL( timeSampleCount, "timeSampleCount" );
+    //_MDL_PRIVATE_DEF_SEL( minimumTime, "minimumTime" );
+    //_MDL_PRIVATE_DEF_SEL( maximumTime, "maximumTime" );
+    _MDL_PRIVATE_DEF_SEL( interpolation, "interpolation" );
+    _MDL_PRIVATE_DEF_SEL( setInterpolation_, "setInterpolation:" );
+    //_MDL_PRIVATE_DEF_SEL( keyTimes, "keyTimes" );
+    //_MDL_PRIVATE_DEF_SEL( clear, "clear" );
+    _MDL_PRIVATE_DEF_SEL( getTimes_maxCount_, "getTimes:maxCount:" );
+
+    //_MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
+    //_MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount:" );
+    _MDL_PRIVATE_DEF_SEL( setFloatArray_count_atTime_, "setFloatArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDoubleArray_count_atTime_, "setDoubleArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getFloatArray_count_atTime_, "getFloatArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getDoubleArray_count_atTime_, "getDoubleArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloatArray_count_atTime_count_, "resetWithFloatArray:count:atTime_count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDoubleArray_count_atTime_count_, "resetWithDoubleArray:count:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( getFloatArray_count_, "getFloatArray:count:" );
+    _MDL_PRIVATE_DEF_SEL( getDoubleArray_count_, "getDoubleArray:count:" );
+
+    //_MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
+    //_MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount:" );
+    _MDL_PRIVATE_DEF_SEL( setFloat3Array_count_atTime_, "setFloat3Array:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble3Array_count_atTime_, "setDouble3Array:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getFloat3Array_count_atTime_, "getFloat3Array:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getDouble3Array_count_atTime_, "getDouble3Array:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloat3Array_count_atTime_count_, "resetWithFloat3Array:count:atTime_count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDouble3Array_count_atTime_count_, "resetWithDouble3Array:count:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( getFloat3Array_count_, "getFloat3Array:count:" );
+    _MDL_PRIVATE_DEF_SEL( getDouble3Array_count_, "getDouble3Array:count:" );
+
+    //_MDL_PRIVATE_DEF_SEL( elementCount, "elementCount" );
+    //_MDL_PRIVATE_DEF_SEL( initWithElementCount_, "initWithElementCount:" );
+    _MDL_PRIVATE_DEF_SEL( setFloatQuaternionArray_count_atTime_, "setFloatQuaternionArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDoubleQuaternionArray_count_atTime_, "setDoubleQuaternionArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getFloatQuaternionArray_count_atTime_, "getFloatQuaternionArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( getDoubleQuaternionArray_count_atTime_, "getDoubleQuaternionArray:count:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloatQuaternionArray_count_atTime_count_, "resetWithFloatQuaternionArray:count:atTime_count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDoubleQuaternionArray_count_atTime_count_, "resetWithDoubleQuaternionArray:count:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( getFloatQuaternionArray_count_, "getFloatQuaternionArray:count:" );
+    _MDL_PRIVATE_DEF_SEL( getDoubleQuaternionArray_count_, "getDoubleQuaternionArray:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloat_atTime_, "setFloat:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble_atTime_, "setDouble:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( floatAtTime_, "floatAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( doubleAtTime_, "doubleAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloatArray_atTime_count_, "resetWithFloatArray:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDoubleArray_atTime_count_, "resetWithDoubleArray:atTime:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloat2_atTime_, "setFloat2:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble2_atTime_, "setDouble2:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( float2AtTime_, "float2AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( double2AtTime_, "double2AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloat2Array_atTime_count_, "resetWithFloat2Array:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDouble2Array_atTime_count_, "resetWithDouble2Array:atTime:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloat3_atTime_, "setFloat3:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble3_atTime_, "setDouble3:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( float3AtTime_, "float3AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( double3AtTime_, "double3AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloat3Array_atTime_count_, "resetWithFloat3Array:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDouble3Array_atTime_count_, "resetWithDouble3Array:atTime:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloat4_atTime_, "setFloat4:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble4_atTime_, "setDouble4:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( float4AtTime_, "float4AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( double4AtTime_, "double4AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloat4Array_atTime_count_, "resetWithFloat4Array:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDouble4Array_atTime_count_, "resetWithDouble4Array:atTime:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloatQuaternion_atTime_, "setFloatQuaternion:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDoubleQuaternion_atTime_, "setDoubleQuaternion:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( floatQuaternionAtTime_, "floatQuaternionAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( doubleQuaternionAtTime_, "doubleQuaternionAtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloatQuaternionArray_atTime_count_, "resetWithFloatQuaternionArray:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDoubleQuaternionArray_atTime_count_, "resetWithDoubleQuaternionArray:atTime:count:" );
+
+    _MDL_PRIVATE_DEF_SEL( setFloat4x4_atTime_, "setFloat4x4:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( setDouble4x4_atTime_, "setDouble4x4:atTime:" );
+    _MDL_PRIVATE_DEF_SEL( float4x4AtTime_, "float4x4AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( double4x4AtTime_, "double4x4AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithFloat4x4Array_atTime_count_, "resetWithFloat4x4Array:atTime:count:" );
+    _MDL_PRIVATE_DEF_SEL( resetWithDouble4x4Array_atTime_count_, "resetWithDouble4x4Array:atTime:count:" );
 
 } // Selector
