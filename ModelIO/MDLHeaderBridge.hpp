@@ -52,6 +52,12 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLAnimatedQuaternion );
     _MDL_PRIVATE_DEF_CLS( MDLAnimatedMatrix4x4 );
 
+// MDLAnimation.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLSkeleton );
+    _MDL_PRIVATE_DEF_CLS( MDLPackedJointAnimation );
+    _MDL_PRIVATE_DEF_CLS( MDLAnimationBindComponent );
+
+
 } // Class
 
 // MARK: - Protocol
@@ -328,5 +334,27 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( double4x4AtTime_, "double4x4AtTime:" );
     _MDL_PRIVATE_DEF_SEL( resetWithFloat4x4Array_atTime_count_, "resetWithFloat4x4Array:atTime:count:" );
     _MDL_PRIVATE_DEF_SEL( resetWithDouble4x4Array_atTime_count_, "resetWithDouble4x4Array:atTime:count:" );
+
+// MDLAnimation.hpp
+    _MDL_PRIVATE_DEF_SEL( jointPaths, "jointPaths" );
+    _MDL_PRIVATE_DEF_SEL( jointBindTransforms, "jointBindTransforms" );
+    _MDL_PRIVATE_DEF_SEL( jointRestTransforms, "jointRestTransforms" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_jointPaths_, "initWithName:jointPaths:" );
+
+    //_MDL_PRIVATE_DEF_SEL( jointPaths, "jointPaths" );
+    _MDL_PRIVATE_DEF_SEL( translations, "translations" );
+    _MDL_PRIVATE_DEF_SEL( rotations, "rotations" );
+    _MDL_PRIVATE_DEF_SEL( scales, "scales" );
+    //_MDL_PRIVATE_DEF_SEL( initWithName_jointPaths_, "initWithName:jointPaths:" );
+
+    _MDL_PRIVATE_DEF_SEL( skeleton, "skeleton" );
+    _MDL_PRIVATE_DEF_SEL( setSkeleton_, "setSkeleton:" );
+    _MDL_PRIVATE_DEF_SEL( jointAnimation, "jointAnimation" );
+    _MDL_PRIVATE_DEF_SEL( setJointAnimation_, "setJointAnimation:" );
+    //_MDL_PRIVATE_DEF_SEL( jointPaths, "jointPaths" );
+    _MDL_PRIVATE_DEF_SEL( setJointPaths_, "setJointPaths:" );
+    _MDL_PRIVATE_DEF_SEL( geometryBindTransform, "geometryBindTransform" );
+    _MDL_PRIVATE_DEF_SEL( setGeometryBindTransform_, "setGeometryBindTransform:" );
+
 
 } // Selector
