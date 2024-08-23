@@ -23,23 +23,23 @@ public:
     static class Asset* alloc();
     
     // initWithURL:
-    class Asset*        initWithURL(const NS::URL* URL);
+    class Asset*        init(const NS::URL* URL);
     
     // initWithURL:vertexDescriptor:bufferAllocator:
-    class Asset*        initWithURL(const NS::URL* URL,
-                                    const VertexDescriptor* vertexDescriptor,
-                                    class MeshBufferAllocator bufferAllocator);
+    class Asset*        init(const NS::URL* URL,
+                             const VertexDescriptor* vertexDescriptor,
+                             const class MeshBufferAllocator* bufferAllocator);
     
     // initWithBufferAllocator:
-    class Asset*        initWithBufferAllocator(class MeshBufferAllocator bufferAllocator);
+    class Asset*        init(const class MeshBufferAllocator* bufferAllocator);
     
     // initWithURL:vertexDescriptor:bufferAllocator:preserveTopology:error:
-    class Asset*        initWithURL(const NS::URL* URL,
-                                    const VertexDescriptor* vertexDescriptor,
-                                    class MeshBufferAllocator bufferAllocator,
-                                    BOOL preserveTopology,
-                                    // !!!: Uncertain
-                                    NS::Error** error);
+    class Asset*        init(const NS::URL* URL,
+                             const VertexDescriptor* vertexDescriptor,
+                             const class MeshBufferAllocator* bufferAllocator,
+                             BOOL preserveTopology,
+                             // !!!: Uncertain
+                             NS::Error** error);
     
     // exportAssetToURL:
     BOOL                exportAssetToURL(const NS::URL* URL);
@@ -48,7 +48,7 @@ public:
     BOOL                exportAssetToURL(const NS::URL* URL, NS::Error** error);
     
     // objectAtPath:
-    Object*             objectAtPath(const NS::String* path);
+    MDL::Object*        objectAtPath(const NS::String* path);
     
     // canImportFileExtension:
     static BOOL         canImportFileExtension(const NS::String* extention);
@@ -81,35 +81,35 @@ public:
     
     NS::URL*            URL() const;
     
-    class AssetResolver resolver() const;
-    void                setResolver(class AssetResolver resolver);
+    class AssetResolver*    resolver() const;
+    void                    setResolver(const class AssetResolver* resolver);
     
-    class MeshBufferAllocator   bufferAllocator() const;
+    class MeshBufferAllocator*  bufferAllocator() const;
     
     VertexDescriptor*   vertexDescriptor() const;
     
     // addObject:
-    void                addObject(const Object* object);
+    void                addObject(const MDL::Object* object);
     
     // removeObject:
-    void                removeObject(const Object* object);
+    void                removeObject(const MDL::Object* object);
     
     NS::UInteger        count() const;
     
     // objectAtIndexedSubscript:
-    class Object*       objectAtIndexedSubscript(NS::UInteger index);
+    class MDL::Object*      objectAtIndexedSubscript(NS::UInteger index);
     
     // objectAtIndex:
-    Object*             objectAtIndex(NS::UInteger index);
+    MDL::Object*            objectAtIndex(NS::UInteger index);
     
     class ObjectContainerComponent* masters() const;
-    void                            setMasters(class ObjectContainerComponent* masters);
+    void                            setMasters(const class ObjectContainerComponent* masters);
     
-    class ObjectContainerComponent  originals() const;
-    void                            setOriginals(class ObjectContainerComponent originals);
+    class ObjectContainerComponent* originals() const;
+    void                            setOriginals(const class ObjectContainerComponent* originals);
     
-    class ObjectContainerComponent  animations() const;
-    void                            setAnimations(class ObjectContainerComponent animations);
+    class ObjectContainerComponent* animations() const;
+    void                            setAnimations(const class ObjectContainerComponent* animations);
     
 };
 
@@ -126,21 +126,286 @@ public:
     // sphericalHarmonicsCoefficientsAtPosition:
     NS::Data*                   sphericalHarmonicsCoefficientsAtPosition(vector_float3 position);
     
-    // MARK: - LightBaking
+    // MARK: LightBaking
     
     // placeLightProbesWithDensity:usingIrradianceDataSource:
-    static class NS::Array* placeLightProbesWithDensity(float value,
-                                                        class LightProbeIrradianceDataSource dataSource);
+    static class NS::Array*     placeLightProbesWithDensity(float value,
+                                                            const class LightProbeIrradianceDataSource* dataSource);
 };
 
 }
 
-// TODO: Private Sector -
+// MARK: - Private Sector
 
+// static method: alloc
+_MDL_INLINE MDL::Asset* MDL::Asset::alloc()
+{
+    return NS::Object::alloc<MDL::Asset>(_MDL_PRIVATE_CLS(MDLAsset));
+}
 
+// method: initWithURL:
+_MDL_INLINE MDL::Asset* MDL::Asset::init(const NS::URL* URL)
+{
+    return Object::sendMessage<Asset*>(this, _MDL_PRIVATE_SEL(initWithURL_), URL);
+}
 
+// method: initWithURL:vertexDescriptor:bufferAllocator:
+_MDL_INLINE MDL::Asset* MDL::Asset::init(const NS::URL* URL,
+                                         const VertexDescriptor* vertexDescriptor,
+                                         const class MeshBufferAllocator* bufferAllocator)
+{
+    return Object::sendMessage<Asset*>(this,
+                                       _MDL_PRIVATE_SEL(initWithURL_vertexDescriptor_bufferAllocator_),
+                                       URL, vertexDescriptor, bufferAllocator);
+}
 
+// method: initWithBufferAllocator:
+_MDL_INLINE MDL::Asset* MDL::Asset::init(const class MeshBufferAllocator* bufferAllocator)
+{
+    return Object::sendMessage<Asset*>(this, _MDL_PRIVATE_SEL(initWithBufferAllocator_), bufferAllocator);
+}
 
+// method: initWithURL:vertexDescriptor:bufferAllocator:preserveTopology:error:
+_MDL_INLINE MDL::Asset* MDL::Asset::init(const NS::URL* URL,
+                                         const VertexDescriptor* vertexDescriptor,
+                                         const class MeshBufferAllocator* bufferAllocator,
+                                         BOOL preserveTopology,
+                                         // !!!: Uncertain
+                                         NS::Error** error)
+{
+    return Object::sendMessage<Asset*>(this,
+                                       _MDL_PRIVATE_SEL(initWithURL_vertexDescriptor_bufferAllocator_preserveTopology_error_),
+                                       URL, vertexDescriptor, bufferAllocator, preserveTopology, error);
+}
+
+// method: exportAssetToURL:
+_MDL_INLINE BOOL MDL::Asset::exportAssetToURL(const NS::URL* URL)
+{
+    return Object::sendMessage<BOOL>(this, _MDL_PRIVATE_SEL(exportAssetToURL_), URL);
+}
+
+// method: exportAssetToURL:error:
+_MDL_INLINE BOOL MDL::Asset::exportAssetToURL(const NS::URL* URL, NS::Error** error)
+{
+    return Object::sendMessage<BOOL>(this, _MDL_PRIVATE_SEL(exportAssetToURL_error_), URL, error);
+}
+
+// method: objectAtPath:
+_MDL_INLINE MDL::Object* MDL::Asset::objectAtPath(const NS::String* path)
+{
+    return Object::sendMessage<MDL::Object*>(this, _MDL_PRIVATE_SEL(objectAtPath_), path);
+}
+
+// static method: canImportFileExtension:
+_MDL_INLINE BOOL MDL::Asset::canImportFileExtension(const NS::String* extention)
+{
+    return Object::sendMessage<BOOL>(_MDL_PRIVATE_CLS(MDLAsset), _MDL_PRIVATE_SEL(canImportFileExtension_), extention);
+}
+
+// static method: canExportFileExtension:
+_MDL_INLINE BOOL MDL::Asset::canExportFileExtension(const NS::String* extention)
+{
+    return Object::sendMessage<BOOL>(_MDL_PRIVATE_CLS(MDLAsset), _MDL_PRIVATE_SEL(canExportFileExtension_), extention);
+}
+
+// method: childObjectsOfClass:
+_MDL_INLINE NS::Array* MDL::Asset::childObjectsOfClass(Class objectClass)
+{
+    return Object::sendMessage<NS::Array*>(this, _MDL_PRIVATE_SEL(childObjectsOfClass_), objectClass);
+}
+
+// method: loadTextures
+_MDL_INLINE void MDL::Asset::loadTextures()
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(loadTextures));
+}
+
+// method: boundingBoxAtTime:
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::Asset::boundingBoxAtTime(NS::TimeInterval time)
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(boundingBoxAtTime_), time);
+}
+
+// property: boundingBox
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::Asset::boundingBox() const
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(boundingBox));
+}
+
+// property: frameInterval
+_MDL_INLINE NS::TimeInterval MDL::Asset::frameInterval() const
+{
+    return Object::sendMessage<NS::TimeInterval>(this, _MDL_PRIVATE_SEL(frameInterval));
+}
+// write method: setFrameInterval:
+_MDL_INLINE void MDL::Asset::setFrameInterval(NS::TimeInterval frameInterval)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFrameInterval_), frameInterval);
+}
+
+// property: startTime
+_MDL_INLINE NS::TimeInterval MDL::Asset::startTime() const
+{
+    return Object::sendMessage<NS::TimeInterval>(this, _MDL_PRIVATE_SEL(startTime));
+}
+// write method: setStartTime:
+_MDL_INLINE void MDL::Asset::setStartTime(NS::TimeInterval startTime)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setStartTime_), startTime);
+}
+
+// property: endTime
+_MDL_INLINE NS::TimeInterval MDL::Asset::endTime() const
+{
+    return Object::sendMessage<NS::TimeInterval>(this, _MDL_PRIVATE_SEL(endTime));
+}
+// write method: setEndTime:
+_MDL_INLINE void MDL::Asset::setEndTime(NS::TimeInterval endTime)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setEndTime_), endTime);
+}
+
+// property: upAxis
+_MDL_INLINE vector_float3 MDL::Asset::upAxis() const
+{
+    return Object::sendMessage<vector_float3>(this, _MDL_PRIVATE_SEL(upAxis));
+}
+// write method: setUpAxis:
+_MDL_INLINE void MDL::Asset::setUpAxis(vector_float3 upAxis)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setUpAxis_), upAxis);
+}
+
+// property: URL
+_MDL_INLINE NS::URL* MDL::Asset::URL() const
+{
+    return Object::sendMessage<NS::URL*>(this, _MDL_PRIVATE_SEL(URL));
+}
+
+// property: resolver
+_MDL_INLINE MDL::AssetResolver* MDL::Asset::resolver() const
+{
+    return Object::sendMessage<AssetResolver*>(this, _MDL_PRIVATE_SEL(resolver));
+}
+// write method: setResolver:
+_MDL_INLINE void MDL::Asset::setResolver(const class AssetResolver* resolver)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setResolver_), resolver);
+}
+
+// property: bufferAllocator
+_MDL_INLINE MDL::MeshBufferAllocator* MDL::Asset::bufferAllocator() const
+{
+    return Object::sendMessage<MeshBufferAllocator*>(this, _MDL_PRIVATE_SEL(bufferAllocator));
+}
+
+// property: vertexDescriptor
+_MDL_INLINE MDL::VertexDescriptor* MDL::Asset::vertexDescriptor() const
+{
+    return Object::sendMessage<VertexDescriptor*>(this, _MDL_PRIVATE_SEL(vertexDescriptor));
+}
+
+// method: addObject:
+_MDL_INLINE void MDL::Asset::addObject(const MDL::Object* object)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(addObject_), object);
+}
+
+// method: removeObject:
+_MDL_INLINE void MDL::Asset::removeObject(const MDL::Object* object)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(removeObject_), object);
+}
+
+// property: count
+_MDL_INLINE NS::UInteger MDL::Asset::count() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(count));
+}
+
+// method: objectAtIndexedSubscript:
+_MDL_INLINE MDL::Object* MDL::Asset::objectAtIndexedSubscript(NS::UInteger index)
+{
+    return Object::sendMessage<MDL::Object*>(this, _MDL_PRIVATE_SEL(objectAtIndexedSubscript_), index);
+}
+
+// method: objectAtIndex:
+_MDL_INLINE MDL::Object* MDL::Asset::objectAtIndex(NS::UInteger index)
+{
+    return Object::sendMessage<MDL::Object*>(this, _MDL_PRIVATE_SEL(objectAtIndex_), index);
+}
+
+// property: masters
+_MDL_INLINE MDL::ObjectContainerComponent* MDL::Asset::masters() const
+{
+    return Object::sendMessage<ObjectContainerComponent*>(this, _MDL_PRIVATE_SEL(masters));
+}
+// write method: setMasters:
+_MDL_INLINE void MDL::Asset::setMasters(const class ObjectContainerComponent* masters)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setMasters_), masters);
+}
+
+// property: originals
+_MDL_INLINE MDL::ObjectContainerComponent* MDL::Asset::originals() const
+{
+    return Object::sendMessage<ObjectContainerComponent*>(this, _MDL_PRIVATE_SEL(originals));
+}
+// write method: setOriginals:
+_MDL_INLINE void MDL::Asset::setOriginals(const class ObjectContainerComponent* originals)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setOriginals_), originals);
+}
+
+// property: animations
+_MDL_INLINE MDL::ObjectContainerComponent* MDL::Asset::animations() const
+{
+    return Object::sendMessage<ObjectContainerComponent*>(this, _MDL_PRIVATE_SEL(animations));
+}
+// write method: setAnimations:
+_MDL_INLINE void MDL::Asset::setAnimations(const class ObjectContainerComponent* animations)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setAnimations_), animations);
+}
+
+// MARK: Protocol LightProbeIrradianceDataSource
+
+// property: boundingBox
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::LightProbeIrradianceDataSource::boundingBox() const
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(boundingBox));
+}
+// write method: setBoundingBox:
+_MDL_INLINE void MDL::LightProbeIrradianceDataSource::setBoundingBox(AxisAlignedBoundingBox boundingBox)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setBoundingBox_), boundingBox);
+}
+
+// property: sphericalHarmonicsLevel
+_MDL_INLINE NS::UInteger MDL::LightProbeIrradianceDataSource::sphericalHarmonicsLevel() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(sphericalHarmonicsLevel));
+}
+// write method: setSphericalHarmonicsLevel:
+_MDL_INLINE void MDL::LightProbeIrradianceDataSource::setSphericalHarmonicsLevel(NS::UInteger sphericalHarmonicsLevel)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setSphericalHarmonicsLevel_), sphericalHarmonicsLevel);
+}
+
+// method: sphericalHarmonicsCoefficientsAtPosition:
+_MDL_INLINE NS::Data* MDL::LightProbeIrradianceDataSource::sphericalHarmonicsCoefficientsAtPosition(vector_float3 position)
+{
+    return Object::sendMessage<NS::Data*>(this, _MDL_PRIVATE_SEL(sphericalHarmonicsCoefficientsAtPosition_), position);
+}
+
+// static method: placeLightProbesWithDensity:usingIrradianceDataSource:
+_MDL_INLINE NS::Array* MDL::LightProbeIrradianceDataSource::placeLightProbesWithDensity(float value,
+                                                                                        const class LightProbeIrradianceDataSource* dataSource)
+{                                      // FIXME: PRIVATE_PRO perhaps ...
+    return Object::sendMessage<NS::Array*>(_MDL_PRIVATE_CLS(MDLLightProbeIrradianceDataSource),
+                                           _MDL_PRIVATE_SEL(placeLightProbesWithDensity_usingIrradianceDataSource_),
+                                           value, dataSource);
+}
 
 
 // MARK: - Original Header

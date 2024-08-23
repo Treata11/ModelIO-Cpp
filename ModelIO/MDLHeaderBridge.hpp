@@ -7,7 +7,7 @@
 #pragma once
 #include "MDLPrivate.hpp"
 
-// MARK: - Clas
+// MARK: - Class
 
 namespace MDL::Private::Class
 {
@@ -88,6 +88,12 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLPhotometricLight );
     _MDL_PRIVATE_DEF_CLS( MDLLightProbe );
 
+// MDLAsset.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLAsset );
+    // Bogus!
+    _MDL_PRIVATE_DEF_CLS( MDLLightProbeIrradianceDataSource );
+
+
 } // Class
 
 // MARK: - Protocol
@@ -100,6 +106,8 @@ namespace MDL::Private::Protocol
     _MDL_PRIVATE_DEF_PRO(MDLComponent);
     _MDL_PRIVATE_DEF_PRO(MDLObjectContainerComponent);
 
+// MDLAsset.hpp
+    _MDL_PRIVATE_DEF_PRO(MDLLightProbeIrradianceDataSource);
 
 }
 
@@ -671,5 +679,53 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( lightProbeWithTextureSize_forLocation_lightsToConsider_objectsToConsider_reflectiveCubemap_irradianceCubemap_,
                          "lightProbeWithTextureSize:forLocation:lightsToConsider:objectsToConsider:reflectiveCubemap:irradianceCubemap:" );
 
+// MDLAsset.hpp
+    _MDL_PRIVATE_DEF_SEL( initWithURL_, "initWithURL:" );
+    _MDL_PRIVATE_DEF_SEL( initWithURL_vertexDescriptor_bufferAllocator_,
+                         "initWithURL:vertexDescriptor:bufferAllocator:" );
+    _MDL_PRIVATE_DEF_SEL( initWithBufferAllocator_, "initWithBufferAllocator:" );
+    _MDL_PRIVATE_DEF_SEL( initWithURL_vertexDescriptor_bufferAllocator_preserveTopology_error_,
+                         "initWithURL:vertexDescriptor:bufferAllocator:preserveTopology:error:" );
+    _MDL_PRIVATE_DEF_SEL( exportAssetToURL_, "exportAssetToURL:" );
+    _MDL_PRIVATE_DEF_SEL( exportAssetToURL_error_, "exportAssetToURL:error:" );
+    //_MDL_PRIVATE_DEF_SEL( objectAtPath_, "objectAtPath:" );
+    _MDL_PRIVATE_DEF_SEL( canImportFileExtension_, "canImportFileExtension:" );
+    _MDL_PRIVATE_DEF_SEL( canExportFileExtension_, "canExportFileExtension:" );
+    _MDL_PRIVATE_DEF_SEL( childObjectsOfClass_, "childObjectsOfClass:" );
+    _MDL_PRIVATE_DEF_SEL( loadTextures, "loadTextures" );
+    //_MDL_PRIVATE_DEF_SEL( boundingBoxAtTime_, "boundingBoxAtTime:" );
+    //_MDL_PRIVATE_DEF_SEL( boundingBox, "boundingBox" );
+    _MDL_PRIVATE_DEF_SEL( frameInterval, "frameInterval" );
+    _MDL_PRIVATE_DEF_SEL( setFrameInterval_, "setFrameInterval:" );
+    _MDL_PRIVATE_DEF_SEL( startTime, "startTime" );
+    _MDL_PRIVATE_DEF_SEL( setStartTime_, "setStartTime:" );
+    _MDL_PRIVATE_DEF_SEL( endTime, "endTime" );
+    _MDL_PRIVATE_DEF_SEL( setEndTime_, "setEndTime:" );
+    _MDL_PRIVATE_DEF_SEL( upAxis, "upAxis" );
+    _MDL_PRIVATE_DEF_SEL( setUpAxis_, "setUpAxis:" );
+    //_MDL_PRIVATE_DEF_SEL( URL, "URL" );
+    _MDL_PRIVATE_DEF_SEL( resolver, "resolver" );
+    _MDL_PRIVATE_DEF_SEL( setResolver_, "setResolver:" );
+    _MDL_PRIVATE_DEF_SEL( bufferAllocator, "bufferAllocator" );
+    _MDL_PRIVATE_DEF_SEL( vertexDescriptor, "vertexDescriptor" );
+    //_MDL_PRIVATE_DEF_SEL( addObject_, "addObject:" );
+    //_MDL_PRIVATE_DEF_SEL( removeObject_, "removeObject:" );
+    //_MDL_PRIVATE_DEF_SEL( count, "count" );
+    //_MDL_PRIVATE_DEF_SEL( objectAtIndexedSubscript_, "objectAtIndexedSubscript:" );
+    _MDL_PRIVATE_DEF_SEL( objectAtIndex_, "objectAtIndex:" );
+    _MDL_PRIVATE_DEF_SEL( masters, "masters" );
+    _MDL_PRIVATE_DEF_SEL( setMasters_, "setMasters:" );
+    _MDL_PRIVATE_DEF_SEL( originals, "originals" );
+    _MDL_PRIVATE_DEF_SEL( setOriginals_, "setOriginals:" );
+    _MDL_PRIVATE_DEF_SEL( animations, "animations" );
+    _MDL_PRIVATE_DEF_SEL( setAnimations_, "setAnimations:" );
+
+    //_MDL_PRIVATE_DEF_SEL( boundingBox, "boundingBox" );
+    _MDL_PRIVATE_DEF_SEL( setBoundingBox_, "setBoundingBox:" );
+    //_MDL_PRIVATE_DEF_SEL( sphericalHarmonicsLevel, "sphericalHarmonicsLevel" );
+    _MDL_PRIVATE_DEF_SEL( setSphericalHarmonicsLevel_, "setSphericalHarmonicsLevel:" );
+    _MDL_PRIVATE_DEF_SEL( sphericalHarmonicsCoefficientsAtPosition_, "sphericalHarmonicsCoefficientsAtPosition:" );
+    _MDL_PRIVATE_DEF_SEL( placeLightProbesWithDensity_usingIrradianceDataSource_,
+                         "placeLightProbesWithDensity_usingIrradianceDataSource_" );
 
 } // Selector
