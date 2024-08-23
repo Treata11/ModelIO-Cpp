@@ -57,6 +57,14 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLPackedJointAnimation );
     _MDL_PRIVATE_DEF_CLS( MDLAnimationBindComponent );
 
+// MDLTexture.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLURLTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLCheckerboardTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLSkyCubeTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLColorSwatchTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLNoiseTexture );
+    _MDL_PRIVATE_DEF_CLS( MDLNormalMapTexture );
 
 } // Class
 
@@ -356,5 +364,93 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( geometryBindTransform, "geometryBindTransform" );
     _MDL_PRIVATE_DEF_SEL( setGeometryBindTransform_, "setGeometryBindTransform:" );
 
+// MDLTexture.hpp
+    _MDL_PRIVATE_DEF_SEL( textureNamed_, "textureNamed:" );
+    _MDL_PRIVATE_DEF_SEL( textureNamed_bundle_, "textureNamed:bundle:" );
+    _MDL_PRIVATE_DEF_SEL( textureNamed_assetResolver_, "textureNamed:assetResolver:" );
+    _MDL_PRIVATE_DEF_SEL( textureCubeWithImagesNamed_, "textureCubeWithImagesNamed:" );
+    _MDL_PRIVATE_DEF_SEL( textureCubeWithImagesNamed_bundle_, "textureCubeWithImagesNamed:bundle:" );
+    _MDL_PRIVATE_DEF_SEL( irradianceTextureCubeWithTexture_name_dimensions_, "irradianceTextureCubeWithTexture:name:dimensions:" );
+    _MDL_PRIVATE_DEF_SEL( irradianceTextureCubeWithTexture_name_dimensions_roughness_, "irradianceTextureCubeWithTexture:name:dimensions:roughness:" );
+    _MDL_PRIVATE_DEF_SEL( initWithData_topLeftOrigin_name_dimensions_rowStride_channelCount_channelEncoding_isCube_,
+                         "initWithData:topLeftOrigin:name:dimensions:rowStride:channelCount:channelEncoding:isCube:" );
+
+    _MDL_PRIVATE_DEF_SEL( writeToURL_, "writeToURL:" );
+    _MDL_PRIVATE_DEF_SEL( writeToURL_level_, "writeToURL:level:" );
+    _MDL_PRIVATE_DEF_SEL( writeToURL_type_, "writeToURL:type:" );
+    _MDL_PRIVATE_DEF_SEL( writeToURL_type_level_, "writeToURL:type:level:" );
+    _MDL_PRIVATE_DEF_SEL( imageFromTexture, "imageFromTexture" );
+    _MDL_PRIVATE_DEF_SEL( imageFromTextureAtLevel_, "imageFromTextureAtLevel:" );
+    _MDL_PRIVATE_DEF_SEL( texelDataWithTopLeftOrigin, "texelDataWithTopLeftOrigin" );
+    _MDL_PRIVATE_DEF_SEL( texelDataWithBottomLeftOrigin, "texelDataWithBottomLeftOrigin" );
+    _MDL_PRIVATE_DEF_SEL( dimensions, "dimensions" );
+    _MDL_PRIVATE_DEF_SEL( rowStride, "rowStride" );
+    _MDL_PRIVATE_DEF_SEL( channelCount, "channelCount" );
+    _MDL_PRIVATE_DEF_SEL( mipLevelCount, "mipLevelCount" );
+    _MDL_PRIVATE_DEF_SEL( channelEncoding, "channelEncoding" );
+    _MDL_PRIVATE_DEF_SEL( isCube, "isCube" );
+    _MDL_PRIVATE_DEF_SEL( setAsCube_, "setAsCube:" );
+    _MDL_PRIVATE_DEF_SEL( hasAlphaValues, "hasAlphaValues" );
+    _MDL_PRIVATE_DEF_SEL( setAsAlphaValues_, "setAsAlphaValues:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithURL_name_, "initWithURL:name:" );
+    _MDL_PRIVATE_DEF_SEL( URL, "URL" );
+    _MDL_PRIVATE_DEF_SEL( setURL_, "setURL:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithDivisions_name_dimensions_channelCount_channelEncoding_color1_color2_,
+                         "initWithDivisions:name:dimensions:channelCount:channelEncoding:color1:color2:" );
+    _MDL_PRIVATE_DEF_SEL( divisions, "divisions" );
+    _MDL_PRIVATE_DEF_SEL( setDivisions_, "setDivisions:" );
+    _MDL_PRIVATE_DEF_SEL( color1, "color1" );
+    _MDL_PRIVATE_DEF_SEL( setColor1_, "setColor1:" );
+    _MDL_PRIVATE_DEF_SEL( color2, "color2" );
+    _MDL_PRIVATE_DEF_SEL( setColor2_, "setColor2:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithName_channelEncoding_textureDimensions_turbidity_sunElevation_upperAtmosphereScattering_groundAlbedo_,
+                         "initWithName:channelEncoding:textureDimensions:turbidity:sunElevation:upperAtmosphereScattering:groundAlbedo:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_channelEncoding_textureDimensions_turbidity_sunElevation_sunAzimuth_upperAtmosphereScattering_groundAlbedo_,
+                         "initWithName:channelEncoding:textureDimensions:turbidity:sunElevation:sunAzimuth:upperAtmosphereScattering:groundAlbedo:" );
+    _MDL_PRIVATE_DEF_SEL( updateTexture, "updateTexture" );
+    _MDL_PRIVATE_DEF_SEL( turbidity, "turbidity" );
+    _MDL_PRIVATE_DEF_SEL( setTurbidity_, "setTurbidity:" );
+    _MDL_PRIVATE_DEF_SEL( sunElevation, "sunElevation" );
+    _MDL_PRIVATE_DEF_SEL( setSunElevation_, "setSunElevation:" );
+    _MDL_PRIVATE_DEF_SEL( sunAzimuth, "sunAzimuth" );
+    _MDL_PRIVATE_DEF_SEL( setSunAzimuth_, "setSunAzimuth:" );
+    _MDL_PRIVATE_DEF_SEL( upperAtmosphereScattering, "upperAtmosphereScattering" );
+    _MDL_PRIVATE_DEF_SEL( setUpperAtmosphereScattering_, "setUpperAtmosphereScattering:" );
+    _MDL_PRIVATE_DEF_SEL( groundAlbedo, "groundAlbedo" );
+    _MDL_PRIVATE_DEF_SEL( setGroundAlbedo_, "setGroundAlbedo:" );
+    _MDL_PRIVATE_DEF_SEL( horizonElevation, "horizonElevation" );
+    _MDL_PRIVATE_DEF_SEL( setHorizonElevation_, "setHorizonElevation:" );
+    _MDL_PRIVATE_DEF_SEL( groundColor, "groundColor" );
+    _MDL_PRIVATE_DEF_SEL( setGroundColor_, "setGroundColor:" );
+    _MDL_PRIVATE_DEF_SEL( gamma, "gamma" );
+    _MDL_PRIVATE_DEF_SEL( setGamma_, "setGamma:" );
+    _MDL_PRIVATE_DEF_SEL( exposure, "exposure" );
+    _MDL_PRIVATE_DEF_SEL( setExposure_, "setExposure:" );
+    _MDL_PRIVATE_DEF_SEL( brightness, "brightness" );
+    _MDL_PRIVATE_DEF_SEL( setBrightness_, "setBrightness:" );
+    _MDL_PRIVATE_DEF_SEL( contrast, "contrast" );
+    _MDL_PRIVATE_DEF_SEL( setContrast_, "setContrast:" );
+    _MDL_PRIVATE_DEF_SEL( saturation, "saturation" );
+    _MDL_PRIVATE_DEF_SEL( setSaturation_, "setSaturation:" );
+    _MDL_PRIVATE_DEF_SEL( highDynamicRangeCompression, "highDynamicRangeCompression" );
+    _MDL_PRIVATE_DEF_SEL( setHighDynamicRangeCompression_, "setHighDynamicRangeCompression:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithColorTemperatureGradientFrom_toColorTemperature_name_textureDimensions_,
+                         "initWithColorTemperatureGradientFrom:toColorTemperature:name:textureDimensions:" );
+    _MDL_PRIVATE_DEF_SEL( initWithColorGradientFrom_toColor_name_textureDimensions_,
+                         "initWithColorGradientFrom:toColor:name:textureDimensions:" );
+
+    _MDL_PRIVATE_DEF_SEL( initVectorNoiseWithSmoothness_name_textureDimensions_channelEncoding_,
+                         "initVectorNoiseWithSmoothness:name:textureDimensions:channelEncoding:" );
+    _MDL_PRIVATE_DEF_SEL( initScalarNoiseWithSmoothness_name_textureDimensions_channelCount_channelEncoding_grayscale_,
+                         "initScalarNoiseWithSmoothness:name:textureDimensions:channelCount:channelEncoding:grayscale:" );
+    _MDL_PRIVATE_DEF_SEL( initCellularNoiseWithFrequency_name_textureDimensions_channelEncoding_,
+                         "initCellularNoiseWithFrequency:name:textureDimensions:channelEncoding:" );
+
+_MDL_PRIVATE_DEF_SEL( initByGeneratingNormalMapWithTexture_name_smoothness_contrast_,
+                     "initByGeneratingNormalMapWithTexture:name:smoothness:contrast:" );
 
 } // Selector
