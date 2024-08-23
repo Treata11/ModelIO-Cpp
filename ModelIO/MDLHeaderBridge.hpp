@@ -77,6 +77,10 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLPhysicallyPlausibleScatteringFunction );
     _MDL_PRIVATE_DEF_CLS( MDLMaterial );
 
+// MDLSubmesh.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLSubmeshTopology );
+    _MDL_PRIVATE_DEF_CLS( MDLSubmesh );
+
 } // Class
 
 // MARK: - Protocol
@@ -579,5 +583,42 @@ namespace MDL::Private::Selector
     //_MDL_PRIVATE_DEF_SEL( count, "count" );
     _MDL_PRIVATE_DEF_SEL( materialFace, "materialFace" );
     _MDL_PRIVATE_DEF_SEL( setMaterialFace_, "setMaterialFace:" );
+
+// MDLSubmesh.hpp
+    _MDL_PRIVATE_DEF_SEL( initWithSubmesh_, "initWithSubmesh:" );
+    _MDL_PRIVATE_DEF_SEL( faceTopology, "faceTopology" );
+    _MDL_PRIVATE_DEF_SEL( setFaceTopology_, "setFaceTopology:" );
+    _MDL_PRIVATE_DEF_SEL( faceCount, "faceCount" );
+    _MDL_PRIVATE_DEF_SEL( setFaceCount_, "setFaceCount:" );
+    _MDL_PRIVATE_DEF_SEL( vertexCreaseIndices, "vertexCreaseIndices" );
+    _MDL_PRIVATE_DEF_SEL( setVertexCreaseIndices_, "setVertexCreaseIndices:" );
+    _MDL_PRIVATE_DEF_SEL( vertexCreases, "vertexCreases" );
+    _MDL_PRIVATE_DEF_SEL( setVertexCreases_, "setVertexCreases:" );
+    _MDL_PRIVATE_DEF_SEL( vertexCreaseCount, "vertexCreaseCount" );
+    _MDL_PRIVATE_DEF_SEL( setVertexCreaseCount_, "setVertexCreaseCount:" );
+    _MDL_PRIVATE_DEF_SEL( holes, "holes" );
+    _MDL_PRIVATE_DEF_SEL( setHoles_, "setHoles:" );
+    _MDL_PRIVATE_DEF_SEL( holeCount, "holeCount" );
+    _MDL_PRIVATE_DEF_SEL( setHoleCount_, "setHoleCount:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithName_indexBuffer_indexCount_indexType_geometryType_material_,
+                         "initWithName:indexBuffer:indexCount:indexType:geometryType:material:" );
+    _MDL_PRIVATE_DEF_SEL( initWithIndexBuffer_indexCount_indexType_geometryType_material_,
+                         "initWithIndexBuffer:indexCount:indexType:geometryType:material:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_indexBuffer_indexCount_indexType_geometryType_material_topology_,
+                         "initWithName:indexBuffer:indexCount:indexType:geometryType:material:topology:" );
+    _MDL_PRIVATE_DEF_SEL( initWithMDLSubmesh_indexType_geometryType_,
+                         "initWithMDLSubmesh:indexType:geometryType:" );
+    _MDL_PRIVATE_DEF_SEL( indexBuffer, "indexBuffer" );
+    _MDL_PRIVATE_DEF_SEL( indexBufferAsIndexType_, "indexBufferAsIndexType:" );
+    _MDL_PRIVATE_DEF_SEL( indexCount, "indexCount" );
+    _MDL_PRIVATE_DEF_SEL( indexType, "indexType" );
+    _MDL_PRIVATE_DEF_SEL( geometryType, "geometryType" );
+    _MDL_PRIVATE_DEF_SEL( material, "material" );
+    _MDL_PRIVATE_DEF_SEL( setMaterial_, "setMaterial:" );
+    _MDL_PRIVATE_DEF_SEL( topology, "topology" );
+    _MDL_PRIVATE_DEF_SEL( setTopology_, "setTopology:" );
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
 
 } // Selector

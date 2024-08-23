@@ -20,27 +20,29 @@ public:
     static class SubmeshTopology*   alloc();
     
     // initWithSubmesh:
-    class SubmeshTopology*          initWithSubmesh(const Submesh* submesh);
+    class SubmeshTopology*          init(const Submesh* submesh);
     
-    class MeshBuffer                faceTopology() const;
-    void                            setFaceTopology(class MeshBuffer faceTopology);
+    class MeshBuffer*               faceTopology() const;
+    void                            setFaceTopology(const class MeshBuffer* faceTopology);
     
     NS::UInteger                    faceCount() const;
     void                            setFaceCount(NS::UInteger faceCount);
     
-    class MeshBuffer                vertexCreaseIndices() const;
-    void                            setVertexCreaseIndices(class MeshBuffer vertexCreaseIndices);
+    class MeshBuffer*               vertexCreaseIndices() const;
+    void                            setVertexCreaseIndices(const class MeshBuffer* vertexCreaseIndices);
     
-    class MeshBuffer                vertexCreases() const;
-    void                            setVertexCreases(class MeshBuffer vertexCreases);
+    class MeshBuffer*               vertexCreases() const;
+    void                            setVertexCreases(const class MeshBuffer* vertexCreases);
     
     NS::UInteger                    vertexCreaseCount() const;
+    // !!!: Unnecessary probably
     void                            setVertexCreaseCount(NS::UInteger vertexCreaseCount);
     
-    class MeshBuffer                holes() const;
-    void                            setHoles(class MeshBuffer holes);
+    class MeshBuffer*               holes() const;
+    void                            setHoles(const class MeshBuffer* holes);
     
     NS::UInteger                    holeCount() const;
+    // !!!: Unnecessary probably
     void                            setHoleCount(NS::UInteger holeCount);
 };
 
@@ -50,38 +52,39 @@ public:
     static class Submesh*   alloc();
     
     // initWithName:indexBuffer:indexCount:indexType:geometryType:material:
-    class Submesh*          initWithName(const NS::String* name,
-                                         class MeshBuffer indexBuffer,
-                                         NS::UInteger indexCount,
-                                         IndexBitDepth indexType,
-                                         GeometryType geometryType,
-                                         const Material* material);
+    class Submesh*          init(const NS::String* name,
+                                 const class MeshBuffer* indexBuffer,
+                                 NS::UInteger indexCount,
+                                 IndexBitDepth indexType,
+                                 GeometryType geometryType,
+                                 const Material* material);
     
     // initWithIndexBuffer:indexCount:indexType:geometryType:material:
-    class Submesh*          initWithIndexBuffer(const NS::String* name,
-                                         NS::UInteger indexCount,
-                                         IndexBitDepth indexType,
-                                         GeometryType geometryType,
-                                         const Material* material);
+    class Submesh*          init(const NS::String* name,
+                                 NS::UInteger indexCount,
+                                 IndexBitDepth indexType,
+                                 GeometryType geometryType,
+                                 const Material* material);
     
     // initWithName:indexBuffer:indexCount:indexType:geometryType:material:topology:
-    class Submesh*          initWithName(const NS::String* name,
-                                         class MeshBuffer indexBuffer,
-                                         NS::UInteger indexCount,
-                                         IndexBitDepth indexType,
-                                         GeometryType geometryType,
-                                         const Material* material,
-                                         const SubmeshTopology* topology);
+    class Submesh*          init(const NS::String* name,
+                                 const class MeshBuffer* indexBuffer,
+                                 NS::UInteger indexCount,
+                                 IndexBitDepth indexType,
+                                 GeometryType geometryType,
+                                 const Material* material,
+                                 const SubmeshTopology* topology);
     
     // initWithMDLSubmesh:indexType:geometryType:
-    class Submesh*          initWithMDLSubmesh(const Submesh* submesh,
-                                               IndexBitDepth indexType,
-                                               GeometryType geometryType);
+    class Submesh*          init(const Submesh* submesh,
+                                 IndexBitDepth indexType,
+                                 GeometryType geometryType);
     
-    MeshBuffer              indexBuffer() const;
+    // - Readonly
+    class MeshBuffer*       indexBuffer() const;
     
     // indexBufferAsIndexType:
-    class MeshBuffer        indexBufferAsIndexType(IndexBitDepth indexType);
+    class MeshBuffer*       indexBufferAsIndexType(IndexBitDepth indexType);
     
     NS::UInteger            indexCount() const;
     
@@ -101,11 +104,216 @@ public:
 
 }
 
-// TODO: Private Sector -
+// MARK: - Private Sector
 
+// static method: alloc
+_MDL_INLINE MDL::SubmeshTopology* MDL::SubmeshTopology::alloc()
+{
+    return NS::Object::alloc<MDL::SubmeshTopology>(_MDL_PRIVATE_CLS(MDLSubmeshTopology));
+}
 
+// method: initWithSubmesh:
+_MDL_INLINE MDL::SubmeshTopology* MDL::SubmeshTopology::init(const Submesh* submesh)
+{
+    return Object::sendMessage<SubmeshTopology*>(this, _MDL_PRIVATE_SEL(initWithSubmesh_), submesh);
+}
 
+// property: faceTopology
+_MDL_INLINE MDL::MeshBuffer* MDL::SubmeshTopology::faceTopology() const
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(faceTopology));
+}
+// write method: setFaceTopology:
+_MDL_INLINE void MDL::SubmeshTopology::setFaceTopology(const class MeshBuffer* faceTopology)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFaceTopology_), faceTopology);
+}
 
+// property: faceCount
+_MDL_INLINE NS::UInteger MDL::SubmeshTopology::faceCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(faceCount));
+}
+// write method: setFaceCount:
+_MDL_INLINE void MDL::SubmeshTopology::setFaceCount(NS::UInteger faceCount)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFaceCount_), faceCount);
+}
+
+// property: vertexCreaseIndices
+_MDL_INLINE MDL::MeshBuffer* MDL::SubmeshTopology::vertexCreaseIndices() const
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(vertexCreaseIndices));
+}
+// write method: setVertexCreaseIndices:
+_MDL_INLINE void MDL::SubmeshTopology::setVertexCreaseIndices(const class MeshBuffer* vertexCreaseIndices)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexCreaseIndices_), vertexCreaseIndices);
+}
+
+// property: vertexCreases
+_MDL_INLINE MDL::MeshBuffer* MDL::SubmeshTopology::vertexCreases() const
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(vertexCreases));
+}
+// write method: setVertexCreases:
+_MDL_INLINE void MDL::SubmeshTopology::setVertexCreases(const class MeshBuffer* vertexCreases)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexCreases_), vertexCreases);
+}
+
+// property: vertexCreaseCount
+_MDL_INLINE NS::UInteger MDL::SubmeshTopology::vertexCreaseCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(vertexCreaseCount));
+}
+// write method: setVertexCreaseCount:
+_MDL_INLINE void MDL::SubmeshTopology::setVertexCreaseCount(NS::UInteger vertexCreaseCount)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexCreaseCount_), vertexCreaseCount);
+}
+
+// property: holes
+_MDL_INLINE MDL::MeshBuffer* MDL::SubmeshTopology::holes() const
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(holes));
+}
+// write method: setHoles:
+_MDL_INLINE void MDL::SubmeshTopology::setHoles(const class MeshBuffer* holes)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setHoles_), holes);
+}
+
+// property: holeCount
+_MDL_INLINE NS::UInteger MDL::SubmeshTopology::holeCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(holeCount));
+}
+// write method: setHoleCount:
+_MDL_INLINE void MDL::SubmeshTopology::setHoleCount(NS::UInteger holeCount)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setHoleCount_), holeCount);
+}
+
+// MARK: Class Submesh
+
+// static method: alloc
+_MDL_INLINE MDL::Submesh* MDL::Submesh::alloc()
+{
+    return NS::Object::alloc<MDL::Submesh>(_MDL_PRIVATE_CLS(MDLSubmesh));
+}
+
+// method: initWithName:indexBuffer:indexCount:indexType:geometryType:material:
+_MDL_INLINE MDL::Submesh* MDL::Submesh::init(const NS::String* name,
+                                             const class MeshBuffer* indexBuffer,
+                                             NS::UInteger indexCount,
+                                             IndexBitDepth indexType,
+                                             GeometryType geometryType,
+                                             const Material* material)
+{
+    return Object::sendMessage<Submesh*>(this,
+                                         _MDL_PRIVATE_SEL(initWithName_indexBuffer_indexCount_indexType_geometryType_material_),
+                                         name, indexBuffer, indexCount, indexType, geometryType, material);
+}
+
+// method: initWithIndexBuffer:indexCount:indexType:geometryType:material:
+_MDL_INLINE MDL::Submesh* MDL::Submesh::init(const NS::String* name,
+                                             NS::UInteger indexCount,
+                                             IndexBitDepth indexType,
+                                             GeometryType geometryType,
+                                             const Material* material)
+{
+    return Object::sendMessage<Submesh*>(this,
+                                         _MDL_PRIVATE_SEL(initWithIndexBuffer_indexCount_indexType_geometryType_material_),
+                                         name, indexCount, indexType, geometryType, material);
+}
+
+// method: initWithName:indexBuffer:indexCount:indexType:geometryType:material:topology:
+_MDL_INLINE MDL::Submesh* MDL::Submesh::init(const NS::String* name,
+                                             const class MeshBuffer* indexBuffer,
+                                             NS::UInteger indexCount,
+                                             IndexBitDepth indexType,
+                                             GeometryType geometryType,
+                                             const Material* material,
+                                             const SubmeshTopology* topology)
+{
+    return Object::sendMessage<Submesh*>(this,
+                                         _MDL_PRIVATE_SEL(initWithName_indexBuffer_indexCount_indexType_geometryType_material_topology_),
+                                         name, indexBuffer, indexCount, indexType, geometryType, material, topology);
+}
+
+// method: initWithMDLSubmesh:indexType:geometryType:
+_MDL_INLINE MDL::Submesh* MDL::Submesh::init(const Submesh* submesh,
+                                             IndexBitDepth indexType,
+                                             GeometryType geometryType)
+{
+    return Object::sendMessage<Submesh*>(this,
+                                         _MDL_PRIVATE_SEL(initWithMDLSubmesh_indexType_geometryType_),
+                                         submesh, indexType, geometryType);
+}
+
+// property: indexBuffer
+_MDL_INLINE MDL::MeshBuffer* MDL::Submesh::indexBuffer() const
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(indexBuffer));
+}
+
+// method: indexBufferAsIndexType:
+_MDL_INLINE MDL::MeshBuffer* MDL::Submesh::indexBufferAsIndexType(IndexBitDepth indexType)
+{
+    return Object::sendMessage<MeshBuffer*>(this, _MDL_PRIVATE_SEL(indexBufferAsIndexType_), indexType);
+}
+
+// property: indexCount
+_MDL_INLINE NS::UInteger MDL::Submesh::indexCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(indexCount));
+}
+
+// property: indexType
+_MDL_INLINE MDL::IndexBitDepth MDL::Submesh::indexType() const
+{
+    return Object::sendMessage<IndexBitDepth>(this, _MDL_PRIVATE_SEL(indexType));
+}
+
+// property: geometryType
+_MDL_INLINE MDL::GeometryType MDL::Submesh::geometryType() const
+{
+    return Object::sendMessage<GeometryType>(this, _MDL_PRIVATE_SEL(geometryType));
+}
+
+// property: material
+_MDL_INLINE MDL::Material* MDL::Submesh::material() const
+{
+    return Object::sendMessage<MDL::Material*>(this, _MDL_PRIVATE_SEL(material));
+}
+// write method: setMaterial:
+_MDL_INLINE void MDL::Submesh::setMaterial(const Material* material)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setMaterial_), material);
+}
+
+// property: topology
+_MDL_INLINE MDL::SubmeshTopology* MDL::Submesh::topology() const
+{
+    return Object::sendMessage<MDL::SubmeshTopology*>(this, _MDL_PRIVATE_SEL(topology));
+}
+// write method: setTopology:
+_MDL_INLINE void MDL::Submesh::setTopology(const SubmeshTopology* topology)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setTopology_), topology);
+}
+
+// property: name
+_MDL_INLINE NS::String* MDL::Submesh::name() const
+{
+    return Object::sendMessage<NS::String*>(this, _MDL_PRIVATE_SEL(name));
+}
+// write method: setName:
+_MDL_INLINE void MDL::Submesh::setName(const NS::String* name)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setName_), name);
+}
 
 // MARK: - Original Header
 
