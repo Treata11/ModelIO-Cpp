@@ -81,6 +81,13 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLSubmeshTopology );
     _MDL_PRIVATE_DEF_CLS( MDLSubmesh );
 
+// MDLLight.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLLight );
+    _MDL_PRIVATE_DEF_CLS( MDLPhysicallyPlausibleLight );
+    _MDL_PRIVATE_DEF_CLS( MDLAreaLight );
+    _MDL_PRIVATE_DEF_CLS( MDLPhotometricLight );
+    _MDL_PRIVATE_DEF_CLS( MDLLightProbe );
+
 } // Class
 
 // MARK: - Protocol
@@ -620,5 +627,49 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( setTopology_, "setTopology:" );
     //_MDL_PRIVATE_DEF_SEL( name, "name" );
     //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
+
+//MDLLight.hpp
+    _MDL_PRIVATE_DEF_SEL( irradianceAtPoint_, "irradianceAtPoint:" );
+    _MDL_PRIVATE_DEF_SEL( irradianceAtPoint_colorSpace_, "irradianceAtPoint:colorSpace:" );
+    _MDL_PRIVATE_DEF_SEL( lightType, "lightType" );
+    _MDL_PRIVATE_DEF_SEL( setLightType_, "setLightType:" );
+    _MDL_PRIVATE_DEF_SEL( colorSpace, "colorSpace" );
+    _MDL_PRIVATE_DEF_SEL( setColorSpace_, "setColorSpace:" );
+
+    _MDL_PRIVATE_DEF_SEL( setColorByTemperature_, "setColorByTemperature_" );
+    //_MDL_PRIVATE_DEF_SEL( color, "color" );
+    //_MDL_PRIVATE_DEF_SEL( setColor_, "setColor:" );
+    _MDL_PRIVATE_DEF_SEL( lumens, "lumens" );
+    _MDL_PRIVATE_DEF_SEL( setLumens_, "setLumens:" );
+    _MDL_PRIVATE_DEF_SEL( innerConeAngle, "innerConeAngle" );
+    _MDL_PRIVATE_DEF_SEL( setInnerConeAngle_, "setInnerConeAngle:" );
+    _MDL_PRIVATE_DEF_SEL( outerConeAngle, "outerConeAngle" );
+    _MDL_PRIVATE_DEF_SEL( setOuterConeAngle_, "setOuterConeAngle:" );
+    _MDL_PRIVATE_DEF_SEL( attenuationStartDistance, "attenuationStartDistance" );
+    _MDL_PRIVATE_DEF_SEL( setAttenuationStartDistance_, "setAttenuationStartDistance:" );
+
+    _MDL_PRIVATE_DEF_SEL( areaRadius, "areaRadius" );
+    _MDL_PRIVATE_DEF_SEL( setAreaRadius_, "setAreaRadius:" );
+    _MDL_PRIVATE_DEF_SEL( superEllipticPower, "superEllipticPower" );
+    _MDL_PRIVATE_DEF_SEL( setSuperEllipticPower_, "setSuperEllipticPower:" );
+    _MDL_PRIVATE_DEF_SEL( aspect, "aspect" );
+    _MDL_PRIVATE_DEF_SEL( setAspect_, "setAspect:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithIESProfile_, "initWithIESProfile:" );
+    _MDL_PRIVATE_DEF_SEL( generateSphericalHarmonicsFromLight_, "generateSphericalHarmonicsFromLight:" );
+    _MDL_PRIVATE_DEF_SEL( generateCubemapFromLight_, "generateCubemapFromLight:" );
+    _MDL_PRIVATE_DEF_SEL( generateTexture_, "generateTexture:" );
+    _MDL_PRIVATE_DEF_SEL( lightCubeMap, "lightCubeMap" );
+    _MDL_PRIVATE_DEF_SEL( sphericalHarmonicsLevel, "sphericalHarmonicsLevel" );
+    _MDL_PRIVATE_DEF_SEL( sphericalHarmonicsCoefficients, "sphericalHarmonicsCoefficients" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithReflectiveTexture_irradianceTexture_, "initWithReflectiveTexture:irradianceTexture:" );
+    _MDL_PRIVATE_DEF_SEL( reflectiveTexture, "reflectiveTexture" );
+    _MDL_PRIVATE_DEF_SEL( irradianceTexture, "irradianceTexture" );
+    //_MDL_PRIVATE_DEF_SEL( sphericalHarmonicsLevel, "sphericalHarmonicsLevel" );
+    //_MDL_PRIVATE_DEF_SEL( sphericalHarmonicsCoefficients, "sphericalHarmonicsCoefficients" );
+    _MDL_PRIVATE_DEF_SEL( lightProbeWithTextureSize_forLocation_lightsToConsider_objectsToConsider_reflectiveCubemap_irradianceCubemap_,
+                         "lightProbeWithTextureSize:forLocation:lightsToConsider:objectsToConsider:reflectiveCubemap:irradianceCubemap:" );
+
 
 } // Selector
