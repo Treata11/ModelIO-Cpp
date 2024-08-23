@@ -66,6 +66,17 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLNoiseTexture );
     _MDL_PRIVATE_DEF_CLS( MDLNormalMapTexture );
 
+// MDLMaterial.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLTextureFilter );
+    _MDL_PRIVATE_DEF_CLS( MDLTextureSampler );
+    _MDL_PRIVATE_DEF_CLS( MDLMaterialProperty );
+    _MDL_PRIVATE_DEF_CLS( MDLMaterialPropertyConnection );
+    _MDL_PRIVATE_DEF_CLS( MDLMaterialPropertyNode );
+    _MDL_PRIVATE_DEF_CLS( MDLMaterialPropertyGraph );
+    _MDL_PRIVATE_DEF_CLS( MDLScatteringFunction );
+    _MDL_PRIVATE_DEF_CLS( MDLPhysicallyPlausibleScatteringFunction );
+    _MDL_PRIVATE_DEF_CLS( MDLMaterial );
+
 } // Class
 
 // MARK: - Protocol
@@ -450,7 +461,123 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( initCellularNoiseWithFrequency_name_textureDimensions_channelEncoding_,
                          "initCellularNoiseWithFrequency:name:textureDimensions:channelEncoding:" );
 
-_MDL_PRIVATE_DEF_SEL( initByGeneratingNormalMapWithTexture_name_smoothness_contrast_,
+    _MDL_PRIVATE_DEF_SEL( initByGeneratingNormalMapWithTexture_name_smoothness_contrast_,
                      "initByGeneratingNormalMapWithTexture:name:smoothness:contrast:" );
+
+// MDLMaterial.hpp
+    _MDL_PRIVATE_DEF_SEL( sWrapMode, "sWrapMode" );
+    _MDL_PRIVATE_DEF_SEL( setSWrapMode_, "setSWrapMode:" );
+    _MDL_PRIVATE_DEF_SEL( tWrapMode, "tWrapMode" );
+    _MDL_PRIVATE_DEF_SEL( setTWrapMode_, "setTWrapMode:" );
+    _MDL_PRIVATE_DEF_SEL( rWrapMode, "rWrapMode" );
+    _MDL_PRIVATE_DEF_SEL( setRWrapMode_, "setRWrapMode:" );
+    _MDL_PRIVATE_DEF_SEL( minFilter, "minFilter" );
+    _MDL_PRIVATE_DEF_SEL( setMinFilter_, "setMinFilter:" );
+    _MDL_PRIVATE_DEF_SEL( magFilter, "magFilter" );
+    _MDL_PRIVATE_DEF_SEL( setMagFilter_, "setMagFilter:" );
+    _MDL_PRIVATE_DEF_SEL( mipFilter, "mipFilter" );
+    _MDL_PRIVATE_DEF_SEL( setMipFilter_, "setMipFilter:" );
+
+    _MDL_PRIVATE_DEF_SEL( texture, "texture" );
+    _MDL_PRIVATE_DEF_SEL( setTexture_, "setTexture:" );
+    _MDL_PRIVATE_DEF_SEL( hardwareFilter, "hardwareFilter" );
+    _MDL_PRIVATE_DEF_SEL( setHardwareFilter_, "setHardwareFilter:" );
+    //_MDL_PRIVATE_DEF_SEL( transform, "transform" );
+    //_MDL_PRIVATE_DEF_SEL( setTransform_, "setTransform:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_, "initWithName:semantic:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_float2_, "initWithName:semantic:float2:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_float3_, "initWithName:semantic:float3:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_float4_, "initWithName:semantic:float4:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_matrix4x4_, "initWithName:semantic:matrix4x4:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_URL_, "initWithName:semantic:URL:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_string_, "initWithName:semantic:string:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_textureSampler_, "initWithName:semantic:textureSampler:" );
+    _MDL_PRIVATE_DEF_SEL( initWithName_semantic_color_, "initWithName:semantic:color:" );
+    _MDL_PRIVATE_DEF_SEL( setProperties_, "setProperties:" );
+    _MDL_PRIVATE_DEF_SEL( semantic, "semantic" );
+    _MDL_PRIVATE_DEF_SEL( setSemantic_, "setSemantic:" );
+    //_MDL_PRIVATE_DEF_SEL( type, "type" );
+    _MDL_PRIVATE_DEF_SEL( setType_, "setType:" );
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( setName_, "setName:" );
+    _MDL_PRIVATE_DEF_SEL( stringValue, "stringValue" );
+    _MDL_PRIVATE_DEF_SEL( setStringValue_, "setStringValue:" );
+    _MDL_PRIVATE_DEF_SEL( URLValue, "URLValue" );
+    _MDL_PRIVATE_DEF_SEL( setURLValue_, "setURLValue:" );
+    _MDL_PRIVATE_DEF_SEL( textureSamplerValue, "textureSamplerValue" );
+    _MDL_PRIVATE_DEF_SEL( setTextureSamplerValue_, "setTextureSamplerValue:" );
+    _MDL_PRIVATE_DEF_SEL( color, "color" );
+    _MDL_PRIVATE_DEF_SEL( setColor_, "setColor:" );
+    _MDL_PRIVATE_DEF_SEL( floatValue, "floatValue" );
+    _MDL_PRIVATE_DEF_SEL( setFloatValue_, "setFloatValue:" );
+    _MDL_PRIVATE_DEF_SEL( float2Value, "float2Value" );
+    _MDL_PRIVATE_DEF_SEL( setFloat2Value_, "setFloat2Value:" );
+    _MDL_PRIVATE_DEF_SEL( float3Value, "float3Value" );
+    _MDL_PRIVATE_DEF_SEL( setFloat3Value_, "setFloat3Value:" );
+    _MDL_PRIVATE_DEF_SEL( float4Value, "float4Value" );
+    _MDL_PRIVATE_DEF_SEL( setFloat4Value_, "setFloat4Value:" );
+    _MDL_PRIVATE_DEF_SEL( matrix4x4, "matrix4x4" );
+    _MDL_PRIVATE_DEF_SEL( setMatrix4x4_, "setMatrix4x4:" );
+    _MDL_PRIVATE_DEF_SEL( luminance, "luminance" );
+    _MDL_PRIVATE_DEF_SEL( setLuminance_, "setLuminance:" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithOutput_input_, "initWithOutput:input:" );
+    _MDL_PRIVATE_DEF_SEL( output, "output" );
+    _MDL_PRIVATE_DEF_SEL( input, "input" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithInputs_outputs_evaluationFunction_, "initWithInputs:outputs:evaluationFunction:" );
+    _MDL_PRIVATE_DEF_SEL( inputs, "inputs" );
+    _MDL_PRIVATE_DEF_SEL( outputs, "outputs" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithNodes_connections_, "initWithNodes:connections:" );
+    _MDL_PRIVATE_DEF_SEL( evaluate, "evaluate" );
+    _MDL_PRIVATE_DEF_SEL( nodes, "nodes" );
+    _MDL_PRIVATE_DEF_SEL( connections, "connections" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
+    _MDL_PRIVATE_DEF_SEL( baseColor, "baseColor" );
+    _MDL_PRIVATE_DEF_SEL( emission, "emission" );
+    _MDL_PRIVATE_DEF_SEL( specular, "specular" );
+    _MDL_PRIVATE_DEF_SEL( materialIndexOfRefraction, "materialIndexOfRefraction" );
+    _MDL_PRIVATE_DEF_SEL( interfaceIndexOfRefraction, "interfaceIndexOfRefraction" );
+    _MDL_PRIVATE_DEF_SEL( normal, "normal" );
+    _MDL_PRIVATE_DEF_SEL( ambientOcclusion, "ambientOcclusion" );
+    _MDL_PRIVATE_DEF_SEL( ambientOcclusionScale, "ambientOcclusionScale" );
+
+    _MDL_PRIVATE_DEF_SEL( version, "version" );
+    _MDL_PRIVATE_DEF_SEL( subsurface, "subsurface" );
+    _MDL_PRIVATE_DEF_SEL( metallic, "metallic" );
+    _MDL_PRIVATE_DEF_SEL( specularAmount, "specularAmount" );
+    _MDL_PRIVATE_DEF_SEL( specularTint, "specularTint" );
+    _MDL_PRIVATE_DEF_SEL( roughness, "roughness" );
+    _MDL_PRIVATE_DEF_SEL( anisotropic, "anisotropic" );
+    _MDL_PRIVATE_DEF_SEL( anisotropicRotation, "anisotropicRotation" );
+    _MDL_PRIVATE_DEF_SEL( sheen, "sheen" );
+    _MDL_PRIVATE_DEF_SEL( sheenTint, "sheenTint" );
+    _MDL_PRIVATE_DEF_SEL( clearcoat, "clearcoat" );
+    _MDL_PRIVATE_DEF_SEL( clearcoatGloss, "clearcoatGloss" );
+
+    _MDL_PRIVATE_DEF_SEL( initWithName_scatteringFunction_, "initWithName:scatteringFunction:" );
+    _MDL_PRIVATE_DEF_SEL( setProperty_, "setProperty:" );
+    _MDL_PRIVATE_DEF_SEL( removeProperty_, "removeProperty:" );
+    _MDL_PRIVATE_DEF_SEL( propertyNamed_, "propertyNamed:" );
+    _MDL_PRIVATE_DEF_SEL( propertyWithSemantic_, "propertyWithSemantic:" );
+    _MDL_PRIVATE_DEF_SEL( propertiesWithSemantic_, "propertiesWithSemantic:" );
+    _MDL_PRIVATE_DEF_SEL( removeAllProperties, "removeAllProperties" );
+    _MDL_PRIVATE_DEF_SEL( resolveTexturesWithResolver_, "resolveTexturesWithResolver:" );
+    _MDL_PRIVATE_DEF_SEL( loadTexturesUsingResolver_, "loadTexturesUsingResolver:" );
+    _MDL_PRIVATE_DEF_SEL( scatteringFunction, "scatteringFunction" );
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( setName_, "setName_" );
+    _MDL_PRIVATE_DEF_SEL( baseMaterial, "baseMaterial" );
+    _MDL_PRIVATE_DEF_SEL( setBaseMaterial_, "setBaseMaterial:" );
+    //_MDL_PRIVATE_DEF_SEL( objectAtIndexedSubscript_, "objectAtIndexedSubscript:" );
+    //_MDL_PRIVATE_DEF_SEL( objectForKeyedSubscript_, "objectForKeyedSubscript:" );
+    //_MDL_PRIVATE_DEF_SEL( count, "count" );
+    _MDL_PRIVATE_DEF_SEL( materialFace, "materialFace" );
+    _MDL_PRIVATE_DEF_SEL( setMaterialFace_, "setMaterialFace:" );
 
 } // Selector
