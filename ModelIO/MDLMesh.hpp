@@ -32,7 +32,7 @@ public:
     void                                setStride(NS::UInteger stride);
     
     VertexFormat                        format() const;
-    void                                setformat(VertexFormat format);
+    void                                setFormat(VertexFormat format);
     
     NS::UInteger                        bufferSize() const;
     void                                setBufferSize(NS::UInteger bufferSize);
@@ -41,22 +41,22 @@ public:
 class Mesh : public NS::Referencing<MDL::Object>
 {
 public:
-    static class Mesh*   alloc();
+    static class Mesh*  alloc();
     
     // initWithBufferAllocator:
-    class Mesh*          initWithBufferAllocator(class MeshBufferAllocator bufferAllocator);
+    class Mesh*         init(class MeshBufferAllocator* bufferAllocator);
     
     // initWithVertexBuffer:vertexCount:descriptor:submeshes:
-    class Mesh*         initWithVertexBuffer(class MeshBuffer vertexBuffer,
-                                             NS::UInteger vertexCount,
-                                             const VertexDescriptor* descriptor,
-                                             const NS::Array* submeshes);
+    class Mesh*         init(class MeshBuffer* vertexBuffer,
+                             NS::UInteger vertexCount,
+                             const VertexDescriptor* descriptor,
+                             const NS::Array* submeshes);
     
     // initWithVertexBuffers:vertexCount:descriptor:submeshes:
-    class Mesh*         initWithVertexBuffers(const NS::Array* vertexBuffers,
-                                             NS::UInteger vertexCount,
-                                             const VertexDescriptor* descriptor,
-                                             const NS::Array* submeshes);
+    class Mesh*         init(const NS::Array* vertexBuffers,
+                             NS::UInteger vertexCount,
+                             const VertexDescriptor* descriptor,
+                             const NS::Array* submeshes);
     
     // vertexAttributeDataForAttributeNamed:
     VertexAttributeData*    vertexAttributeDataForAttributeNamed(const NS::String* name);
@@ -82,7 +82,7 @@ public:
 //    NS::MutableArray*   submeshes() const;
 //    void                setsubmeshes(const NS::MutableArray* submeshes);
     
-    class MeshBufferAllocator   allocator() const;
+    class MeshBufferAllocator*  allocator() const;
     
     // MARK: - Modifiers
     
@@ -109,16 +109,16 @@ public:
     void                addNormalsWithAttributeNamed(const NS::String* attributeName, 
                                                      float creaseThreshold);
     
+    // TODO: Find a better name for these two
     // addTangentBasisForTextureCoordinateAttributeNamed:tangentAttributeNamed:bitangentAttributeNamed:
-    void                addTangentBasisForTextureCoordinateAttributeNamed(const NS::String* textureCoordinateAttributeName,
-                                                                          const NS::String* tangentAttributeName,
-                                                                          const NS::String* bitangentAttributeName);
+    void                addTangentBasisForTextureCoordinateAttributeNamed1(const NS::String* textureCoordinateAttributeName,
+                                                                           const NS::String* tangentAttributeName,
+                                                                           const NS::String* bitangentAttributeName);
     
-    // TODO: Find a bette name for these two
     // addTangentBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:
     void                addTangentBasisForTextureCoordinateAttributeNamed2(const NS::String* textureCoordinateAttributeName,
-                                                                          const NS::String* normalAttributeName,
-                                                                          const NS::String* tangentAttributeName);
+                                                                           const NS::String* normalAttributeName,
+                                                                           const NS::String* tangentAttributeName);
     
     // addOrthTanBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:
     void                addOrthTanBasisForTextureCoordinateAttributeNamed(const NS::String* textureCoordinateAttributeName,
@@ -142,7 +142,7 @@ public:
     
     // updateAttributeNamed:
     void                updateAttributeNamed(const NS::String* name,
-                                              const VertexAttributeData* newData);
+                                             const VertexAttributeData* newData);
     
     // removeAttributeNamed:
     void                removeAttributeNamed(const NS::String* name);
@@ -154,31 +154,31 @@ public:
                                           vector_uint3 segments,
                                           BOOL inwardNormals,
                                           GeometryType geometryType,
-                                          class MeshBufferAllocator allocator);
+                                          class MeshBufferAllocator* allocator);
     
     // initSphereWithExtent:segments:inwardNormals:geometryType:allocator:
     class Mesh*         initSphereWithExtent(vector_float3 extent,
                                              vector_uint2 segments,
                                              BOOL inwardNormals,
                                              GeometryType geometryType,
-                                             class MeshBufferAllocator allocator);
+                                             class MeshBufferAllocator* allocator);
     
-    // initHemisphereWithExtent:segments:inwardNormals:geometryType:allocator:
+    // initHemisphereWithExtent:segments:inwardNormals:cap:geometryType:allocator:
     class Mesh*         initHemisphereWithExtent(vector_float3 extent,
                                                  vector_uint2 segments,
                                                  BOOL inwardNormals,
                                                  BOOL cap,
                                                  GeometryType geometryType,
-                                                 class MeshBufferAllocator allocator);
+                                                 class MeshBufferAllocator* allocator);
     
-    // initCylinderWithExtent:segments:inwardNormals:geometryType:allocator:
+    // initCylinderWithExtent:segments:inwardNormals:topCap:bottomCap:geometryType:allocator:
     class Mesh*         initCylinderWithExtent(vector_float3 extent,
                                                vector_uint2 segments,
                                                BOOL inwardNormals,
                                                BOOL topCap,
                                                BOOL bottomCap,
                                                GeometryType geometryType,
-                                               class MeshBufferAllocator allocator);
+                                               class MeshBufferAllocator* allocator);
     
     // initCapsuleWithExtent:cylinderSegments:hemisphereSegments:inwardNormals:geometryType:allocator:
     class Mesh*         initCapsuleWithExtent(vector_float3 extent,
@@ -186,7 +186,7 @@ public:
                                               int hemisphereSegments,
                                               BOOL inwardNormals,
                                               GeometryType geometryType,
-                                              class MeshBufferAllocator allocator);
+                                              class MeshBufferAllocator* allocator);
     
     // initConeWithExtent:segments:inwardNormals:geometryType:allocator:
     class Mesh*         initConeWithExtent(vector_float3 extent,
@@ -194,32 +194,32 @@ public:
                                            BOOL inwardNormals,
                                            BOOL cap,
                                            GeometryType geometryType,
-                                           class MeshBufferAllocator allocator);
+                                           class MeshBufferAllocator* allocator);
     
     // initPlaneWithExtent:segments:geometryType:allocator:
     class Mesh*         initPlaneWithExtent(vector_float3 extent,
                                             vector_uint2 segments,
                                             GeometryType geometryType,
-                                            class MeshBufferAllocator allocator);
+                                            class MeshBufferAllocator* allocator);
     
     // initIcosahedronWithExtent:segments:geometryType:allocator:
     class Mesh*         initIcosahedronWithExtent(vector_float3 extent,
                                                   BOOL inwardNormals,
                                                   GeometryType geometryType,
-                                                  class MeshBufferAllocator allocator);
+                                                  class MeshBufferAllocator* allocator);
     
     // initMeshBySubdividingMesh:submeshIndex:subdivisionLevels:allocator:
     class Mesh*         initMeshBySubdividingMesh(const Mesh* mesh,
                                                   int submeshIndex,
                                                   unsigned int subdivisionLevels,
-                                                  class MeshBufferAllocator allocator);
+                                                  class MeshBufferAllocator* allocator);
     
     // newBoxWithDimensions:segments:geometryType:inwardNormals:allocator:
     static class Mesh*  newBoxWithDimensions(vector_float3 dimensions,
                                              vector_uint3 segments,
                                              GeometryType geometryType,
                                              BOOL inwardNormals,
-                                             class MeshBufferAllocator allocator);
+                                             class MeshBufferAllocator* allocator);
     
     // newEllipsoidWithRadii:radialSegments:verticalSegments:geometryType:inwardNormals:hemisphere:allocator:
     static class Mesh*  newEllipsoidWithRadii(vector_float3 radii,
@@ -228,7 +228,7 @@ public:
                                               GeometryType geometryType,
                                               BOOL inwardNormals,
                                               BOOL hemisphere,
-                                              class MeshBufferAllocator allocator);
+                                              class MeshBufferAllocator* allocator);
     
     // newCylinderWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:
     static class Mesh*  newCylinderWithHeight(float height,
@@ -237,7 +237,7 @@ public:
                                               NS::UInteger verticalSegments,
                                               GeometryType geometryType,
                                               BOOL inwardNormals,
-                                              class MeshBufferAllocator allocator);
+                                              class MeshBufferAllocator* allocator);
     
     // newCapsuleWithHeight:radii:radialSegments:verticalSegments:hemisphereSegments:geometryType:inwardNormals:allocator:
     static class Mesh*  newCapsuleWithHeight(float height,
@@ -247,7 +247,7 @@ public:
                                              NS::UInteger hemisphereSegments,
                                              GeometryType geometryType,
                                              BOOL inwardNormals,
-                                             class MeshBufferAllocator allocator);
+                                             class MeshBufferAllocator* allocator);
     
     // newEllipticalConeWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:
     static class Mesh*  newEllipticalConeWithHeight(float height,
@@ -256,24 +256,24 @@ public:
                                                     NS::UInteger verticalSegments,
                                                     GeometryType geometryType,
                                                     BOOL inwardNormals,
-                                                    class MeshBufferAllocator allocator);
+                                                    class MeshBufferAllocator* allocator);
     
     // newPlaneWithDimensions:segments:geometryType:allocator:
     static class Mesh*  newPlaneWithDimensions(vector_float2 dimensions,
                                                vector_uint2 segments,
                                                GeometryType geometryType,
-                                               class MeshBufferAllocator allocator);
+                                               class MeshBufferAllocator* allocator);
     
     // newIcosahedronWithRadius:inwardNormals:geometryType:allocator:
     static class Mesh*  newIcosahedronWithRadius(float radius,
                                                  BOOL inwardNormals,
                                                  GeometryType geometryType,
-                                                 class MeshBufferAllocator allocator);
+                                                 class MeshBufferAllocator* allocator);
     
-    // newIcosahedronWithRadius:inwardNormals:geometryType:allocator:
+    // newIcosahedronWithRadius:inwardNormals:allocator:
     static class Mesh*  newIcosahedronWithRadius(float radius,
                                                  BOOL inwardNormals,
-                                                 class MeshBufferAllocator allocator);
+                                                 class MeshBufferAllocator* allocator);
     
     // newSubdividedMesh:submeshIndex:subdivisionLevels:
     static class Mesh*  newSubdividedMesh(const Mesh* mesh,
@@ -331,7 +331,598 @@ public:
 
 }
 
-// TODO: Private Sector -
+// MARK: - Private Sector 
+
+// static method: alloc
+_MDL_INLINE MDL::VertexAttributeData* MDL::VertexAttributeData::alloc()
+{
+    return NS::Object::alloc<MDL::VertexAttributeData>(_MDL_PRIVATE_CLS(MDLVertexAttributeData));
+}
+
+// method: init
+_MDL_INLINE MDL::VertexAttributeData* MDL::VertexAttributeData::init()
+{
+    return NS::Object::init<MDL::VertexAttributeData>();
+}
+
+// property: map
+_MDL_INLINE MDL::MeshBufferMap* MDL::VertexAttributeData::map() const
+{
+    return Object::sendMessage<MeshBufferMap*>(this, _MDL_PRIVATE_SEL(map));
+}
+// write method: setMap:
+_MDL_INLINE void MDL::VertexAttributeData::setMap(const MeshBufferMap* map)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setMap_), map);
+}
+
+// property: dataStart
+_MDL_INLINE void* MDL::VertexAttributeData::dataStart() const
+{
+    return Object::sendMessage<void*>(this, _MDL_PRIVATE_SEL(dataStart));
+}
+// write method: setDataStart:
+_MDL_INLINE void MDL::VertexAttributeData::setDataStart(const void* dataStart)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setDataStart_), dataStart);
+}
+
+// property: stride
+_MDL_INLINE NS::UInteger MDL::VertexAttributeData::stride() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(stride));
+}
+// write method: setStride:
+_MDL_INLINE void MDL::VertexAttributeData::setStride(NS::UInteger stride)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setStride_), stride);
+}
+
+// property: format
+_MDL_INLINE MDL::VertexFormat MDL::VertexAttributeData::format() const
+{
+    return Object::sendMessage<VertexFormat>(this, _MDL_PRIVATE_SEL(format));
+}
+// write method: setFormat:
+_MDL_INLINE void MDL::VertexAttributeData::setFormat(VertexFormat format)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFormat_), format);
+}
+
+// property: bufferSize
+_MDL_INLINE NS::UInteger MDL::VertexAttributeData::bufferSize() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(bufferSize));
+}
+// write method: setBufferSize:
+_MDL_INLINE void MDL::VertexAttributeData::setBufferSize(NS::UInteger bufferSize)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setBufferSize_), bufferSize);
+}
+
+// MARK: Class Mesh
+
+// static method: alloc
+_MDL_INLINE MDL::Mesh* MDL::Mesh::alloc()
+{
+    return NS::Object::alloc<MDL::Mesh>(_MDL_PRIVATE_CLS(MDLMesh));
+}
+
+// method: initWithBufferAllocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::init(class MeshBufferAllocator* bufferAllocator)
+{
+    return Object::sendMessage<Mesh*>(this, _MDL_PRIVATE_SEL(initWithBufferAllocator_), bufferAllocator);
+}
+
+// method: initWithVertexBuffer:vertexCount:descriptor:submeshes:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::init(class MeshBuffer* vertexBuffer,
+                                       NS::UInteger vertexCount,
+                                       const VertexDescriptor* descriptor,
+                                       const NS::Array* submeshes)
+{
+    return Object::sendMessage<Mesh*>(this, 
+                                      _MDL_PRIVATE_SEL(initWithVertexBuffer_vertexCount_descriptor_submeshes_),
+                                      vertexBuffer, vertexCount, descriptor, submeshes);
+}
+
+// method: initWithVertexBuffers:vertexCount:descriptor:submeshes:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::init(const NS::Array* vertexBuffers,
+                                       NS::UInteger vertexCount,
+                                       const VertexDescriptor* descriptor,
+                                       const NS::Array* submeshes)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initWithVertexBuffers_vertexCount_descriptor_submeshes_),
+                                      vertexBuffers, vertexCount, descriptor, submeshes);
+}
+
+// method: vertexAttributeDataForAttributeNamed:
+_MDL_INLINE MDL::VertexAttributeData* MDL::Mesh::vertexAttributeDataForAttributeNamed(const NS::String* name)
+{
+    return Object::sendMessage<VertexAttributeData*>(this, _MDL_PRIVATE_SEL(vertexAttributeDataForAttributeNamed_), name);
+}
+
+// method: vertexAttributeDataForAttributeNamed:asFormat:
+_MDL_INLINE MDL::VertexAttributeData* MDL::Mesh::vertexAttributeDataForAttributeNamed(const NS::String* name,
+                                                                                      VertexFormat format)
+{
+    return Object::sendMessage<VertexAttributeData*>(this,
+                                                     _MDL_PRIVATE_SEL(vertexAttributeDataForAttributeNamed_asFormat_),
+                                                     name, format);
+}
+
+// property: boundingBox
+_MDL_INLINE MDL::AxisAlignedBoundingBox MDL::Mesh::boundingBox() const
+{
+    return Object::sendMessage<AxisAlignedBoundingBox>(this, _MDL_PRIVATE_SEL(boundingBox));
+}
+
+// property: vertexDescriptor
+_MDL_INLINE MDL::VertexDescriptor* MDL::Mesh::vertexDescriptor() const
+{
+    return Object::sendMessage<VertexDescriptor*>(this, _MDL_PRIVATE_SEL(vertexDescriptor));
+}
+// write method: setVertexDescriptor:
+_MDL_INLINE void MDL::Mesh::setVertexDescriptor(const VertexDescriptor* vertexDescriptor)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexDescriptor_), vertexDescriptor);
+}
+
+// property: vertexCount
+_MDL_INLINE NS::UInteger MDL::Mesh::vertexCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(vertexCount));
+}
+// write method: setVertexCount:
+_MDL_INLINE void MDL::Mesh::setVertexCount(NS::UInteger vertexCount)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexCount_), vertexCount);
+}
+
+// property: vertexBuffers
+_MDL_INLINE NS::Array* MDL::Mesh::vertexBuffers() const
+{
+    return Object::sendMessage<NS::Array*>(this, _MDL_PRIVATE_SEL(vertexBuffers));
+}
+// write method: setVertexBuffers:
+_MDL_INLINE void MDL::Mesh::setVertexBuffers(const NS::Array* vertexBuffers)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setVertexBuffers_), vertexBuffers);
+}
+
+// property: allocator
+_MDL_INLINE MDL::MeshBufferAllocator* MDL::Mesh::allocator() const
+{
+    return Object::sendMessage<MeshBufferAllocator*>(this, _MDL_PRIVATE_SEL(allocator));
+}
+
+// MARK: Mesh-Modifiers
+
+// method: addAttributeWithName:format:
+_MDL_INLINE void MDL::Mesh::addAttributeWithName(const NS::String* name,
+                                                 VertexFormat format)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(addAttributeWithName_format_), name, format);
+}
+
+// method: addAttributeWithName:format:type:data:stride:
+_MDL_INLINE void MDL::Mesh::addAttributeWithName(const NS::String* name,
+                                                 VertexFormat format,
+                                                 const NS::String* type,
+                                                 const NS::Data* data,
+                                                 NS::Integer stride)
+{
+    return Object::sendMessage<void>(this, 
+                                     _MDL_PRIVATE_SEL(addAttributeWithName_format_type_data_stride_),
+                                     name, format, type, data, stride);
+}
+
+// method: addAttributeWithName:format:type:data:stride:time:
+_MDL_INLINE void MDL::Mesh::addAttributeWithName(const NS::String* name,
+                                                 VertexFormat format,
+                                                 const NS::String* type,
+                                                 const NS::Data* data,
+                                                 NS::Integer stride,
+                                                 NS::TimeInterval time)
+{
+    return Object::sendMessage<void>(this,
+                                     _MDL_PRIVATE_SEL(addAttributeWithName_format_type_data_stride_time_),
+                                     name, format, type, data, stride, time);
+}
+
+
+// method: addNormalsWithAttributeNamed:creaseThreshold:
+_MDL_INLINE void MDL::Mesh::addNormalsWithAttributeNamed(const NS::String* attributeName,
+                                                         float creaseThreshold)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(addNormalsWithAttributeNamed_creaseThreshold_), attributeName, creaseThreshold);
+}
+
+// method: addTangentBasisForTextureCoordinateAttributeNamed:tangentAttributeNamed:bitangentAttributeNamed:
+_MDL_INLINE void MDL::Mesh::addTangentBasisForTextureCoordinateAttributeNamed1(const NS::String* textureCoordinateAttributeName,
+                                                                              const NS::String* tangentAttributeName,
+                                                                              const NS::String* bitangentAttributeName)
+{
+    return Object::sendMessage<void>(this, 
+                                     _MDL_PRIVATE_SEL(addTangentBasisForTextureCoordinateAttributeNamed_tangentAttributeNamed_bitangentAttributeNamed_),
+                                     textureCoordinateAttributeName, tangentAttributeName, bitangentAttributeName);
+}
+
+// method: addTangentBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:
+_MDL_INLINE void MDL::Mesh::addTangentBasisForTextureCoordinateAttributeNamed2(const NS::String* textureCoordinateAttributeName,
+                                                                              const NS::String* normalAttributeName,
+                                                                              const NS::String* tangentAttributeName)
+{
+    return Object::sendMessage<void>(this,
+                                     _MDL_PRIVATE_SEL(addTangentBasisForTextureCoordinateAttributeNamed_normalAttributeNamed_tangentAttributeNamed_),
+                                     textureCoordinateAttributeName, normalAttributeName, tangentAttributeName);
+}
+
+// method: addOrthTanBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:
+_MDL_INLINE void MDL::Mesh::addOrthTanBasisForTextureCoordinateAttributeNamed(const NS::String* textureCoordinateAttributeName,
+                                                                              const NS::String* normalAttributeName,
+                                                                              const NS::String* tangentAttributeName)
+{
+    return Object::sendMessage<void>(this,
+                                     _MDL_PRIVATE_SEL(addOrthTanBasisForTextureCoordinateAttributeNamed_normalAttributeNamed_tangentAttributeNamed_),
+                                     textureCoordinateAttributeName, normalAttributeName, tangentAttributeName);
+}
+
+// method: addUnwrappedTextureCoordinatesForAttributeNamed:
+_MDL_INLINE void MDL::Mesh::addUnwrappedTextureCoordinatesForAttributeNamed(const NS::String* textureCoordinateAttributeName)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(addUnwrappedTextureCoordinatesForAttributeNamed_), textureCoordinateAttributeName);
+}
+
+// method: flipTextureCoordinatesInAttributeNamed:
+_MDL_INLINE void MDL::Mesh::flipTextureCoordinatesInAttributeNamed(const NS::String* textureCoordinateAttributeName)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(flipTextureCoordinatesInAttributeNamed_), textureCoordinateAttributeName);
+}
+
+// method: makeVerticesUnique
+_MDL_INLINE void MDL::Mesh::makeVerticesUnique()
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(makeVerticesUnique));
+}
+
+// method: makeVerticesUniqueAndReturnError:
+_MDL_INLINE BOOL MDL::Mesh::makeVerticesUniqueAndReturnError(NS::Error** error)
+{
+    return Object::sendMessage<BOOL>(this, _MDL_PRIVATE_SEL(makeVerticesUniqueAndReturnError_), error);
+}
+
+// method: replaceAttributeNamed:
+_MDL_INLINE void MDL::Mesh::replaceAttributeNamed(const NS::String* name,
+                                                  const VertexAttributeData* newData)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(replaceAttributeNamed_), name, newData);
+}
+
+// method: updateAttributeNamed:
+_MDL_INLINE void MDL::Mesh::updateAttributeNamed(const NS::String* name,
+                                                  const VertexAttributeData* newData)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(updateAttributeNamed_), name, newData);
+}
+
+// method: removeAttributeNamed:
+_MDL_INLINE void MDL::Mesh::removeAttributeNamed(const NS::String* name)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(removeAttributeNamed_), name);
+}
+
+// MARK: Mesh-Generators
+
+// method: initBoxWithExtent:segments:inwardNormals:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initBoxWithExtent(vector_float3 extent,
+                                                    vector_uint3 segments,
+                                                    BOOL inwardNormals,
+                                                    GeometryType geometryType,
+                                                    class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initBoxWithExtent_segments_inwardNormals_geometryType_allocator_),
+                                      extent, segments, inwardNormals, geometryType, allocator);
+}
+
+// method: initSphereWithExtent:segments:inwardNormals:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initSphereWithExtent(vector_float3 extent,
+                                                       vector_uint2 segments,
+                                                       BOOL inwardNormals,
+                                                       GeometryType geometryType,
+                                                       class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initSphereWithExtent_segments_inwardNormals_geometryType_allocator_),
+                                      extent, segments, inwardNormals, geometryType, allocator);
+}
+
+// method: initHemisphereWithExtent:segments:inwardNormals:cap:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initHemisphereWithExtent(vector_float3 extent,
+                                                           vector_uint2 segments,
+                                                           BOOL inwardNormals,
+                                                           BOOL cap,
+                                                           GeometryType geometryType,
+                                                           class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initHemisphereWithExtent_segments_inwardNormals_cap_geometryType_allocator_),
+                                      extent, segments, inwardNormals, cap, geometryType, allocator);
+}
+
+// method: initCylinderWithExtent:segments:inwardNormals:topCap:bottomCap:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initCylinderWithExtent(vector_float3 extent,
+                                                         vector_uint2 segments,
+                                                         BOOL inwardNormals,
+                                                         BOOL topCap,
+                                                         BOOL bottomCap,
+                                                         GeometryType geometryType,
+                                                         class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initCylinderWithExtent_segments_inwardNormals_topCap_bottomCap_geometryType_allocator_),
+                                      extent, segments, inwardNormals, topCap, bottomCap, geometryType, allocator);
+}
+
+// method: initCapsuleWithExtent:cylinderSegments:hemisphereSegments:inwardNormals:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initCapsuleWithExtent(vector_float3 extent,
+                                                        vector_uint2 segments,
+                                                        int hemisphereSegments,
+                                                        BOOL inwardNormals,
+                                                        GeometryType geometryType,
+                                                        class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initCapsuleWithExtent_cylinderSegments_hemisphereSegments_inwardNormals_geometryType_allocator_),
+                                      extent, segments, hemisphereSegments, inwardNormals, geometryType, allocator);
+}
+
+// method: initConeWithExtent:segments:inwardNormals:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initConeWithExtent(vector_float3 extent,
+                                                     vector_uint2 segments,
+                                                     BOOL inwardNormals,
+                                                     BOOL cap,
+                                                     GeometryType geometryType,
+                                                     class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initConeWithExtent_segments_inwardNormals_geometryType_allocator_),
+                                      extent, segments, inwardNormals, cap, geometryType, allocator);
+}
+
+// method: initPlaneWithExtent:segments:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initPlaneWithExtent(vector_float3 extent,
+                                                      vector_uint2 segments,
+                                                      GeometryType geometryType,
+                                                      class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initPlaneWithExtent_segments_geometryType_allocator_),
+                                      extent, segments, geometryType, allocator);
+}
+
+// method: initIcosahedronWithExtent:segments:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initIcosahedronWithExtent(vector_float3 extent,
+                                                            BOOL inwardNormals,
+                                                            GeometryType geometryType,
+                                                            class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initIcosahedronWithExtent_segments_geometryType_allocator_),
+                                      extent, inwardNormals, geometryType, allocator);
+}
+
+// method: initMeshBySubdividingMesh:submeshIndex:subdivisionLevels:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::initMeshBySubdividingMesh(const Mesh* mesh,
+                                                            int submeshIndex,
+                                                            unsigned int subdivisionLevels,
+                                                            class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(this,
+                                      _MDL_PRIVATE_SEL(initMeshBySubdividingMesh_submeshIndex_subdivisionLevels_allocator_),
+                                      mesh, submeshIndex, subdivisionLevels, allocator);
+}
+
+// static method: newBoxWithDimensions:segments:geometryType:inwardNormals:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newBoxWithDimensions(vector_float3 dimensions,
+                                                       vector_uint3 segments,
+                                                       GeometryType geometryType,
+                                                       BOOL inwardNormals,
+                                                       class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newBoxWithDimensions_segments_geometryType_inwardNormals_allocator_),
+                                      dimensions, segments, geometryType, allocator);
+}
+
+// static method: newEllipsoidWithRadii:radialSegments:verticalSegments:geometryType:inwardNormals:hemisphere:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newEllipsoidWithRadii(vector_float3 radii,
+                                                        NS::UInteger radialSegments,
+                                                        NS::UInteger verticalSegments,
+                                                        GeometryType geometryType,
+                                                        BOOL inwardNormals,
+                                                        BOOL hemisphere,
+                                                        class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newEllipsoidWithRadii_radialSegments_verticalSegments_geometryType_inwardNormals_hemisphere_allocator_),
+                                      radii, radialSegments, verticalSegments, geometryType, inwardNormals, hemisphere, allocator);
+}
+
+// static method: newCylinderWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newCylinderWithHeight(float height,
+                                                        vector_float2 radii,
+                                                        NS::UInteger radialSegments,
+                                                        NS::UInteger verticalSegments,
+                                                        GeometryType geometryType,
+                                                        BOOL inwardNormals,
+                                                        class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newCylinderWithHeight_radii_radialSegments_verticalSegments_geometryType_inwardNormals_allocator_),
+                                      height, radii, radialSegments, verticalSegments, geometryType, inwardNormals, allocator);
+}
+
+// static method: newCapsuleWithHeight:radii:radialSegments:verticalSegments:hemisphereSegments:geometryType:inwardNormals:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newCapsuleWithHeight(float height,
+                                                       vector_float2 radii,
+                                                       NS::UInteger radialSegments,
+                                                       NS::UInteger verticalSegments,
+                                                       NS::UInteger hemisphereSegments,
+                                                       GeometryType geometryType,
+                                                       BOOL inwardNormals,
+                                                       class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newCapsuleWithHeight_radii_radialSegments_verticalSegments_hemisphereSegments_geometryType_inwardNormals_allocator_),
+                                      height, radii, radialSegments, verticalSegments, hemisphereSegments, geometryType, inwardNormals, allocator);
+}
+
+// static method: newEllipticalConeWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newEllipticalConeWithHeight(float height,
+                                                              vector_float2 radii,
+                                                              NS::UInteger radialSegments,
+                                                              NS::UInteger verticalSegments,
+                                                              GeometryType geometryType,
+                                                              BOOL inwardNormals,
+                                                              class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newEllipticalConeWithHeight_radii_radialSegments_verticalSegments_geometryType_inwardNormals_allocator_),
+                                      height, radii, radialSegments, verticalSegments, geometryType, inwardNormals, allocator);
+}
+
+// static method: newPlaneWithDimensions:segments:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newPlaneWithDimensions(vector_float2 dimensions,
+                                                         vector_uint2 segments,
+                                                         GeometryType geometryType,
+                                                         class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newPlaneWithDimensions_segments_geometryType_allocator_),
+                                      dimensions, segments, geometryType, allocator);
+}
+
+// static method: newIcosahedronWithRadius:inwardNormals:geometryType:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newIcosahedronWithRadius(float radius,
+                                                           BOOL inwardNormals,
+                                                           GeometryType geometryType,
+                                                           class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newIcosahedronWithRadius_inwardNormals_geometryType_allocator_),
+                                      radius, inwardNormals, geometryType, allocator);
+}
+
+// static method: newIcosahedronWithRadius:inwardNormals:allocator:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newIcosahedronWithRadius(float radius,
+                                                           BOOL inwardNormals,
+                                                           class MeshBufferAllocator* allocator)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newIcosahedronWithRadius_inwardNormals_allocator_),
+                                      radius, inwardNormals, allocator);
+}
+
+// static method: newSubdividedMesh:submeshIndex:subdivisionLevels:
+_MDL_INLINE MDL::Mesh* MDL::Mesh::newSubdividedMesh(const Mesh* mesh,
+                                                    NS::UInteger submeshIndex,
+                                                    NS::UInteger subdivisionLevels)
+{
+    return Object::sendMessage<Mesh*>(_MDL_PRIVATE_CLS(MDLMesh),
+                                      _MDL_PRIVATE_SEL(newSubdividedMesh_submeshIndex_subdivisionLevels_),
+                                      mesh, submeshIndex, subdivisionLevels);
+}
+
+// MARK: Mesh-LighBaking
+
+// method: generateAmbientOcclusionTextureWithSize:raysPerSample:attenuationFactor:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateAmbientOcclusionTextureWithSize(vector_int2 textureSize,
+                                                                    NS::UInteger raysPerSample,
+                                                                    float attenuationFactor,
+                                                                    const NS::Array* objectsToConsider,
+                                                                    const NS::String* vertexAttributeName,
+                                                                    const NS::String* materialPropertyName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateAmbientOcclusionTextureWithSize_raysPerSample_attenuationFactor_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_),
+                                     textureSize, raysPerSample, attenuationFactor, objectsToConsider, vertexAttributeName, materialPropertyName);
+}
+
+// method: generateAmbientOcclusionTextureWithQuality:attenuationFactor:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateAmbientOcclusionTextureWithQuality(float bakeQuality,
+                                                                       float attenuationFactor,
+                                                                       const NS::Array* objectsToConsider,
+                                                                       const NS::String* vertexAttributeName,
+                                                                       const NS::String* materialPropertyName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateAmbientOcclusionTextureWithQuality_attenuationFactor_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_),
+                                     bakeQuality, attenuationFactor, objectsToConsider, vertexAttributeName, materialPropertyName);
+}
+
+// method: generateAmbientOcclusionVertexColorsWithRaysPerSample:attenuationFactor:objectsToConsider:vertexAttributeNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateAmbientOcclusionVertexColorsWithRaysPerSample(NS::Integer raysPerSample,
+                                                                                  float attenuationFactor,
+                                                                                  const NS::Array* objectsToConsider,
+                                                                                  const NS::String* vertexAttributeName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateAmbientOcclusionVertexColorsWithRaysPerSample_attenuationFactor_objectsToConsider_vertexAttributeNamed_),
+                                     raysPerSample, attenuationFactor, objectsToConsider, vertexAttributeName);
+}
+
+// method: generateAmbientOcclusionVertexColorsWithQuality:attenuationFactor:objectsToConsider:vertexAttributeNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateAmbientOcclusionVertexColorsWithQuality(float bakeQuality,
+                                                                            float attenuationFactor,
+                                                                            const NS::Array* objectsToConsider,
+                                                                            const NS::String* vertexAttributeName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateAmbientOcclusionVertexColorsWithQuality_attenuationFactor_objectsToConsider_vertexAttributeNamed_),
+                                     bakeQuality, attenuationFactor, objectsToConsider, vertexAttributeName);
+}
+
+// method: generateLightMapTextureWithTextureSize:lightsToConsider:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateLightMapTextureWithTextureSize(vector_int2 textureSize,
+                                                                   const NS::Array* lightsToConsider,
+                                                                   const NS::Array* objectsToConsider,
+                                                                   const NS::String* vertexAttributeName,
+                                                                   const NS::String* materialPropertyName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateLightMapTextureWithTextureSize_lightsToConsider_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_),
+                                     textureSize, lightsToConsider, objectsToConsider, vertexAttributeName, materialPropertyName);
+}
+
+// method: generateLightMapTextureWithQuality:lightsToConsider:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateLightMapTextureWithQuality(float bakeQuality,
+                                                               const NS::Array* lightsToConsider,
+                                                               const NS::Array* objectsToConsider,
+                                                               const NS::String* vertexAttributeName,
+                                                               const NS::String* materialPropertyName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateLightMapTextureWithQuality_lightsToConsider_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_),
+                                     bakeQuality, lightsToConsider, objectsToConsider, vertexAttributeName, materialPropertyName);
+}
+
+// method: generateLightMapVertexColorsWithLightsToConsider:objectsToConsider:vertexAttributeNamed:
+_MDL_INLINE BOOL MDL::Mesh::generateLightMapVertexColorsWithLightsToConsider(const NS::Array* lightsToConsider,
+                                                                             const NS::Array* objectsToConsider,
+                                                                             const NS::String* vertexAttributeName)
+{
+    return Object::sendMessage<BOOL>(this,
+                                     _MDL_PRIVATE_SEL(generateLightMapVertexColorsWithLightsToConsider_objectsToConsider_vertexAttributeNamed_),
+                                     lightsToConsider, objectsToConsider, vertexAttributeName);
+}
+
+
+
+
+
+ 
 
 
 

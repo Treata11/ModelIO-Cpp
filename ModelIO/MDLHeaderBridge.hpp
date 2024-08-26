@@ -93,6 +93,9 @@ namespace MDL::Private::Class
     // Bogus!
     _MDL_PRIVATE_DEF_CLS( MDLLightProbeIrradianceDataSource );
 
+// MDLMesh.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLVertexAttributeData );
+    _MDL_PRIVATE_DEF_CLS( MDLMesh );
 
 } // Class
 
@@ -727,5 +730,103 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( sphericalHarmonicsCoefficientsAtPosition_, "sphericalHarmonicsCoefficientsAtPosition:" );
     _MDL_PRIVATE_DEF_SEL( placeLightProbesWithDensity_usingIrradianceDataSource_,
                          "placeLightProbesWithDensity_usingIrradianceDataSource_" );
+
+// MDLMesh.hpp
+    _MDL_PRIVATE_DEF_SEL( map, "map" );
+    _MDL_PRIVATE_DEF_SEL( setMap_, "setMap:" );
+    _MDL_PRIVATE_DEF_SEL( dataStart, "dataStart" );
+    _MDL_PRIVATE_DEF_SEL( setDataStart_, "setDataStart:" );
+    //_MDL_PRIVATE_DEF_SEL( stride, "stride" );
+    //_MDL_PRIVATE_DEF_SEL( setStride_, "setStride:" );
+    //_MDL_PRIVATE_DEF_SEL( format, "format" );
+    //_MDL_PRIVATE_DEF_SEL( setFormat_, "setFormat:" );
+    _MDL_PRIVATE_DEF_SEL( bufferSize, "bufferSize" );
+    _MDL_PRIVATE_DEF_SEL( setBufferSize_, "setBufferSize:" );
+
+    //_MDL_PRIVATE_DEF_SEL( initWithBufferAllocator_, "initWithBufferAllocator:" );
+    _MDL_PRIVATE_DEF_SEL( initWithVertexBuffer_vertexCount_descriptor_submeshes_, "initWithVertexBuffer:vertexCount:descriptor:submeshes:" );
+    _MDL_PRIVATE_DEF_SEL( initWithVertexBuffers_vertexCount_descriptor_submeshes_, "initWithVertexBuffers:vertexCount:descriptor:submeshes:" );
+    _MDL_PRIVATE_DEF_SEL( vertexAttributeDataForAttributeNamed_, "vertexAttributeDataForAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( vertexAttributeDataForAttributeNamed_asFormat_, "vertexAttributeDataForAttributeNamed:asFormat:" );
+    //_MDL_PRIVATE_DEF_SEL( boundingBox, "boundingBox" );
+    //_MDL_PRIVATE_DEF_SEL( vertexDescriptor, "vertexDescriptor" );
+    _MDL_PRIVATE_DEF_SEL( setVertexDescriptor_, "setVertexDescriptor:" );
+    _MDL_PRIVATE_DEF_SEL( vertexCount, "vertexCount" );
+    _MDL_PRIVATE_DEF_SEL( setVertexCount_, "setVertexCount:" );
+    _MDL_PRIVATE_DEF_SEL( vertexBuffers, "vertexBuffers" );
+    _MDL_PRIVATE_DEF_SEL( setVertexBuffers_, "setVertexBuffers:" );
+    //_MDL_PRIVATE_DEF_SEL( allocator, "allocator" );
+
+    _MDL_PRIVATE_DEF_SEL( addAttributeWithName_format_, "addAttributeWithName:format:" );
+    _MDL_PRIVATE_DEF_SEL( addAttributeWithName_format_type_data_stride_, "addAttributeWithName:format:type:data:stride:" );
+    _MDL_PRIVATE_DEF_SEL( addAttributeWithName_format_type_data_stride_time_, "addAttributeWithName:format:type:data:stride:time:" );
+    _MDL_PRIVATE_DEF_SEL( addNormalsWithAttributeNamed_creaseThreshold_, "addNormalsWithAttributeNamed:creaseThreshold:" );
+
+    _MDL_PRIVATE_DEF_SEL( addTangentBasisForTextureCoordinateAttributeNamed_tangentAttributeNamed_bitangentAttributeNamed_,
+                         "addTangentBasisForTextureCoordinateAttributeNamed:tangentAttributeNamed:bitangentAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( addTangentBasisForTextureCoordinateAttributeNamed_normalAttributeNamed_tangentAttributeNamed_,
+                         "addTangentBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( addOrthTanBasisForTextureCoordinateAttributeNamed_normalAttributeNamed_tangentAttributeNamed_,
+                         "addOrthTanBasisForTextureCoordinateAttributeNamed:normalAttributeNamed:tangentAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( addUnwrappedTextureCoordinatesForAttributeNamed_, "addUnwrappedTextureCoordinatesForAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( flipTextureCoordinatesInAttributeNamed_, "flipTextureCoordinatesInAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( makeVerticesUnique, "makeVerticesUnique" );
+    _MDL_PRIVATE_DEF_SEL( makeVerticesUniqueAndReturnError_, "makeVerticesUniqueAndReturnError:" );
+    _MDL_PRIVATE_DEF_SEL( replaceAttributeNamed_, "replaceAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( updateAttributeNamed_, "updateAttributeNamed:" );
+    //_MDL_PRIVATE_DEF_SEL( removeAttributeNamed_, "removeAttributeNamed:" );
+
+    _MDL_PRIVATE_DEF_SEL( initBoxWithExtent_segments_inwardNormals_geometryType_allocator_,
+                         "initBoxWithExtent:segments:inwardNormals:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initSphereWithExtent_segments_inwardNormals_geometryType_allocator_,
+                         "initSphereWithExtent:segments:inwardNormals:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initHemisphereWithExtent_segments_inwardNormals_cap_geometryType_allocator_,
+                         "initHemisphereWithExtent:segments:inwardNormals:cap:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initCylinderWithExtent_segments_inwardNormals_topCap_bottomCap_geometryType_allocator_,
+                         "initCylinderWithExtent:segments:inwardNormals:topCap:bottomCap:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initCapsuleWithExtent_cylinderSegments_hemisphereSegments_inwardNormals_geometryType_allocator_,
+                         "initCapsuleWithExtent:cylinderSegments:hemisphereSegments:inwardNormals:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initConeWithExtent_segments_inwardNormals_geometryType_allocator_,
+                         "initConeWithExtent:segments:inwardNormals:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initPlaneWithExtent_segments_geometryType_allocator_,
+                         "initPlaneWithExtent:segments:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initIcosahedronWithExtent_segments_geometryType_allocator_,
+                         "initIcosahedronWithExtent:segments:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( initMeshBySubdividingMesh_submeshIndex_subdivisionLevels_allocator_,
+                         "initMeshBySubdividingMesh:submeshIndex:subdivisionLevels:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newBoxWithDimensions_segments_geometryType_inwardNormals_allocator_,
+                         "newBoxWithDimensions:segments:geometryType:inwardNormals:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newEllipsoidWithRadii_radialSegments_verticalSegments_geometryType_inwardNormals_hemisphere_allocator_,
+                         "newEllipsoidWithRadii:radialSegments:verticalSegments:geometryType:inwardNormals:hemisphere:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newCylinderWithHeight_radii_radialSegments_verticalSegments_geometryType_inwardNormals_allocator_,
+                         "newCylinderWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newCapsuleWithHeight_radii_radialSegments_verticalSegments_hemisphereSegments_geometryType_inwardNormals_allocator_,
+                         "newCapsuleWithHeight:radii:radialSegments:verticalSegments:hemisphereSegments:geometryType:inwardNormals:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newEllipticalConeWithHeight_radii_radialSegments_verticalSegments_geometryType_inwardNormals_allocator_,
+                         "newEllipticalConeWithHeight:radii:radialSegments:verticalSegments:geometryType:inwardNormals:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newPlaneWithDimensions_segments_geometryType_allocator_,
+                         "newPlaneWithDimensions:segments:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newIcosahedronWithRadius_inwardNormals_geometryType_allocator_,
+                         "newIcosahedronWithRadius:inwardNormals:geometryType:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newIcosahedronWithRadius_inwardNormals_allocator_,
+                         "newIcosahedronWithRadius:inwardNormals:allocator:" );
+    _MDL_PRIVATE_DEF_SEL( newSubdividedMesh_submeshIndex_subdivisionLevels_,
+                         "newSubdividedMesh:submeshIndex:subdivisionLevels:" );
+
+    _MDL_PRIVATE_DEF_SEL( generateAmbientOcclusionTextureWithSize_raysPerSample_attenuationFactor_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_,
+                         "generateAmbientOcclusionTextureWithSize:raysPerSample:attenuationFactor:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateAmbientOcclusionTextureWithQuality_attenuationFactor_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_,
+                         "generateAmbientOcclusionTextureWithQuality:attenuationFactor:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateAmbientOcclusionVertexColorsWithRaysPerSample_attenuationFactor_objectsToConsider_vertexAttributeNamed_,
+                         "generateAmbientOcclusionVertexColorsWithRaysPerSample:attenuationFactor:objectsToConsider:vertexAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateAmbientOcclusionVertexColorsWithQuality_attenuationFactor_objectsToConsider_vertexAttributeNamed_,
+                         "generateAmbientOcclusionVertexColorsWithQuality:attenuationFactor:objectsToConsider:vertexAttributeNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateLightMapTextureWithTextureSize_lightsToConsider_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_,
+                         "generateLightMapTextureWithTextureSize:lightsToConsider:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateLightMapTextureWithQuality_lightsToConsider_objectsToConsider_vertexAttributeNamed_materialPropertyNamed_,
+                         "generateLightMapTextureWithQuality:lightsToConsider:objectsToConsider:vertexAttributeNamed:materialPropertyNamed:" );
+    _MDL_PRIVATE_DEF_SEL( generateLightMapVertexColorsWithLightsToConsider_objectsToConsider_vertexAttributeNamed_,
+                         "generateLightMapVertexColorsWithLightsToConsider:objectsToConsider:vertexAttributeNamed:" );
+
 
 } // Selector
