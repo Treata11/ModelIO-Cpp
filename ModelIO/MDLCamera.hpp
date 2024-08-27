@@ -130,7 +130,7 @@ public:
     float                   overlap() const;
     void                    setOverlap(float overlap);
     
-    // readonly
+    // - Readonly
     matrix_float4x4         leftViewMatrix() const;
     
     matrix_float4x4         rightViewMatrix() const;
@@ -142,7 +142,363 @@ public:
 
 }
 
-// TODO: Private Sector -
+// MARK: - Private Sector
+
+// static method: alloc
+_MDL_INLINE MDL::Camera* MDL::Camera::alloc()
+{
+    return NS::Object::alloc<MDL::Camera>(_MDL_PRIVATE_CLS(MDLCamera));
+}
+
+// method: init
+_MDL_INLINE MDL::Camera* MDL::Camera::init()
+{
+    return NS::Object::init<MDL::Camera>();
+}
+
+// property: projectionMatrix
+_MDL_INLINE matrix_float4x4 MDL::Camera::projectionMatrix() const
+{
+    return Object::sendMessage<matrix_float4x4>(this, _MDL_PRIVATE_SEL(projectionMatrix));
+}
+
+// property: projection
+_MDL_INLINE MDL::CameraProjection MDL::Camera::projection() const
+{
+    return Object::sendMessage<CameraProjection>(this, _MDL_PRIVATE_SEL(projection));
+}
+// write method: setProjection:
+_MDL_INLINE void MDL::Camera::setProjection(CameraProjection projection)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setProjection_), projection);
+}
+
+// method: frameBoundingBox:setNearAndFar:
+_MDL_INLINE void MDL::Camera::frameBoundingBox(AxisAlignedBoundingBox boundingBox, BOOL setNearAndFar)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(frameBoundingBox_setNearAndFar_), boundingBox, setNearAndFar);
+}
+
+// method: lookAt:
+_MDL_INLINE void MDL::Camera::lookAt(vector_float3 focusPosition)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(lookAt_), focusPosition);
+}
+
+// method: lookAt:from:
+_MDL_INLINE void MDL::Camera::lookAt(vector_float3 focusPosition, vector_float3 cameraPosition)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(lookAt_from_), focusPosition, cameraPosition);
+}
+
+// method: rayTo:forViewPort:
+_MDL_INLINE vector_float3 MDL::Camera::rayTo(vector_int2 pixel, vector_int2 size)
+{
+    return Object::sendMessage<vector_float3>(this, _MDL_PRIVATE_SEL(rayTo_forViewPort_), pixel, size);
+}
+
+// property: nearVisibilityDistance
+_MDL_INLINE float MDL::Camera::nearVisibilityDistance() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(nearVisibilityDistance));
+}
+// write method: setNearVisibilityDistance:
+_MDL_INLINE void MDL::Camera::setNearVisibilityDistance(float nearVisibilityDistance)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setNearVisibilityDistance_), nearVisibilityDistance);
+}
+
+// property: farVisibilityDistance
+_MDL_INLINE float MDL::Camera::farVisibilityDistance() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(farVisibilityDistance));
+}
+// write method: setFarVisibilityDistance:
+_MDL_INLINE void MDL::Camera::setFarVisibilityDistance(float farVisibilityDistance)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFarVisibilityDistance_), farVisibilityDistance);
+}
+
+// property: worldToMetersConversionScale
+_MDL_INLINE float MDL::Camera::worldToMetersConversionScale() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(worldToMetersConversionScale));
+}
+// write method: setWorldToMetersConversionScale:
+_MDL_INLINE void MDL::Camera::setWorldToMetersConversionScale(float worldToMetersConversionScale)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setWorldToMetersConversionScale_), worldToMetersConversionScale);
+}
+
+// property: barrelDistortion
+_MDL_INLINE float MDL::Camera::barrelDistortion() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(barrelDistortion));
+}
+// write method: setBarrelDistortion:
+_MDL_INLINE void MDL::Camera::setBarrelDistortion(float barrelDistortion)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setBarrelDistortion_), barrelDistortion);
+}
+
+// property: fisheyeDistortion
+_MDL_INLINE float MDL::Camera::fisheyeDistortion() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(fisheyeDistortion));
+}
+// write method: setFisheyeDistortion:
+_MDL_INLINE void MDL::Camera::setFisheyeDistortion(float fisheyeDistortion)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFisheyeDistortion_), fisheyeDistortion);
+}
+
+// property: opticalVignetting
+_MDL_INLINE float MDL::Camera::opticalVignetting() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(opticalVignetting));
+}
+// write method: setOpticalVignetting:
+_MDL_INLINE void MDL::Camera::setOpticalVignetting(float opticalVignetting)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setOpticalVignetting_), opticalVignetting);
+}
+
+// property: chromaticAberration
+_MDL_INLINE float MDL::Camera::chromaticAberration() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(chromaticAberration));
+}
+// write method: setChromaticAberration:
+_MDL_INLINE void MDL::Camera::setChromaticAberration(float chromaticAberration)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setChromaticAberration_), chromaticAberration);
+}
+
+// property: focalLength
+_MDL_INLINE float MDL::Camera::focalLength() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(focalLength));
+}
+// write method: setFocalLength:
+_MDL_INLINE void MDL::Camera::setFocalLength(float focalLength)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFocalLength_), focalLength);
+}
+
+// property: focusDistance
+_MDL_INLINE float MDL::Camera::focusDistance() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(focusDistance));
+}
+// write method: setFocusDistance:
+_MDL_INLINE void MDL::Camera::setFocusDistance(float focusDistance)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFocusDistance_), focusDistance);
+}
+
+// property: fieldOfView
+_MDL_INLINE float MDL::Camera::fieldOfView() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(fieldOfView));
+}
+// write method: setFieldOfView:
+_MDL_INLINE void MDL::Camera::setFieldOfView(float fieldOfView)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFieldOfView_), fieldOfView);
+}
+
+// property: fStop
+_MDL_INLINE float MDL::Camera::fStop() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(fStop));
+}
+// write method: setFStop:
+_MDL_INLINE void MDL::Camera::setFStop(float fStop)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFStop_), fStop);
+}
+
+// property: apertureBladeCount
+_MDL_INLINE NS::UInteger MDL::Camera::apertureBladeCount() const
+{
+    return Object::sendMessage<NS::UInteger>(this, _MDL_PRIVATE_SEL(apertureBladeCount));
+}
+// write method: setApertureBladeCount:
+_MDL_INLINE void MDL::Camera::setApertureBladeCount(NS::UInteger apertureBladeCount)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setApertureBladeCount_), apertureBladeCount);
+}
+
+// property: maximumCircleOfConfusion
+_MDL_INLINE float MDL::Camera::maximumCircleOfConfusion() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(maximumCircleOfConfusion));
+}
+// write method: setMaximumCircleOfConfusion:
+_MDL_INLINE void MDL::Camera::setMaximumCircleOfConfusion(float maximumCircleOfConfusion)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setMaximumCircleOfConfusion_), maximumCircleOfConfusion);
+}
+
+// method: bokehKernelWithSize:
+_MDL_INLINE MDL::Texture* MDL::Camera::bokehKernelWithSize(vector_int2 size)
+{
+    return Object::sendMessage<Texture*>(this, _MDL_PRIVATE_SEL(bokehKernelWithSize_), size);
+}
+
+// property: shutterOpenInterval
+_MDL_INLINE NS::TimeInterval MDL::Camera::shutterOpenInterval() const
+{
+    return Object::sendMessage<NS::TimeInterval>(this, _MDL_PRIVATE_SEL(shutterOpenInterval));
+}
+// write method: setShutterOpenInterval:
+_MDL_INLINE void MDL::Camera::setShutterOpenInterval(NS::TimeInterval shutterOpenInterval)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setShutterOpenInterval_), shutterOpenInterval);
+}
+
+// property: sensorVerticalAperture
+_MDL_INLINE float MDL::Camera::sensorVerticalAperture() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(sensorVerticalAperture));
+}
+// write method: setSensorVerticalAperture:
+_MDL_INLINE void MDL::Camera::setSensorVerticalAperture(float sensorVerticalAperture)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setSensorVerticalAperture_), sensorVerticalAperture);
+}
+
+// property: sensorEnlargement
+_MDL_INLINE vector_float2 MDL::Camera::sensorEnlargement() const
+{
+    return Object::sendMessage<vector_float2>(this, _MDL_PRIVATE_SEL(sensorEnlargement));
+}
+// write method: setSensorEnlargement:
+_MDL_INLINE void MDL::Camera::setSensorEnlargement(vector_float2 sensorEnlargement)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setSensorEnlargement_), sensorEnlargement);
+}
+
+// property: flash
+_MDL_INLINE vector_float3 MDL::Camera::flash() const
+{
+    return Object::sendMessage<vector_float3>(this, _MDL_PRIVATE_SEL(flash));
+}
+// write method: setFlash:
+_MDL_INLINE void MDL::Camera::setFlash(vector_float3 flash)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setFlash_), flash);
+}
+
+// property: exposureCompression
+_MDL_INLINE vector_float2 MDL::Camera::exposureCompression() const
+{
+    return Object::sendMessage<vector_float2>(this, _MDL_PRIVATE_SEL(exposureCompression));
+}
+// write method: setExposureCompression:
+_MDL_INLINE void MDL::Camera::setExposureCompression(vector_float2 exposureCompression)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setExposureCompression_), exposureCompression);
+}
+
+// property: exposure
+_MDL_INLINE vector_float3 MDL::Camera::exposure() const
+{
+    return Object::sendMessage<vector_float3>(this, _MDL_PRIVATE_SEL(exposure));
+}
+// write method: setExposure:
+_MDL_INLINE void MDL::Camera::setExposure(vector_float3 exposure)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setExposure_), exposure);
+}
+
+// MARK: Class StereoscopicCamera
+
+// static method: alloc
+_MDL_INLINE MDL::StereoscopicCamera* MDL::StereoscopicCamera::alloc()
+{
+    return NS::Object::alloc<MDL::StereoscopicCamera>(_MDL_PRIVATE_CLS(MDLStereoscopicCamera));
+}
+
+// method: init
+_MDL_INLINE MDL::StereoscopicCamera* MDL::StereoscopicCamera::init()
+{
+    return NS::Object::init<MDL::StereoscopicCamera>();
+}
+
+// property: interPupillaryDistance
+_MDL_INLINE float MDL::StereoscopicCamera::interPupillaryDistance() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(interPupillaryDistance));
+}
+// write method: setInterPupillaryDistance:
+_MDL_INLINE void MDL::StereoscopicCamera::setInterPupillaryDistance(float interPupillaryDistance)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setInterPupillaryDistance_), interPupillaryDistance);
+}
+
+// property: leftVergence
+_MDL_INLINE float MDL::StereoscopicCamera::leftVergence() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(leftVergence));
+}
+// write method: setLeftVergence:
+_MDL_INLINE void MDL::StereoscopicCamera::setLeftVergence(float leftVergence)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setLeftVergence_), leftVergence);
+}
+
+// property: rightVergence
+_MDL_INLINE float MDL::StereoscopicCamera::rightVergence() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(rightVergence));
+}
+// write method: setRightVergence:
+_MDL_INLINE void MDL::StereoscopicCamera::setRightVergence(float rightVergence)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setRightVergence_), rightVergence);
+}
+
+// property: overlap
+_MDL_INLINE float MDL::StereoscopicCamera::overlap() const
+{
+    return Object::sendMessage<float>(this, _MDL_PRIVATE_SEL(overlap));
+}
+// write method: setOverlap:
+_MDL_INLINE void MDL::StereoscopicCamera::setOverlap(float overlap)
+{
+    return Object::sendMessage<void>(this, _MDL_PRIVATE_SEL(setOverlap_), overlap);
+}
+
+// property: leftViewMatrix
+_MDL_INLINE matrix_float4x4 MDL::StereoscopicCamera::leftViewMatrix() const
+{
+    return Object::sendMessage<matrix_float4x4>(this, _MDL_PRIVATE_SEL(leftViewMatrix));
+}
+
+// property: rightViewMatrix
+_MDL_INLINE matrix_float4x4 MDL::StereoscopicCamera::rightViewMatrix() const
+{
+    return Object::sendMessage<matrix_float4x4>(this, _MDL_PRIVATE_SEL(rightViewMatrix));
+}
+
+// property: leftProjectionMatrix
+_MDL_INLINE matrix_float4x4 MDL::StereoscopicCamera::leftProjectionMatrix() const
+{
+    return Object::sendMessage<matrix_float4x4>(this, _MDL_PRIVATE_SEL(leftProjectionMatrix));
+}
+
+// property: rightProjectionMatrix
+_MDL_INLINE matrix_float4x4 MDL::StereoscopicCamera::rightProjectionMatrix() const
+{
+    return Object::sendMessage<matrix_float4x4>(this, _MDL_PRIVATE_SEL(rightProjectionMatrix));
+}
+
+
+
+
+
+
 
 
 

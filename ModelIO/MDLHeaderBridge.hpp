@@ -108,6 +108,10 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLTransformOrientOp );
     _MDL_PRIVATE_DEF_CLS( MDLTransformStack );
 
+// MDLCamera.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLCamera );
+    _MDL_PRIVATE_DEF_CLS( MDLStereoscopicCamera );
+
 } // Class
 
 // MARK: - Protocol
@@ -882,6 +886,67 @@ namespace MDL::Private::Selector
     //_MDL_PRIVATE_DEF_SEL( double4x4AtTime_, "double4x4AtTime:" );
     //_MDL_PRIVATE_DEF_SEL( keyTimes, "keyTimes" );
     _MDL_PRIVATE_DEF_SEL( transformOps, "transformOps" );
+
+// MDLCamera.hpp
+    _MDL_PRIVATE_DEF_SEL( projectionMatrix, "projectionMatrix" );
+    _MDL_PRIVATE_DEF_SEL( projection, "projection" );
+    _MDL_PRIVATE_DEF_SEL( setProjection_, "setProjection:" );
+    _MDL_PRIVATE_DEF_SEL( frameBoundingBox_setNearAndFar_, "frameBoundingBox:setNearAndFar:" );
+    _MDL_PRIVATE_DEF_SEL( lookAt_, "lookAt:" );
+    _MDL_PRIVATE_DEF_SEL( lookAt_from_, "lookAt:from:" );
+    _MDL_PRIVATE_DEF_SEL( rayTo_forViewPort_, "rayTo:forViewPort:" );
+    _MDL_PRIVATE_DEF_SEL( nearVisibilityDistance, "nearVisibilityDistance" );
+    _MDL_PRIVATE_DEF_SEL( setNearVisibilityDistance_, "setNearVisibilityDistance:" );
+    _MDL_PRIVATE_DEF_SEL( farVisibilityDistance, "farVisibilityDistance" );
+    _MDL_PRIVATE_DEF_SEL( setFarVisibilityDistance_, "setFarVisibilityDistance:" );
+    _MDL_PRIVATE_DEF_SEL( worldToMetersConversionScale, "worldToMetersConversionScale" );
+    _MDL_PRIVATE_DEF_SEL( setWorldToMetersConversionScale_, "setWorldToMetersConversionScale:" );
+    _MDL_PRIVATE_DEF_SEL( barrelDistortion, "barrelDistortion" );
+    _MDL_PRIVATE_DEF_SEL( setBarrelDistortion_, "setBarrelDistortion:" );
+    _MDL_PRIVATE_DEF_SEL( fisheyeDistortion, "fisheyeDistortion" );
+    _MDL_PRIVATE_DEF_SEL( setFisheyeDistortion_, "setFisheyeDistortion:" );
+    _MDL_PRIVATE_DEF_SEL( opticalVignetting, "opticalVignetting" );
+    _MDL_PRIVATE_DEF_SEL( setOpticalVignetting_, "setOpticalVignetting:" );
+    _MDL_PRIVATE_DEF_SEL( chromaticAberration, "chromaticAberration" );
+    _MDL_PRIVATE_DEF_SEL( setChromaticAberration_, "setChromaticAberration:" );
+    _MDL_PRIVATE_DEF_SEL( focalLength, "focalLength" );
+    _MDL_PRIVATE_DEF_SEL( setFocalLength_, "setFocalLength:" );
+    _MDL_PRIVATE_DEF_SEL( focusDistance, "focusDistance" );
+    _MDL_PRIVATE_DEF_SEL( setFocusDistance_, "setFocusDistance:" );
+    _MDL_PRIVATE_DEF_SEL( fieldOfView, "fieldOfView" );
+    _MDL_PRIVATE_DEF_SEL( setFieldOfView_, "setFieldOfView:" );
+    _MDL_PRIVATE_DEF_SEL( fStop, "fStop" );
+    _MDL_PRIVATE_DEF_SEL( setFStop_, "setFStop:" );
+    _MDL_PRIVATE_DEF_SEL( apertureBladeCount, "apertureBladeCount" );
+    _MDL_PRIVATE_DEF_SEL( setApertureBladeCount_, "setApertureBladeCount:" );
+    _MDL_PRIVATE_DEF_SEL( maximumCircleOfConfusion, "maximumCircleOfConfusion" );
+    _MDL_PRIVATE_DEF_SEL( setMaximumCircleOfConfusion_, "setMaximumCircleOfConfusion:" );
+    _MDL_PRIVATE_DEF_SEL( bokehKernelWithSize_, "bokehKernelWithSize:" );
+    _MDL_PRIVATE_DEF_SEL( shutterOpenInterval, "shutterOpenInterval" );
+    _MDL_PRIVATE_DEF_SEL( setShutterOpenInterval_, "setShutterOpenInterval:" );
+    _MDL_PRIVATE_DEF_SEL( sensorVerticalAperture, "sensorVerticalAperture" );
+    _MDL_PRIVATE_DEF_SEL( setSensorVerticalAperture_, "setSensorVerticalAperture:" );
+    _MDL_PRIVATE_DEF_SEL( sensorEnlargement, "sensorEnlargement" );
+    _MDL_PRIVATE_DEF_SEL( setSensorEnlargement_, "setSensorEnlargement:" );
+    _MDL_PRIVATE_DEF_SEL( flash, "flash" );
+    _MDL_PRIVATE_DEF_SEL( setFlash_, "setFlash:" );
+    _MDL_PRIVATE_DEF_SEL( exposureCompression, "exposureCompression" );
+    _MDL_PRIVATE_DEF_SEL( setExposureCompression_, "setExposureCompression:" );
+    //_MDL_PRIVATE_DEF_SEL( exposure, "exposure" );
+    //_MDL_PRIVATE_DEF_SEL( setExposure_, "setExposure:" );
+
+    _MDL_PRIVATE_DEF_SEL( interPupillaryDistance, "interPupillaryDistance" );
+    _MDL_PRIVATE_DEF_SEL( setInterPupillaryDistance_, "setInterPupillaryDistance:" );
+    _MDL_PRIVATE_DEF_SEL( leftVergence, "leftVergence" );
+    _MDL_PRIVATE_DEF_SEL( setLeftVergence_, "setLeftVergence:" );
+    _MDL_PRIVATE_DEF_SEL( rightVergence, "rightVergence" );
+    _MDL_PRIVATE_DEF_SEL( setRightVergence_, "setRightVergence:" );
+    _MDL_PRIVATE_DEF_SEL( overlap, "overlap" );
+    _MDL_PRIVATE_DEF_SEL( setOverlap_, "setOverlap:" );
+    _MDL_PRIVATE_DEF_SEL( leftViewMatrix, "leftViewMatrix" );
+    _MDL_PRIVATE_DEF_SEL( rightViewMatrix, "rightViewMatrix" );
+    _MDL_PRIVATE_DEF_SEL( leftProjectionMatrix, "leftProjectionMatrix" );
+    _MDL_PRIVATE_DEF_SEL( rightProjectionMatrix, "rightProjectionMatrix" );
 
 } // Selector
 
