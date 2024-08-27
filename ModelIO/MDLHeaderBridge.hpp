@@ -97,6 +97,17 @@ namespace MDL::Private::Class
     _MDL_PRIVATE_DEF_CLS( MDLVertexAttributeData );
     _MDL_PRIVATE_DEF_CLS( MDLMesh );
 
+// MDLTransformStack.hpp
+    _MDL_PRIVATE_DEF_CLS( MDLTransformRotateXOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformRotateYOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformRotateZOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformRotateOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformTranslateOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformScaleOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformMatrixOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformOrientOp );
+    _MDL_PRIVATE_DEF_CLS( MDLTransformStack );
+
 } // Class
 
 // MARK: - Protocol
@@ -828,5 +839,49 @@ namespace MDL::Private::Selector
     _MDL_PRIVATE_DEF_SEL( generateLightMapVertexColorsWithLightsToConsider_objectsToConsider_vertexAttributeNamed_,
                          "generateLightMapVertexColorsWithLightsToConsider:objectsToConsider:vertexAttributeNamed:" );
 
+// MDLTransformStack.hpp
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( float4x4AtTime_, "float4x4AtTime:" );
+    //_MDL_PRIVATE_DEF_SEL( double4x4AtTime_, "double4x4AtTime:" );
+    _MDL_PRIVATE_DEF_SEL( IsInverseOp, "IsInverseOp" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    _MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    //_MDL_PRIVATE_DEF_SEL( name, "name" );
+    //_MDL_PRIVATE_DEF_SEL( animatedValue, "animatedValue" );
+
+    _MDL_PRIVATE_DEF_SEL( addTranslateOp_inverse_, "addTranslateOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addRotateXOp_inverse_, "addRotateXOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addRotateYOp_inverse_, "addRotateYOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addRotateZOp_inverse_, "addRotateZOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addRotateOp_inverse_, "addRotateOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addScaleOp_inverse_, "addScaleOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addMatrixOp_inverse_, "addMatrixOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( addOrientOp_inverse_, "addOrientOp:inverse:" );
+    _MDL_PRIVATE_DEF_SEL( animatedValueWithName_, "animatedValueWithName:" );
+    //_MDL_PRIVATE_DEF_SEL( float4x4AtTime_, "float4x4AtTime:" );
+    //_MDL_PRIVATE_DEF_SEL( double4x4AtTime_, "double4x4AtTime:" );
+    //_MDL_PRIVATE_DEF_SEL( keyTimes, "keyTimes" );
+    _MDL_PRIVATE_DEF_SEL( transformOps, "transformOps" );
 
 } // Selector
+
